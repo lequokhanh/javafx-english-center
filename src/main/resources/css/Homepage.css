@@ -1,0 +1,83 @@
+@import url("./Font.css");
+
+.background {
+    -fx-pref-width: 1600px;
+    -fx-pref-height: 900px;
+    -fx-background-color: #ffffff;
+}
+
+.tabbtn {
+    -fx-pref-height: 90px;
+    -fx-pref-width: 280px;
+    -fx-padding: 0px 30px 0px 30px;
+    -fx-alignment: center-left;
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 30px;
+
+    -fx-background-color: #ffffff00;
+
+    -fx-text-fill: #000000;
+}
+
+.tabbtn:hover {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(
+            three-pass-box,
+            rgba(94, 120, 155, 0.2),
+            50,
+            0.5,
+            0,
+            0
+    );
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.tabbtnactive {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(
+            three-pass-box,
+            rgba(94, 120, 155, 0.2),
+            50,
+            0.5,
+            0,
+            0
+    );
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.logout {
+    -fx-padding: 7px 11px 7px 9px;
+    -fx-pref-width: 91px;
+    -fx-pref-height: 30px;
+    -fx-background-color: #36459a;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 12px;
+
+    -fx-text-fill: #ffffff;
+}
+
+.tabpane {
+    -fx-pref-width: 1226px;
+    -fx-pref-height: 860px;
+
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(
+            three-pass-box,
+            rgba(94, 120, 155, 0.2),
+            50,
+            0.5,
+            0,
+            0
+    );
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}

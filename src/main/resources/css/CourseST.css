@@ -1,0 +1,36 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scrollPane {
+    -fx-pref-width: 1150;
+    -fx-pref-height: 590;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 0;
+    -fx-border-color: #ffffff;
+}
+
+.gridPane {
+    -fx-pref-width: 1126;
+    -fx-pref-height: 250;
+    -fx-vgap: 55;
+    -fx-hgap: 95;
+}
+
+.manageChapterBtn {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 16px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #242731;
+}
+
+.manageChapterBtn:hover {
+    -fx-underline: true;
+}
+

@@ -1,0 +1,89 @@
+@import url("./Font.css");
+
+.title {
+    -fx-font-family: "Roboto black";
+    -fx-font-size: 36px;
+
+    -fx-text-fill: #000000;
+}
+
+.smalltitle {
+    -fx-font-family: "Roboto";
+    -fx-font-size: 24px;
+
+    -fx-text-fill: #000000;
+}
+
+.line {
+    -fx-stroke: #000000;
+    -fx-stroke-width: 1px;
+}
+
+.courseLevel {
+    -fx-padding: 8px 12px 8px 12px;
+    -fx-background-radius: 22px;
+    -fx-border-radius: 22px;
+    -fx-background-color: #e7e4e4;
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 12px;
+    -fx-alignment: center;
+    -fx-pref-height: 30px;
+}
+
+.levelBeginner {
+    -fx-background-color: #EBF9F1;
+    -fx-text-fill: #1F9254;
+}
+
+.levelIntermediate {
+    -fx-background-color: #FEF2E5;
+    -fx-text-fill: #CD6200;
+}
+
+.levelAdvance {
+    -fx-background-color: #FBE7E8;
+    -fx-text-fill: #A30D11;
+}
+
+.searchBox {
+    -fx-padding: 0 0 0 32px;
+    -fx-pref-width: 363px;
+    -fx-pref-height: 32px;
+
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 12px;
+
+    -fx-text-fill: #9E9E9E;
+    -fx-background-color: #00000000;
+    -fx-background-radius: 8px;
+    -fx-border-color: #9E9E9E;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+
+}
+
+.addBtn {
+    -fx-padding: 8 12;
+
+    -fx-pref-width: 121px;
+    -fx-pref-height: 32px;
+
+    -fx-background-color: #624DE3;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+
+    -fx-font-family: 'Montserrat Bold';
+    -fx-font-size: 12px;
+
+    -fx-text-fill: #ffffff;
+}
+
+.actionBtn {
+    -fx-pref-width: 24px;
+    -fx-pref-height: 24px;
+    -fx-background-color: #e0e7ff00;
+}
+
+.actionBtn:hover {
+    -fx-blend-mode: multiply;
+}

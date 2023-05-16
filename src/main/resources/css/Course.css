@@ -1,0 +1,148 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+
+.previewTitle {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 24px;
+
+    -fx-text-fill: #000000;
+}
+
+.previewPane {
+    -fx-pref-width: 268px;
+    -fx-pref-height: 318px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: rgba(38, 39, 40, 0.61);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.emptyTextPreview {
+    -fx-pref-width: 195px;
+    -fx-pref-height: 85px;
+
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 32px;
+    -fx-text-alignment: center;
+
+    -fx-wrap-text: true;
+    -fx-text-fill: #414141;
+
+}
+
+.previewCourseName {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 20px;
+
+    -fx-text-fill: #000000;
+}
+
+.previewCourseDescription {
+    -fx-pref-width: 237px;
+    -fx-pref-height: 217px;
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #000000;
+    -fx-wrap-text: true;
+    -fx-alignment: top-left;
+}
+
+.previewChapterNumber {
+    -fx-pref-width: 40px;
+    -fx-font-family: 'Roboto Mono Bold';
+    -fx-font-size: 32px;
+    -fx-alignment: center-right;
+    -fx-text-fill: #414141;
+}
+
+.previewChapterText {
+    -fx-font-family: 'Montserrat Bold';
+    -fx-font-size: 16px;
+
+    -fx-text-fill: #414141;
+}
+
+
+.action {
+    -fx-alignment: center;
+    -fx-padding: 0px;
+
+    -fx-pref-width: 52px;
+    -fx-pref-height: 24px;
+}
+
+
+.manageChapterBtn {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 16px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #242731;
+}
+
+.manageChapterBtn:hover {
+    -fx-underline: true;
+}
+
+
+.table-view {
+    -fx-pref-width: 800px;
+    -fx-pref-height: 635px;
+
+    -fx-border-color: #ffffff;
+    -fx-background-color: #ffffff;
+}
+
+.table-view .column-header {
+    -fx-background-color: #ffffff;
+    -fx-pref-height: 50px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #ffffff;
+}
+
+.column-header {
+    -fx-font-family: "Roboto Bold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+}
+
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.table-view .table-cell {
+    -fx-pref-height: 65px;
+    -fx-border-color: #00000000;
+
+    -fx-font-family: "Roboto";
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #000000;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #f7f6fe;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #B8B3D7;
+}

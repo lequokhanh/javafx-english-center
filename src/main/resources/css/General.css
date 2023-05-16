@@ -1,0 +1,9 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+.panelnumber {
+    -fx-pref-width: 190px;
+    -fx-alignment: center-right;
+    -fx-font-family: "Roboto Mono Bold";
+    -fx-font-size: 64px;
+}

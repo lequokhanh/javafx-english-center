@@ -1,0 +1,135 @@
+@import "Font.css";
+
+.editPane {
+    -fx-pref-width: 400px;
+    -fx-pref-height: 650px;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-color: #DEE2E6;
+    -fx-effect: dropshadow(
+            three-pass-box,
+            rgba(0, 0, 0, 0.3),
+            30,
+            0.1,
+            0,
+            0
+    );
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+.editTitle {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 24px;
+
+    -fx-text-fill: #000000;
+}
+
+.editSmallTitle {
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 16px;
+    -fx-text-fill: #575F6E;
+}
+
+.editNameField {
+    -fx-font-family: 'Poppins Medium';
+    -fx-font-size: 13px;
+    -fx-text-fill: #242731;
+}
+
+.editField {
+    -fx-pref-width: 298px;
+    -fx-pref-height: 44px;
+    -fx-padding: 0px 16px;
+    -fx-border-width: 1px;
+    -fx-border-color: #D4D4D4;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+    -fx-text-fill: #41414188;
+}
+
+.editField:focused {
+    -fx-border-color: #4277FF;
+}
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused {
+    -fx-highlight-fill: #7ecfff;
+}
+
+.editTextArea {
+    -fx-pref-width: 298px;
+    -fx-pref-height: 118px;
+    -fx-border-width: 1px;
+    -fx-border-color: #D4D4D4;
+    -fx-background-color: #00000000;
+    -fx-focus-color: #00000000;
+    -fx-faint-focus-color: #00000000;
+    -fx-text-box-border: #00000000;
+    -fx-background-insets: 0;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+    -fx-text-fill: #41414188;
+    -fx-wrap-text: true;
+}
+
+
+.editTextArea:focused {
+    -fx-border-color: #4277FF;
+}
+
+.editChooseBox {
+    -fx-pref-width: 202px;
+    -fx-pref-height: 44px;
+    -fx-border-width: 1px;
+    -fx-border-color: #D4D4D4;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(65, 65, 65, 0.5);
+}
+
+.editChooseBox:focused {
+    -fx-border-color: #4277FF;
+}
+
+.submitBtn {
+    -fx-padding: 14px 20px;
+    -fx-pref-width: 112px;
+    -fx-pref-height: 44px;
+    -fx-background-color: rgba(98, 77, 227, 0.85);
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #F5F5F5;
+}
+
+.closeBtn {
+    -fx-padding: 4px;
+    -fx-pref-width: 24px;
+    -fx-pref-height: 24px;
+    -fx-background-color: #E5E5E5;
+    -fx-background-radius: 29px;
+    -fx-border-radius: 29px;
+}

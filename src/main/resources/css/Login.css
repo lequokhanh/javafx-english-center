@@ -1,0 +1,75 @@
+@import url("./Font.css");
+
+.background {
+    -fx-pref-width: 960px;
+    -fx-pref-height: 540px;
+    -fx-background-color: #f3f3f7;
+}
+
+.title {
+    -fx-pref-width: 238px;
+    -fx-pref-height: 41px;
+
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 36px;
+
+    -fx-text-fill: #2d3a80;
+}
+
+.line {
+    -fx-stroke: #959cf8;
+    -fx-stroke-width: 2px;
+}
+
+.inputtitle {
+    -fx-pref-width: 113px;
+    -fx-pref-height: 28px;
+
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 24px;
+
+    -fx-text-fill: #2d3a80;
+}
+
+.input {
+    -fx-font-family: "Maven Pro";
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 15px;
+    -fx-padding: 10px 0px 10px 50px;
+    -fx-pref-width: 300px;
+    -fx-pref-height: 50px;
+    -fx-border-color: rgba(45, 58, 128, 0.8);
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.login {
+    -fx-pref-width: 0px;
+    -fx-pref-height: 0px;
+    -fx-background-color: #e0e7ff00;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 15px;
+}
+
+.ortext {
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 20px;
+    -fx-text-fill: #404146;
+}
+
+.login:hover {
+    -fx-blend-mode: multiply;
+}
+
+.contact {
+    -fx-font-family: "Roboto Bold";
+    -fx-font-size: 15px;
+}

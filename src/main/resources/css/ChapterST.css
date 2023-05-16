@@ -1,0 +1,83 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+
+.manageChapterBtn {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 16px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #242731;
+}
+
+.manageChapterBtn:hover {
+    -fx-underline: true;
+}
+
+.titlePane {
+    -fx-pref-width: 1122px;
+    -fx-pref-height: 167px;
+
+    -fx-background-color: rgba(98, 77, 227, 0.75);
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+}
+
+.titleCourseName {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 32px;
+    -fx-text-fill: #ffffff;
+}
+
+.titleChapter {
+    -fx-pref-width: 93;
+    -fx-pref-height: 17;
+    -fx-font-family: 'Montserrat';
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+}
+
+.courseLevel {
+    -fx-pref-height: 30;
+    -fx-font-size: 12px;
+}
+
+.titleLine {
+    -fx-stroke: #ffffff;
+    -fx-stroke-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+.titleDescription {
+    -fx-pref-width: 206px;
+    -fx-pref-height: 28px;
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 24px;
+    -fx-text-fill: #ffffff;
+}
+
+.titleDescriptionContent {
+    -fx-pref-width: 588px;
+    -fx-pref-height: 78px;
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-wrap-text: true;
+    -fx-alignment: top-left;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-pref-width: 1150px;
+    -fx-pref-height: 430px;
+    -fx-background-color: transparent;
+}
+
+.gridPane {
+    -fx-pref-width: 1130;
+    -fx-hgap: 20;
+}

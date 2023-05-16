@@ -1,0 +1,78 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+.nameClass {
+    -fx-font-family: "Roboto Medium";
+    -fx-font-size: 32px;
+    -fx-text-fill: #414141;
+}
+
+.nameCourse {
+    -fx-font-family: "Roboto Italic";
+    -fx-font-size: 32px;
+    -fx-text-fill: #414141;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-pref-width: 450px;
+    -fx-pref-height: 535px;
+    -fx-background-color: transparent;
+}
+
+.gridPane {
+    -fx-pref-width: 440;
+    -fx-hgap: 10;
+}
+
+.lessonLine {
+    -fx-stroke: #9E9E9E;
+    -fx-stroke-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+
+.tab-pane *.tab-header-area *.tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane {
+    -fx-pref-width: 668;
+    -fx-pref-height: 707;
+}
+
+.tab {
+    -fx-font-family: 'Poppins Medium';
+    -fx-font-size: 18;
+    -fx-background-color: transparent;
+    -fx-text-fill: #79808F;
+    -fx-pref-height: 40;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+
+.tab:selected .tab-label {
+    -fx-text-fill: #4277FF;
+}
+
+.underLine {
+    -fx-pref-width: 117px;
+    -fx-pref-height: 6px;
+    -fx-background-color: #4277FF;
+    -fx-background-radius: 4px 4px 0px 0px;
+    -fx-border-radius: 4px 4px 0px 0px;
+}
+
+.searchBox {
+    -fx-pref-width: 228px;
+}
+
+.addBtn {
+    -fx-padding: 6;
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+}

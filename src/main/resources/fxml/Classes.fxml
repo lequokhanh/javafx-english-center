@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0"
+            prefWidth="1226.0" stylesheets="@../css/Classes.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.english_center.ClassesController" fx:id="classPane">
+    <children>
+        <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Classes"/>
+        <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Class for adminstator"/>
+        <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
+        <TableView fx:id="classTable" layoutX="47.0" layoutY="198.0" prefHeight="200.0" prefWidth="200.0"
+                   onMouseClicked="#manageBtn">
+            <columns>
+                <TableColumn fx:id="classID" prefWidth="75.0" text="Class ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="className" prefWidth="75.0" text="Class Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="name"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="courseName" prefWidth="75.0" text="Course Name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="course"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="teacher" prefWidth="75.0" text="Teacher">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="teacher"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="start" prefWidth="75.0" text="Start date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="start"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="end" prefWidth="75.0" text="Finish Date">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="end"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="action" prefWidth="75.0" text="Action">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="action"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <Group layoutX="47.0" layoutY="142.0">
+            <children>
+                <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+                <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"
+                           x="8.0" y="9.0">
+                    <image>
+                        <Image url="@../image/search.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
+        <Button layoutX="1038.0" layoutY="149.0" mnemonicParsing="false" onAction="#add" styleClass="addBtn"
+                text="Add Class">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/add.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <HBox fx:id="manageLessonBtn" layoutX="996.0" layoutY="810.0" styleClass="manageChapterBtn" visible="false"
+              onMouseClicked="#manageLessons">
+            <children>
+                <Label styleClass="manageChapterBtn" text="Manage Lessons"/>
+                <ImageView fitHeight="8.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/arrow_right.png"/>
+                    </image>
+                </ImageView>
+            </children>
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </HBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="previewPane" prefHeight="200.0" prefWidth="200.0" styleClass="cardPane"
+            stylesheets="@../css/CourseCard.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label layoutX="9.0" layoutY="9.0" styleClass="cardCourseName" text="Name"/>
+        <Label layoutX="9.0" layoutY="37.0" prefHeight="217.0" prefWidth="177.0" styleClass="cardCourseDescription"
+               text="Description"/>
+        <Label layoutX="9.0" layoutY="219.0" prefHeight="23.0" prefWidth="22.0" styleClass="cardChapterNumber"
+               text="19"/>
+        <Label layoutX="32.0" layoutY="224.0" styleClass="cardChapterText" text="Chapters"/>
+        <Label layoutX="105.0" layoutY="216.0" styleClass="courseLevel" text="Level"/>
+    </children>
+    <cursor>
+        <Cursor fx:constant="HAND"/>
+    </cursor>
+</AnchorPane>

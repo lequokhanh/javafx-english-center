@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="cardPane" stylesheets="@../css/ChapterCard.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <Label layoutX="56.0" layoutY="52.0" styleClass="nameChapter" text="Name" />
+    <Label layoutX="336.0" layoutY="40.0" styleClass="descriptionChapter" text="Lorem ipsum dolor sit amet. Aut adipisci doloremque in consequuntur quia est corrupti omnis quo dolores soluta eum sequi nihil. Sit enim quam est rerum consequatur non earum expedita ex tempore provident." />
+    <Label layoutX="926.0" layoutY="52.0" styleClass="categoryChapter" text="Category" />
+</AnchorPane>

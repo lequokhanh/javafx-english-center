@@ -1,0 +1,17 @@
+@import "Font.css";
+@import "ChapterCard.css";
+
+.cardPane {
+    -fx-pref-width: 440px;
+    -fx-pref-height: 47px;
+}
+
+.cardPane:hover {
+    -fx-background-color: rgba(185, 185, 185, 0.4);
+}
+
+.date {
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(65, 65, 65, 0.5);
+}

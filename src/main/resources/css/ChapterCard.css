@@ -1,0 +1,56 @@
+@import "Font.css";
+
+.cardPane {
+    -fx-pref-width: 1110px;
+    -fx-pref-height: 125px;
+
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(38, 39, 40, 0.25);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.nameChapter {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 18px;
+
+    -fx-text-fill: #000000;
+}
+
+.descriptionChapter {
+    -fx-pref-width: 445px;
+    -fx-pref-height: 55px;
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #000000;
+    -fx-wrap-text: true;
+    -fx-alignment: center-left;
+}
+
+.categoryChapter {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 18px;
+}
+
+.listening {
+    -fx-text-fill: #624DE3;
+}
+
+.writing {
+    -fx-text-fill: #3791E4;
+}
+
+.speaking {
+    -fx-text-fill: #a98913;
+}
+
+.reading {
+    -fx-text-fill: #FF6B6B;
+}
+
+.other {
+    -fx-text-fill: #3F3D56;
+}
+

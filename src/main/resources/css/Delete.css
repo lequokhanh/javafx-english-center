@@ -1,0 +1,59 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+.dialogDelete {
+    -fx-pref-width: 465;
+    -fx-pref-height: 196;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-color: #DEE2E6;
+    -fx-effect: dropshadow(
+            three-pass-box,
+            rgba(0, 0, 0, 0.3),
+            30,
+            0.1,
+            0,
+            0
+    );
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+.dialogTitle {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 20px;
+    -fx-text-fill: #A30D11;
+}
+
+.dialogMessage {
+    -fx-font-family: 'Roboto';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(84, 89, 94, 0.6);
+}
+
+.dialogCancelBtn {
+    -fx-pref-width: 183px;
+    -fx-pref-height: 46px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(98, 77, 227, 0.85);
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+    -fx-text-fill: rgba(98, 77, 227, 0.85);
+}
+
+.dialogConfirmBtn {
+    -fx-padding: 14px 20px;
+    -fx-pref-width: 181px;
+    -fx-pref-height: 44px;
+    -fx-background-color: rgba(98, 77, 227, 0.85);
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #F5F5F5;
+}

@@ -1,0 +1,75 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+
+.table-view {
+    -fx-pref-width: 1120px;
+    -fx-pref-height: 570px;
+
+    -fx-border-color: #ffffff;
+    -fx-background-color: #ffffff;
+}
+
+.table-view .column-header {
+    -fx-background-color: #ffffff;
+    -fx-pref-height: 50px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #ffffff;
+}
+
+.column-header {
+    -fx-font-family: "Roboto Bold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #000000;
+}
+
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.table-view .table-cell {
+    -fx-pref-height: 65px;
+    -fx-border-color: #00000000;
+
+    -fx-font-family: "Roboto";
+    -fx-font-size: 14px;
+
+    -fx-text-fill: #000000;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #f7f6fe;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #B8B3D7;
+}
+
+.manageChapterBtn {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 16px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #242731;
+}
+
+.manageChapterBtn:hover {
+    -fx-underline: true;
+}
