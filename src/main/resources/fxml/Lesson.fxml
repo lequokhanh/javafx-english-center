@@ -36,23 +36,16 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <Line endY="707.0" layoutX="510.0" layoutY="132.0" styleClass="lessonLine" />
-        <Line endX="636.0" layoutX="529.0" layoutY="180.0" styleClass="lessonLine" />
-        <TabPane focusTraversable="false" layoutX="528.0" layoutY="133.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab closable="false" text="Materials">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-                <Tab text="Attendances">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
-        <Group layoutX="58.0" layoutY="146.0" />
+        <Group layoutX="46.0" layoutY="777.0">
+            <children>
+                <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox" />
+                <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" x="8.0" y="9.0">
+                    <image>
+                        <Image url="@../image/search.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Group>
         <HBox layoutX="367.0" layoutY="785.0" spacing="5.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#add" prefWidth="23.0" styleClass="addBtn">
@@ -93,15 +86,26 @@
                 </Button>
             </children>
         </HBox>
-        <Group layoutX="46.0" layoutY="777.0">
-            <children>
-                <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox" />
-                <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" x="8.0" y="9.0">
-                    <image>
-                        <Image url="@../image/search.png" />
-                    </image>
-                </ImageView>
-            </children>
-        </Group>
+        <Line endY="707.0" layoutX="510.0" layoutY="132.0" styleClass="lessonLine" />
+      <Group layoutX="528.0" layoutY="133.0">
+         <children>
+              <TabPane focusTraversable="false" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+                  <tabs>
+                      <Tab closable="false" text="Materials">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                      </Tab>
+                      <Tab text="Attendances">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                      </Tab>
+                  </tabs>
+              </TabPane>
+              <Line endX="636.0" layoutX="0.5" layoutY="46.5" styleClass="lessonLine" />
+         </children>
+      </Group>
+        <Group layoutX="58.0" layoutY="146.0" />
     </children>
 </AnchorPane>
