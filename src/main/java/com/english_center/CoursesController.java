@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ public class CoursesController {
     public AnchorPane coursePane;
     public HBox manageChapterBtn;
     public TableColumn<Course, Integer> chapter;
+    public FlowPane flowPane;
     @FXML
     private TableView<Course> CourseTable;
 
@@ -88,7 +90,7 @@ public class CoursesController {
             else
                 ((Label) previewPane.lookup(".previewChapterNumber")).setText(CourseTable.getSelectionModel().getSelectedItem().getNumberOfChapter().toString());
 
-            Label previewCourseLevel = (Label) previewPane.lookup(".courseLevel");
+            Label previewCourseLevel = (Label) previewPane.lookup("#flowPane").lookup(".courseLevel");
             previewCourseLevel.setText(CourseTable.getSelectionModel().getSelectedItem().getCourseLevel().getText());
             previewCourseLevel.getStyleClass().clear();
             previewCourseLevel.getStyleClass().add("courseLevel");

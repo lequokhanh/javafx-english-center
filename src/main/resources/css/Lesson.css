@@ -1,6 +1,19 @@
 @import "Font.css";
 @import "Tabpane.css";
 
+.manageChapterBtn {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 16px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #242731;
+}
+
+.manageChapterBtn:hover {
+    -fx-underline: true;
+}
+
 .nameClass {
     -fx-font-family: "Roboto Medium";
     -fx-font-size: 32px;
@@ -26,6 +39,89 @@
 .gridPane {
     -fx-pref-width: 440;
     -fx-hgap: 10;
+}
+
+.scrollPaneMaterial {
+    -fx-pref-width: 650px;
+    -fx-pref-height: 580px;
+}
+
+.scrollPaneAttendance {
+    -fx-pref-width: 307px;
+    -fx-pref-height: 462px;
+    -fx-border-color: rgba(38, 39, 40, 0.61);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.titleAttendance {
+    -fx-font-family: "Roboto Italic";
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(65, 65, 65, 0.5);
+}
+
+.absentPane {
+    -fx-pref-width: 307px;
+    -fx-pref-height: 100px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: rgba(38, 39, 40, 0.61);
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-insets: 0;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(158, 158, 158, 0.25), 10, 0.1, 4, 4);
+}
+
+.absentText {
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 30px;
+    -fx-line-spacing: 35px;
+    -fx-text-fill: #000000;
+}
+
+.absentNumber {
+    -fx-pref-width: 100;
+    -fx-font-family: "Roboto Mono";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 32px;
+    -fx-line-spacing: 42px;
+    -fx-text-fill: rgba(163, 13, 17, 0.7);
+    -fx-alignment: center-right;
+}
+
+.totalPane {
+    -fx-pref-width: 307px;
+    -fx-pref-height: 100px;
+    -fx-background-color: #624DE3;
+    -fx-border-color: #624DE3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-insets: 0;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(158, 158, 158, 0.5), 10, 0.1, 4, 4);
+}
+
+.totalText {
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 30px;
+    -fx-line-spacing: 35px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.totalNumber {
+    -fx-pref-width: 100;
+    -fx-font-family: "Roboto Mono";
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 32px;
+    -fx-line-spacing: 42px;
+    -fx-text-fill: #FFFFFF;
+    -fx-alignment: center-right;
 }
 
 .lessonLine {
@@ -75,4 +171,15 @@
     -fx-padding: 6;
     -fx-pref-width: 28px;
     -fx-pref-height: 28px;
+}
+
+.emptyTab {
+    -fx-pref-width: 668;
+    -fx-pref-height: 707;
+    -fx-background-color: transparent;
+    -fx-font-family: "Roboto Thin Italic";
+    -fx-font-size: 32;
+    -fx-text-fill: #414141;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
 }

@@ -87,3 +87,11 @@
 .actionBtn:hover {
     -fx-blend-mode: multiply;
 }
+
+.action {
+    -fx-alignment: center;
+    -fx-padding: 0px;
+
+    -fx-pref-width: 52px;
+    -fx-pref-height: 24px;
+}

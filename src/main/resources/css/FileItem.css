@@ -1,0 +1,44 @@
+@import "Font.css";
+
+.filePane {
+    -fx-box-sizing: border-box;
+    -fx-position: absolute;
+    -fx-pref-width: 647px;
+    -fx-pref-height: 44px;
+    -fx-left: 0px;
+    -fx-top: 0px;
+    -fx-background-color: #F8F8FF;
+    -fx-background-radius: 3px;
+    -fx-border-style: dashed;
+    -fx-border-width: 1px;
+    -fx-border-color: rgba(56, 78, 183, 0.3);
+    -fx-border-radius: 3px;
+}
+
+.fileName {
+    -fx-pref-height: 23px;
+    -fx-padding: 3px;
+    -fx-font-family: 'Mulish';
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 11px;
+    -fx-line-height: 16px;
+    -fx-display: flex;
+    -fx-align-items: center;
+    -fx-text-alignment: center;
+    -fx-text-fill: #483EA8;
+}
+
+.fileName:hover {
+    -fx-underline: true;
+}
+
+.deleteBtn {
+    -fx-pref-width: 16px;
+    -fx-pref-height: 16px;
+    -fx-background-color: transparent;
+}
+
+.deleteBtn:hover {
+    -fx-blend-mode: multiply;
+}
