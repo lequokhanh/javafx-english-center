@@ -6,7 +6,11 @@ module com.english_center {
     requires io.github.cdimascio.dotenv.java;
     requires lombok;
 
-    opens com.english_center to javafx.fxml;
+    opens com.controller to javafx.fxml;
 
-    exports com.english_center;
+    exports com.controller;
+    exports com.models;
+    opens com.models to javafx.fxml;
+    exports com;
+    opens com to javafx.fxml;
 }

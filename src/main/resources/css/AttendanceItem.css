@@ -1,0 +1,37 @@
+@import "Font.css";
+
+.rollUpBtn {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+
+.id {
+    -fx-pref-width: 50px;
+    -fx-pref-height: 16px;
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 14px;
+    -fx-line-height: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.8);
+}
+
+.name {
+    -fx-pref-width: 170px;
+    -fx-pref-height: 16px;
+    -fx-font-family: "Roboto";
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 14px;
+    -fx-line-height: 16px;
+    -fx-text-fill: rgba(0, 0, 0, 0.8);
+}
+
+.imageBtn:hover {
+    -fx-blend-mode: multiply;
+}

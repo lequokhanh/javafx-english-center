@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             styleClass="background" stylesheets="@../css/Login.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.english_center.LoginController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.LoginController">
     <AnchorPane layoutX="329.0" layoutY="46.0" prefHeight="433.0" prefWidth="300.0">
         <Label layoutX="32.0" styleClass="title" text="Welcome back"/>
         <Line endX="150.0" layoutX="151.0" layoutY="56.0" startX="-150.0" styleClass="line"/>

@@ -1,5 +1,6 @@
-package com.english_center;
+package com.controller;
 
+import com.models.Course;
 import com.utilities.Constants;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

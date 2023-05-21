@@ -17,7 +17,7 @@
 
 <AnchorPane fx:id="coursePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="860.0" prefWidth="1226.0" stylesheets="@../css/Course.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.english_center.CoursesController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.CoursesController">
     <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="Courses"/>
     <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="Manage Courses for adminstrator"/>
     <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>

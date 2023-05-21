@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0"
             prefWidth="1226.0" stylesheets="@../css/Classes.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.english_center.ClassesController" fx:id="classPane">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ClassesController" fx:id="classPane">
     <children>
         <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Classes"/>
         <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Class for adminstator"/>

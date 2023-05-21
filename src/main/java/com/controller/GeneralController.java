@@ -1,4 +1,4 @@
-package com.english_center;
+package com.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

@@ -1,5 +1,8 @@
-package com.english_center;
+package com.controller;
 
+import com.models.Class;
+import com.models.Lesson;
+import com.models.Material;
 import com.utilities.Constants;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -9,12 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -30,6 +31,8 @@ public class LessonController {
     public AnchorPane lessonPane;
     public Lesson selectedLesson;
     public Group lessonTab;
+    public AnchorPane materialPane;
+    public Tab attendancePane;
 
     public void initialize() throws IOException {
         Platform.runLater(() -> {
@@ -130,6 +133,12 @@ public class LessonController {
             ((Label) lessonCard.lookup("#date")).setText(lesson.getDate());
             gridPane.add(lessonCard, 0, i);
         }
+    }
+
+    public void reloadTabPane() {
+        ObservableList<Material> materials = FXCollections.observableArrayList(
+                new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf")
+        );
     }
 
     public void add(ActionEvent actionEvent) {

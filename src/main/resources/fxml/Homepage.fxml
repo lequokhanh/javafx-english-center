@@ -10,7 +10,7 @@
 <AnchorPane fx:id="homepage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="900.0" prefWidth="1600.0" styleClass="background" stylesheets="@../css/Homepage.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.english_center.HomepageController">
+            fx:controller="com.controller.HomepageController">
     <ImageView fitHeight="138.0" fitWidth="318.0" layoutX="12.0" layoutY="-11.0" pickOnBounds="true"
                preserveRatio="true" styleClass="logo">
         <Image url="@../image/logo.png"/>
@@ -84,7 +84,7 @@
             </ImageView>
         </graphic>
         <cursor>
-        <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND"/>
         </cursor>
     </Button>
     <ImageView fx:id="homePageImage" fitHeight="557.0" fitWidth="851.0" layoutX="524.0" layoutY="161.0"

@@ -1,11 +1,10 @@
-package com.english_center;
+package com;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -37,7 +36,7 @@ public class App extends Application {
         stage.show();
     }
 
-    static void setRoot(String fxml, int width, int height) throws IOException {
+    public static void setRoot(String fxml, int width, int height) throws IOException {
         scene.setRoot(loadFXML(fxml));
         scene.getWindow().setWidth(width);
         scene.getWindow().setHeight(height);

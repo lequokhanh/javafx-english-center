@@ -1,5 +1,7 @@
-package com.english_center;
+package com.controller;
 
+import com.models.Chapter;
+import com.models.Course;
 import com.utilities.Constants;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -11,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.Objects;

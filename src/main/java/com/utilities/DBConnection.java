@@ -25,8 +25,7 @@ public class DBConnection {
     public ResultSet select(String query) {
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery(query);
-            return result;
+            return statement.executeQuery(query);
         } catch (SQLException e) {
             System.out.println("ERROR while executing select query!");
             System.out.println(e.toString());

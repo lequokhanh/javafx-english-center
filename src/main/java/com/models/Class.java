@@ -1,15 +1,15 @@
-package com.english_center;
+package com.models;
 
+import com.controller.DeleteCourse;
+import com.controller.EditCourseController;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.Objects;
 
 @Getter

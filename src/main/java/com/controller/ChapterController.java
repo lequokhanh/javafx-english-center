@@ -1,5 +1,7 @@
-package com.english_center;
+package com.controller;
 
+import com.models.Chapter;
+import com.models.Course;
 import com.utilities.Constants;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;

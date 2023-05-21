@@ -1,5 +1,7 @@
-package com.english_center;
+package com.models;
 
+import com.controller.DeleteCourse;
+import com.controller.EditCourseController;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="44.0" prefWidth="647.0" styleClass="filePane" stylesheets="@../css/FileItem.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="21.0" layoutY="11.0" styleClass="fileName" text="Toeic_document_test.pdf">
+      <Label layoutX="21.0" layoutY="11.0" styleClass="fileName" text="filename.extension">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
