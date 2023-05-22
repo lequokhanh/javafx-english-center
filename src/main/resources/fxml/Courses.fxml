@@ -102,7 +102,8 @@
             </FlowPane>
         </AnchorPane>
     </Group>
-    <HBox fx:id="manageChapterBtn" layoutX="1000.0" layoutY="594.0" styleClass="manageChapterBtn" visible="false">
+    <HBox onMouseClicked="#manageChapter" fx:id="manageChapterBtn" layoutX="1000.0" layoutY="594.0"
+          styleClass="manageChapterBtn" visible="false">
         <children>
             <Label styleClass="manageChapterBtn" text="Manage Chapters"/>
             <ImageView fitHeight="8.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">

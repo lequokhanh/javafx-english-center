@@ -49,12 +49,6 @@ public class ChapterSTController {
                         new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"),
                         new Chapter("#69321", "Toeic", "Test of English for International Communication", "Advance")
                 );
-                int row = chapters.size();
-                for (int i = 0; i < row; i++) {
-                    RowConstraints rowConst = new RowConstraints();
-                    rowConst.setPrefHeight(125);
-                    gridPane.getRowConstraints().add(rowConst);
-                }
                 for (int i = 0; i < chapters.size(); i++) {
                     Chapter chapter = chapters.get(i);
                     Node chapterCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_CARD)));

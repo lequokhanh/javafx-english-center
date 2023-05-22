@@ -50,31 +50,16 @@ public class CoursesController {
             tblWidth.addAndGet((int) e.getWidth());
         });
         CourseTable.setPrefWidth(tblWidth.get());
+        reload();
+    }
+
+    public void reload() throws IOException {
         ObservableList<Course> courses = FXCollections.observableArrayList(
                 new Course("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner", 10),
                 new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9),
                 new Course("#69321", "Toeic", "Test of English for International Communication", "Advance", 8)
         );
         CourseTable.setItems(courses);
-        manageChapterBtn.setOnMouseClicked(e -> {
-                    AnchorPane homepage = (AnchorPane) coursePane.getParent();
-                    homepage.getChildren().remove(homepage.lookup("#tabpane"));
-                    try {
-                        FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER)));
-                        Node chapter = fxml.load();
-                        ChapterController controller = fxml.getController();
-                        controller.course = CourseTable.getSelectionModel().getSelectedItem();
-                        chapter.setId("tabpane");
-                        chapter.getStyleClass().add("tabpane");
-                        homepage.getChildren().add(chapter);
-                        chapter.setLayoutX(345);
-                        chapter.setLayoutY(20);
-                        chapter.toFront();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-        );
     }
 
     public void preview(MouseEvent mouseEvent) {
@@ -111,5 +96,20 @@ public class CoursesController {
 
     public void add() throws IOException {
         EditCourseController.show();
+    }
+
+    public void manageChapter(MouseEvent mouseEvent) throws IOException {
+        AnchorPane homepage = (AnchorPane) coursePane.getParent();
+        homepage.getChildren().remove(homepage.lookup("#tabpane"));
+        FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER)));
+        Node chapter = fxml.load();
+        ChapterController controller = fxml.getController();
+        controller.course = CourseTable.getSelectionModel().getSelectedItem();
+        chapter.setId("tabpane");
+        chapter.getStyleClass().add("tabpane");
+        homepage.getChildren().add(chapter);
+        chapter.setLayoutX(345);
+        chapter.setLayoutY(20);
+        chapter.toFront();
     }
 }

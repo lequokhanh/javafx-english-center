@@ -59,17 +59,21 @@ public class ChapterController {
             }
             courseDescription.setText(course.getCourseDescription());
             try {
-                ObservableList<Chapter> chapters = FXCollections.observableArrayList(
-                        new Chapter("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner"),
-                        new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"),
-                        new Chapter("#69321", "Toeic", "Test of English for International Communication", "Advance")
-                );
-                ChapterTable.setItems(chapters);
+                reload();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
 
         });
+    }
+
+    public void reload() throws IOException {
+        ObservableList<Chapter> chapters = FXCollections.observableArrayList(
+                new Chapter("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner"),
+                new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"),
+                new Chapter("#69321", "Toeic", "Test of English for International Communication", "Advance")
+        );
+        ChapterTable.setItems(chapters);
     }
 
     public void backToCourseBtn() throws IOException {

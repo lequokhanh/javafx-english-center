@@ -39,13 +39,16 @@ public class ClassesController {
             e.setReorderable(false);
             e.setResizable(false);
         });
+        reload();
+    }
+
+    public void reload() throws IOException {
         ObservableList<Class> classes = FXCollections.observableArrayList(
                 new Class("1", "Class 1", "Course 1", "Teacher 1", "1/1/2021", "1/1/2021"),
                 new Class("2", "Class 2", "Course 2", "Teacher 2", "1/1/2021", "1/1/2021"),
                 new Class("3", "Class 3", "Course 3", "Teacher 3", "1/1/2021", "1/1/2021")
         );
         classTable.setItems(classes);
-
     }
 
     public void add() {

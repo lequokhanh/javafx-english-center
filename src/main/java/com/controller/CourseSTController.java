@@ -25,12 +25,6 @@ public class CourseSTController {
                 new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9),
                 new Course("#69321", "Toeic", "Test of English for International Communication", "Advance", 8)
         );
-        int row = courses.size() / 4;
-        for (int i = 0; i < row; i++) {
-            RowConstraints rowConst = new RowConstraints();
-            rowConst.setPrefHeight(250);
-            gridPane.getRowConstraints().add(rowConst);
-        }
         for (int i = 0; i < courses.size(); i++) {
             Course course = courses.get(i);
             Node courseCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CourseCard.fxml")));

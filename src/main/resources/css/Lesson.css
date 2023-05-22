@@ -37,12 +37,11 @@
 }
 
 .gridPane {
-    -fx-pref-width: 440;
-    -fx-hgap: 10;
+    -fx-vgap: 10;
 }
 
 .scrollPaneMaterial {
-    -fx-pref-width: 650px;
+    -fx-pref-width: 660px;
     -fx-pref-height: 580px;
 }
 
@@ -155,13 +154,6 @@
     -fx-text-fill: #4277FF;
 }
 
-.underLine {
-    -fx-pref-width: 117px;
-    -fx-pref-height: 6px;
-    -fx-background-color: #4277FF;
-    -fx-background-radius: 4px 4px 0px 0px;
-    -fx-border-radius: 4px 4px 0px 0px;
-}
 
 .searchBox {
     -fx-pref-width: 228px;

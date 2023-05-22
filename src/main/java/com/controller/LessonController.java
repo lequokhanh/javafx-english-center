@@ -3,6 +3,7 @@ package com.controller;
 import com.models.Class;
 import com.models.Lesson;
 import com.models.Material;
+import com.models.Student;
 import com.utilities.Constants;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -33,6 +34,11 @@ public class LessonController {
     public Group lessonTab;
     public AnchorPane materialPane;
     public Tab attendancePane;
+    public GridPane materialGridPane;
+    public GridPane absentGridPane;
+    public GridPane presentGridPane;
+    public Label absentNumber;
+    public Label totalNumber;
 
     public void initialize() throws IOException {
         Platform.runLater(() -> {
@@ -88,7 +94,7 @@ public class LessonController {
             AnchorPane homepage = (AnchorPane) lessonPane.getParent();
             Node description = null;
             try {
-                description = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/DescriptionPopUp.fxml")));
+                description = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_DESCRIPTION_POP_UP)));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -110,6 +116,12 @@ public class LessonController {
                     lessonPane.getChildren().remove(lessonPane.lookup(".emptyTab"));
                 }
                 lessonTab.setVisible(true);
+                try {
+                    reloadMaterialPane();
+                    reloadAttendancePane();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             });
             ((Label) cardPane.lookup("#name")).setText(lesson.getName());
             ((Label) cardPane.lookup("#category")).setText(lesson.getCategory());
@@ -135,10 +147,41 @@ public class LessonController {
         }
     }
 
-    public void reloadTabPane() {
+    public void reloadMaterialPane() throws IOException {
         ObservableList<Material> materials = FXCollections.observableArrayList(
                 new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf")
         );
+        for (int i = 0; i < materials.size(); i++) {
+            Node fileItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_FILE_ITEM)));
+            materialGridPane.add(fileItem, 0, i);
+        }
+    }
+
+
+    public void reloadAttendancePane() throws IOException {
+        ObservableList<Student> absentStudent = FXCollections.observableArrayList(
+                new Student("1232", "Le asjlkdhasdjk"),
+                new Student("1232", "Le asjlkdhasdjk"),
+                new Student("1232", "Le asjlkdhasdjk")
+        );
+        ObservableList<Student> presentStudent = FXCollections.observableArrayList(
+                new Student("1232", "Le asjlkdhasdjk"),
+                new Student("1232", "Le asjlkdhasdjk"),
+                new Student("1232", "Le asjlkdhasdjk")
+        );
+        absentNumber.setText(Integer.toString(absentStudent.size()));
+        totalNumber.setText(Integer.toString(absentStudent.size() + presentStudent.size()));
+        for (int i = 0; i < absentStudent.size(); i++) {
+            Node studentItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
+            absentGridPane.add(studentItem, 0, i);
+        }
+        for (int i = 0; i < presentStudent.size(); i++) {
+            Node studentItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
+            studentItem.lookup("#rollCallBtn").setVisible(false);
+            studentItem.lookup("#removeBtn").setVisible(true);
+            presentGridPane.add(studentItem, 0, i);
+        }
+
     }
 
     public void add(ActionEvent actionEvent) {

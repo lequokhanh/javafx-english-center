@@ -9,6 +9,7 @@ package com.utilities;
  * @author Tony Manjarres
  */
 public class Constants {
+    public static String APP_TITLE = "English Center";
     public static String FXML_LOGIN = "/fxml/Login.fxml";
     public static String FXML_HOMEPAGE = "/fxml/Homepage.fxml";
     public static String FXML_GENERAL = "/fxml/General.fxml";
@@ -26,5 +27,8 @@ public class Constants {
     public static String FXML_LESSON = "/fxml/Lesson.fxml";
     public static String FXML_LESSON_CARD = "/fxml/LessonCard.fxml";
     public static String FXML_DESCRIPTION_POP_UP = "/fxml/DescriptionPopUp.fxml";
-    public static String APP_TITLE = "English Center";
+    public static String FXML_EDIT_CHAPTER = "/fxml/EditChapter.fxml";
+    public static String FXML_FILE_ITEM = "/fxml/FileItem.fxml";
+    public static String FXML_STUDENT_ITEM = "/fxml/StudentItem.fxml";
+
 }

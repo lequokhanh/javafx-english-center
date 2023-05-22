@@ -80,7 +80,7 @@ public class HomepageController {
                     }
                     homePageImage.setVisible(false);
                     coursesBtn.getStyleClass().add("tabbtnactive");
-                    Node courses = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_COURSES)));
+                    Node courses = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_COURSES_ST)));
                     courses.setId("tabpane");
                     courses.getStyleClass().add("tabpane");
                     homepage.getChildren().add(courses);
