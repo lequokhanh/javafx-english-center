@@ -9,8 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
             prefWidth="400.0" styleClass="dialogDelete" stylesheets="@../css/Delete.css"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.controller.DeleteController" fx:id="dialog">
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox alignment="CENTER" layoutX="114.0" layoutY="40.0" spacing="8.0">
             <children>
@@ -20,12 +19,12 @@
         </VBox>
         <HBox alignment="CENTER" layoutX="40.0" layoutY="113.0" spacing="24.0">
             <children>
-                <Button mnemonicParsing="false" styleClass="dialogCancelBtn" text="No, cancel" onAction="#cancel">
+                <Button mnemonicParsing="false" styleClass="dialogCancelBtn" text="No, cancel" fx:id="cancel">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
                 </Button>
-                <Button mnemonicParsing="false" styleClass="dialogConfirmBtn" text="Yes, Confirm" onAction="#confirm">
+                <Button mnemonicParsing="false" styleClass="dialogConfirmBtn" text="Yes, Confirm" fx:id="confirm">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>

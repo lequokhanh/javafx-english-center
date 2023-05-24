@@ -30,5 +30,7 @@ public class Constants {
     public static String FXML_EDIT_CHAPTER = "/fxml/EditChapter.fxml";
     public static String FXML_FILE_ITEM = "/fxml/FileItem.fxml";
     public static String FXML_STUDENT_ITEM = "/fxml/StudentItem.fxml";
+    public static String FXML_SUCCESSFUL = "/fxml/Successful.fxml";
+    public static String FXML_ERROR = "/fxml/Error.fxml";
 
 }

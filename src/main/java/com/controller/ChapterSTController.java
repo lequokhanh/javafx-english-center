@@ -38,8 +38,8 @@ public class ChapterSTController {
                 case "Intermediate":
                     level.getStyleClass().add("levelIntermediate");
                     break;
-                case "Advance":
-                    level.getStyleClass().add("levelAdvance");
+                case "Advanced":
+                    level.getStyleClass().add("levelAdvanced");
                     break;
             }
             courseDescription.setText(course.getCourseDescription());

@@ -84,6 +84,7 @@
 }
 
 .titleCourseName {
+    -fx-pref-width: 380px;
     -fx-font-family: 'Roboto Bold';
     -fx-font-size: 32px;
     -fx-text-fill: #ffffff;

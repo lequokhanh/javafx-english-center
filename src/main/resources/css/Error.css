@@ -1,0 +1,63 @@
+@import "Font.css";
+
+.pane {
+    -fx-pref-width: 400px;
+    -fx-pref-height: 300px;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-color: #dee2e6;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 30, 0.1, 0, 0);
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+.ErrorText {
+    -fx-pref-width: 90px;
+    -fx-pref-height: 39px;
+
+    -fx-font-family: "Inter Bold";
+    -fx-font-size: 32px;
+    -fx-line-height: 24px;
+
+    -fx-text-fill: #000000;
+
+    -fx-opacity: 0.4;
+}
+
+.detailText {
+    -fx-font-family: 'Inter Bold';
+    -fx-font-size: 14px;
+    -fx-line-height: 22px;
+
+    -fx-text-fill: rgba(84, 89, 94, 0.6);
+}
+
+.message {
+    -fx-pref-width: 350px;
+    -fx-pref-height: 85px;
+
+    -fx-font-family: 'Inter';
+    -fx-font-style: normal;
+    -fx-font-weight: 400;
+    -fx-font-size: 14px;
+    -fx-line-height: 22px;
+    -fx-alignment: top-left;
+    -fx-wrap-text: true;
+    -fx-text-fill: rgba(228, 29, 29, 0.8);
+}
+
+.button {
+    -fx-alignment: center;
+    -fx-padding: 14px 20px;
+    -fx-spacing: 10px;
+
+    -fx-pref-width: 263px;
+    -fx-pref-height: 44px;
+
+    -fx-background-color: #624de3;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-family: "Inter Medium";
+    -fx-font-size: 14px;
+    -fx-text-fill: #f5f5f5;
+}

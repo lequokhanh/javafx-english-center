@@ -61,6 +61,11 @@ public class App extends Application {
         stage.getScene().setFill(Color.TRANSPARENT);
     }
 
+    public static void removePopUp(Parent root) throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.close();
+    }
+
     public static void main(String[] args) {
         launch();
     }

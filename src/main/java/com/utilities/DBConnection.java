@@ -22,46 +22,29 @@ public class DBConnection {
         }
     }
 
-    public ResultSet select(String query) {
-        try {
-            Statement statement = connection.createStatement();
-            return statement.executeQuery(query);
-        } catch (SQLException e) {
-            System.out.println("ERROR while executing select query!");
-            System.out.println(e.toString());
-            return null;
-        }
+    public ResultSet select(String query) throws SQLException {
+        Statement statement = connection.createStatement();
+        return statement.executeQuery(query);
     }
 
-    public int update(String query) {
-        try {
-            Statement statement = connection.createStatement();
-            return statement.executeUpdate(query);
-        } catch (SQLException e) {
-            System.out.println("ERROR while executing update query");
-            System.out.println(e.toString());
-            return -1;
-        }
+    public void insert(String query) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
     }
 
-    public int delete(String query) {
-        try {
-            Statement statement = connection.createStatement();
-            return statement.executeUpdate(query);
-        } catch (SQLException e) {
-            System.out.println("ERROR while deleting line!");
-            System.out.println(e.toString());
-            return -1;
-        }
+    public void update(String query) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
     }
 
-    public void close() {
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            System.out.println("ERROR while closing connections!");
-            System.out.println(e.toString());
-        }
+    public void delete(String query) throws SQLException {
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(query);
     }
+
+    public void close() throws SQLException {
+        connection.close();
+    }
+
 
 }

@@ -1,7 +1,5 @@
 package com.models;
 
-import com.controller.DeleteCourse;
-import com.controller.EditCourseController;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,19 +30,5 @@ public class Chapter {
         action.setId("action");
         action.getStyleClass().add("action");
         this.action = (HBox) action;
-        action.lookup("#edit").setOnMouseClicked(e -> {
-            try {
-                EditCourseController.show();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
-        action.lookup("#delete").setOnMouseClicked(e -> {
-            try {
-                DeleteCourse.show();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
     }
 }

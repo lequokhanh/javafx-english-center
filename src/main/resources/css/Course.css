@@ -32,6 +32,7 @@
 }
 
 .previewCourseName {
+    -fx-pref-width: 230px;
     -fx-font-family: 'Roboto Bold';
     -fx-font-size: 20px;
 
@@ -121,6 +122,7 @@
 
     -fx-text-fill: #000000;
     -fx-alignment: center;
+    -fx-text-alignment: center;
     -fx-wrap-text: true;
 }
 

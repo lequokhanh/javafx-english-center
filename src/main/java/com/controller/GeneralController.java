@@ -1,11 +1,14 @@
 package com.controller;
 
+import com.service.CourseService;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+
+import java.sql.SQLException;
 
 public class GeneralController {
     public Group a;
@@ -20,10 +23,10 @@ public class GeneralController {
     private Label room_number;
 
     @FXML
-    private void initialize() {
+    private void initialize() throws SQLException {
         numberCountingUp(stu_number, 1234);
         numberCountingUp(class_number, 12);
-        numberCountingUp(course_number, 10);
+        numberCountingUp(course_number, CourseService.getNumberOfCourse());
         numberCountingUp(room_number, 10);
     }
 

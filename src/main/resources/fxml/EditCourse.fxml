@@ -41,35 +41,36 @@
         <VBox layoutX="53.0" layoutY="122.0" spacing="8.0">
             <children>
                 <Label styleClass="editNameField" text="Course ID"/>
-                <Label styleClass="editField" text="id"/>
+                <Label fx:id="courseID" styleClass="editField" text="id"/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="208.0" spacing="8.0">
             <children>
                 <Label styleClass="editNameField" text="Course Name"/>
-                <TextField promptText="Enter the course name" styleClass="editField"/>
+                <TextField fx:id="courseName" promptText="Enter the course name" styleClass="editField"/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="304.0" spacing="8.0">
             <children>
                 <Label styleClass="editNameField" text="Description"/>
-                <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Describe the course"
+                <TextArea fx:id="courseDescription" prefHeight="200.0" prefWidth="200.0"
+                          promptText="Describe the course"
                           styleClass="editTextArea"/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="457.0" spacing="8.0">
             <Label styleClass="editNameField" text="Level"/>
-            <ComboBox prefWidth="150.0" promptText="Choose course level" styleClass="editChooseBox">
+            <ComboBox fx:id="courseLevel" prefWidth="150.0" promptText="Choose course level" styleClass="editChooseBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Beginner"/>
                         <String fx:value="Intermediate"/>
-                        <String fx:value="Advance"/>
+                        <String fx:value="Advanced"/>
                     </FXCollections>
                 </items>
             </ComboBox>
         </VBox>
-        <Button layoutX="255.0" layoutY="580.0" mnemonicParsing="false" onAction="#submit" styleClass="submitBtn"
+        <Button layoutX="255.0" layoutY="580.0" mnemonicParsing="false" fx:id="submit" styleClass="submitBtn"
                 text="Submit">
             <cursor>
                 <Cursor fx:constant="HAND"/>

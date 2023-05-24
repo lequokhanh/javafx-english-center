@@ -22,7 +22,8 @@
     <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="Manage Courses for adminstrator"/>
     <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
     <Group layoutX="48.0" layoutY="136.0">
-        <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+        <TextField fx:id="searchField" onKeyTyped="#searchAction" layoutY="8.0" promptText="Search..."
+                   styleClass="searchBox"/>
         <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" x="8.0"
                    y="9.0">
             <Image url="@../image/search.png"/>
@@ -42,7 +43,7 @@
     <TableView fx:id="CourseTable" layoutX="48.0" layoutY="197.0" onMouseClicked="#preview" pickOnBounds="false"
                prefHeight="200.0" prefWidth="200.0">
         <placeholder>
-            <Label text=""/>
+            <Label text="Empty data"/>
         </placeholder>
         <columns>
             <TableColumn fx:id="courseID" editable="false" prefWidth="77.33334732055664" text="Course ID">

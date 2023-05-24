@@ -372,3 +372,49 @@
     font-family: Manrope;
     src: url("../fonts/Manrope/Manrope-SemiBold.ttf");
 }
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-Black.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-Bold.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-ExtraBold.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-ExtraLight.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-Light.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-Medium.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-SemiBold.ttf");
+}
+
+@font-face {
+    font-famliy: Inter;
+    src: url("../fonts/Inter/Inter-Thin.ttf");
+}
+

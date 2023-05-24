@@ -2,9 +2,9 @@ package com.controller;
 
 import com.models.Chapter;
 import com.models.Course;
+import com.service.ChapterService;
 import com.utilities.Constants;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class ChapterController {
@@ -53,26 +55,43 @@ public class ChapterController {
                 case "Intermediate":
                     level.getStyleClass().add("levelIntermediate");
                     break;
-                case "Advance":
-                    level.getStyleClass().add("levelAdvance");
+                case "Advanced":
+                    level.getStyleClass().add("levelAdvanced");
                     break;
             }
             courseDescription.setText(course.getCourseDescription());
             try {
-                reload();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                search("");
+            } catch (IOException | SQLException e) {
+                try {
+                    ErrorController.show(e.getMessage());
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
-
         });
     }
 
-    public void reload() throws IOException {
-        ObservableList<Chapter> chapters = FXCollections.observableArrayList(
-                new Chapter("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner"),
-                new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"),
-                new Chapter("#69321", "Toeic", "Test of English for International Communication", "Advance")
-        );
+    public void search(String keyWord) throws IOException, SQLException {
+        ObservableList<Chapter> chapters = ChapterService.search(course.getCourseID(), keyWord);
+        for (Chapter chapter : chapters) {
+            HBox action = chapter.getAction();
+            if (action == null) continue;
+            action.lookup("#edit").setOnMouseClicked(e -> {
+                try {
+                    EditChapterController.show(chapter, "", this);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+            action.lookup("#delete").setOnMouseClicked(e -> {
+                try {
+                    DeleteChapter.show(chapter.getChapterID(), this);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+        }
         ChapterTable.setItems(chapters);
     }
 
@@ -88,6 +107,7 @@ public class ChapterController {
         general.toFront();
     }
 
-    public void add(ActionEvent actionEvent) {
+    public void add(ActionEvent actionEvent) throws IOException {
+        EditChapterController.show(null, course.getCourseID(), this);
     }
 }

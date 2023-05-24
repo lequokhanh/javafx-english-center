@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="editPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="650.0" prefWidth="400.0" styleClass="editPane" stylesheets="@../css/Edit.css"
-            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.controller.EditChapterController">
     <children>
         <Button layoutX="367.0" layoutY="9.0" mnemonicParsing="false" onAction="#close" styleClass="closeBtn">
@@ -36,41 +30,44 @@
         <VBox layoutX="53.0" layoutY="33.0" spacing="3.0">
             <children>
                 <Label styleClass="editTitle" text="Chapter Information"/>
-                <Label styleClass="editSmallTitle" text="Fill in the data for course."/>
+                <Label styleClass="editSmallTitle" text="Fill in the data for chapter."/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="122.0" spacing="8.0">
             <children>
                 <Label styleClass="editNameField" text="Chapter ID"/>
-                <Label styleClass="editField" text="id"/>
+                <Label fx:id="chapterID" styleClass="editField" text="id"/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="208.0" spacing="8.0">
             <children>
                 <Label styleClass="editNameField" text="Chapter Name"/>
-                <TextField promptText="Enter the course name" styleClass="editField"/>
+                <TextField fx:id="chapterName" promptText="Enter the chapter name" styleClass="editField"/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="304.0" spacing="8.0">
             <children>
                 <Label styleClass="editNameField" text="Description"/>
-                <TextArea prefHeight="200.0" prefWidth="200.0" promptText="Describe the course"
-                          styleClass="editTextArea"/>
+                <TextArea fx:id="chapterDescription" prefHeight="200.0" prefWidth="200.0"
+                          promptText="Describe the chapter" styleClass="editTextArea"/>
             </children>
         </VBox>
         <VBox layoutX="53.0" layoutY="457.0" spacing="8.0">
-            <Label styleClass="editNameField" text="Category"/>
-            <ComboBox prefWidth="150.0" promptText="Choose category" styleClass="editChooseBox">
+            <Label styleClass="editNameField" text="category"/>
+            <ComboBox fx:id="category" prefWidth="210.0" promptText="Choose chapter category"
+                      style="-fx-pref-width: 210;" styleClass="editChooseBox">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Beginner"/>
-                        <String fx:value="Intermediate"/>
-                        <String fx:value="Advance"/>
+                        <String fx:value="Reading"/>
+                        <String fx:value="Writing"/>
+                        <String fx:value="Listening"/>
+                        <String fx:value="Speaking"/>
+                        <String fx:value="Other"/>
                     </FXCollections>
                 </items>
             </ComboBox>
         </VBox>
-        <Button layoutX="255.0" layoutY="580.0" mnemonicParsing="false" onAction="#submit" styleClass="submitBtn"
+        <Button fx:id="submit" layoutX="255.0" layoutY="580.0" mnemonicParsing="false" styleClass="submitBtn"
                 text="Submit">
             <cursor>
                 <Cursor fx:constant="HAND"/>

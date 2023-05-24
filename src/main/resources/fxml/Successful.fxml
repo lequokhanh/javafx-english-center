@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="pane" stylesheets="@../css/Successful.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.controller.SuccessfulController">
+    <children>
+        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="80.0" layoutY="47.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@../image/success.png"/>
+            </image>
+        </ImageView>
+        <Label layoutX="153.0" layoutY="55.0" styleClass="successfulText" text="Successful"/>
+        <Button fx:id="close" layoutX="42.0" layoutY="101.0" mnemonicParsing="false" text="Yeah, thanks!"/>
+    </children>
+</AnchorPane>

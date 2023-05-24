@@ -39,18 +39,8 @@ public class Class {
         action.getStyleClass().add("action");
         this.action = (HBox) action;
         action.lookup("#edit").setOnMouseClicked(e -> {
-            try {
-                EditCourseController.show();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
         });
         action.lookup("#delete").setOnMouseClicked(e -> {
-            try {
-                DeleteCourse.show();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
         });
     }
 }

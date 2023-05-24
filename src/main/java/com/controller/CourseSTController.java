@@ -23,7 +23,7 @@ public class CourseSTController {
         ObservableList<Course> courses = FXCollections.observableArrayList(
                 new Course("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner", 10),
                 new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9),
-                new Course("#69321", "Toeic", "Test of English for International Communication", "Advance", 8)
+                new Course("#69321", "Toeic", "Test of English for International Communication", "Advanced", 8)
         );
         for (int i = 0; i < courses.size(); i++) {
             Course course = courses.get(i);
@@ -65,8 +65,8 @@ public class CourseSTController {
                 case "Intermediate":
                     cardCourseLevel.getStyleClass().add("levelIntermediate");
                     break;
-                case "Advance":
-                    cardCourseLevel.getStyleClass().add("levelAdvance");
+                case "Advanced":
+                    cardCourseLevel.getStyleClass().add("levelAdvanced");
                     break;
             }
         }

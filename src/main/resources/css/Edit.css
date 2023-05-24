@@ -40,7 +40,7 @@
 .editField {
     -fx-pref-width: 298px;
     -fx-pref-height: 44px;
-    -fx-padding: 0px 16px;
+    -fx-padding: 0px 8px 0px 16px;
     -fx-border-width: 1px;
     -fx-border-color: #D4D4D4;
     -fx-background-color: #ffffff;
@@ -73,6 +73,7 @@
 }
 
 .editTextArea {
+    -fx-padding: 8px;
     -fx-pref-width: 298px;
     -fx-pref-height: 118px;
     -fx-border-width: 1px;

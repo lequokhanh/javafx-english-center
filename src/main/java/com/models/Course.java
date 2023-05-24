@@ -1,5 +1,6 @@
 package com.models;
 
+import com.controller.CoursesController;
 import com.controller.DeleteCourse;
 import com.controller.EditCourseController;
 import com.utilities.Constants;
@@ -10,6 +11,7 @@ import javafx.scene.layout.HBox;
 import lombok.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 @Getter
@@ -39,27 +41,13 @@ public class Course {
             case "Intermediate":
                 this.courseLevel.getStyleClass().add("levelIntermediate");
                 break;
-            case "Advance":
-                this.courseLevel.getStyleClass().add("levelAdvance");
+            case "Advanced":
+                this.courseLevel.getStyleClass().add("levelAdvanced");
                 break;
         }
         Node action = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_ACTION)));
         action.setId("action");
         action.getStyleClass().add("action");
         this.action = (HBox) action;
-        action.lookup("#edit").setOnMouseClicked(e -> {
-            try {
-                EditCourseController.show();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
-        action.lookup("#delete").setOnMouseClicked(e -> {
-            try {
-                DeleteCourse.show();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-        });
     }
 }

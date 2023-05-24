@@ -1,21 +1,27 @@
 package com.controller;
 
 import com.models.Course;
+import com.service.CourseService;
 import com.utilities.Constants;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -32,11 +38,12 @@ public class CoursesController {
     public HBox manageChapterBtn;
     public TableColumn<Course, Integer> chapter;
     public FlowPane flowPane;
+    public TextField searchField;
     @FXML
     private TableView<Course> CourseTable;
 
     @FXML
-    private void initialize() throws IOException {
+    private void initialize() throws SQLException, IOException {
         courseID.setPrefWidth(150);
         courseName.setPrefWidth(150);
         description.setPrefWidth(220);
@@ -50,15 +57,34 @@ public class CoursesController {
             tblWidth.addAndGet((int) e.getWidth());
         });
         CourseTable.setPrefWidth(tblWidth.get());
-        reload();
+        try {
+            search("");
+        } catch (IOException e) {
+            ErrorController.show(e.getMessage());
+        }
     }
 
-    public void reload() throws IOException {
-        ObservableList<Course> courses = FXCollections.observableArrayList(
-                new Course("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner", 10),
-                new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9),
-                new Course("#69321", "Toeic", "Test of English for International Communication", "Advance", 8)
-        );
+    public void search(String keyWord) throws SQLException, IOException {
+        ObservableList<Course> courses = CourseService.search(keyWord);
+        for (Course course : courses) {
+            HBox action = course.getAction();
+            if (action != null) {
+                action.lookup("#edit").setOnMouseClicked(mouseEvent -> {
+                    try {
+                        EditCourseController.show(course, this);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                action.lookup("#delete").setOnMouseClicked(mouseEvent -> {
+                    try {
+                        DeleteCourse.show(course.getCourseID(), this);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
         CourseTable.setItems(courses);
     }
 
@@ -87,15 +113,15 @@ public class CoursesController {
                 case "Intermediate":
                     previewCourseLevel.getStyleClass().add("levelIntermediate");
                     break;
-                case "Advance":
-                    previewCourseLevel.getStyleClass().add("levelAdvance");
+                case "Advanced":
+                    previewCourseLevel.getStyleClass().add("levelAdvanced");
                     break;
             }
         }
     }
 
-    public void add() throws IOException {
-        EditCourseController.show();
+    public void add() throws IOException, SQLException {
+        EditCourseController.show(null, this);
     }
 
     public void manageChapter(MouseEvent mouseEvent) throws IOException {
@@ -111,5 +137,13 @@ public class CoursesController {
         chapter.setLayoutX(345);
         chapter.setLayoutY(20);
         chapter.toFront();
+    }
+
+    public void searchAction() throws IOException {
+        try {
+            search(searchField.getText());
+        } catch (SQLException | IOException e) {
+            ErrorController.show(e.getMessage());
+        }
     }
 }
