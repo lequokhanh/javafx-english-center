@@ -2,6 +2,7 @@ package com.controller;
 
 import com.models.Chapter;
 import com.models.Course;
+import com.service.ChapterService;
 import com.utilities.Constants;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -15,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class ChapterSTController {
@@ -44,11 +46,7 @@ public class ChapterSTController {
             }
             courseDescription.setText(course.getCourseDescription());
             try {
-                ObservableList<Chapter> chapters = FXCollections.observableArrayList(
-                        new Chapter("#20462", "Introduce to Toeic", "Test of English for International Communication", "Reading"),
-                        new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"), new Chapter("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate"),
-                        new Chapter("#69321", "Toeic", "Test of English for International Communication", "Advance")
-                );
+                ObservableList<Chapter> chapters = ChapterService.search(course.getCourseID(), "");
                 for (int i = 0; i < chapters.size(); i++) {
                     Chapter chapter = chapters.get(i);
                     Node chapterCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_CARD)));
@@ -74,8 +72,12 @@ public class ChapterSTController {
                     }
                     gridPane.add(chapterCard, 0, i);
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            } catch (IOException | SQLException e) {
+                try {
+                    ErrorController.show(e.getMessage());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }

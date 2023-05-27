@@ -36,7 +36,6 @@ public class CourseService {
                     result.getInt("number_of_chapter")
             ));
         }
-        courses.add(new Course());
         return courses;
     }
 
@@ -58,7 +57,7 @@ public class CourseService {
 
     public static void UpdateCourse(String id, String name, String description, String level) throws SQLException {
         DBConnection db = new DBConnection();
-        String query = String.format("UPDATE course SET name = '%s', description = '%s', course_level = '%s' WHERE id = %s", name, description, level, id);
+        String query = String.format("UPDATE course SET name = '%s', description = '%s', course_level = '%s' WHERE id = '%s'", name, description, level, id);
         db.update(query);
     }
 

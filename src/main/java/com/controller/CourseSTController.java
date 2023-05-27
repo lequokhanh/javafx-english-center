@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.models.Course;
+import com.service.CourseService;
 import com.utilities.Constants;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class CourseSTController {
@@ -19,12 +21,8 @@ public class CourseSTController {
     public GridPane gridPane;
     public AnchorPane coursePane;
 
-    public void initialize() throws IOException {
-        ObservableList<Course> courses = FXCollections.observableArrayList(
-                new Course("#20462", "Introduce to Toeic", "Test of English for International Communication", "Beginner", 10),
-                new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9), new Course("#41569", "Intermediate Ielts", "International English Language Testing System", "Intermediate", 9),
-                new Course("#69321", "Toeic", "Test of English for International Communication", "Advanced", 8)
-        );
+    public void initialize() throws IOException, SQLException {
+        ObservableList<Course> courses = CourseService.search("");
         for (int i = 0; i < courses.size(); i++) {
             Course course = courses.get(i);
             Node courseCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/CourseCard.fxml")));

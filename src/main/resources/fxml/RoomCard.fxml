@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="50.0" prefWidth="440.0" styleClass="cardPane" stylesheets="@../css/RoomCard.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <cursor>
+        <Cursor fx:constant="HAND" />
+    </cursor>
+    <Label fx:id="name" layoutX="19.0" layoutY="15.0" styleClass="name" text="Label" />
+    <Label fx:id="capacity" layoutX="233.0" layoutY="16.0" styleClass="capacity" text="99" />
+</AnchorPane>

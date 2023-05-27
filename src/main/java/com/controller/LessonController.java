@@ -4,6 +4,9 @@ import com.models.Class;
 import com.models.Lesson;
 import com.models.Material;
 import com.models.Student;
+import com.service.LessonService;
+import com.service.MaterialService;
+import com.service.StudentService;
 import com.utilities.Constants;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -12,13 +15,24 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
+import java.io.File;
+
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Objects;
 
 import static java.lang.Math.max;
@@ -39,12 +53,22 @@ public class LessonController {
     public GridPane presentGridPane;
     public Label absentNumber;
     public Label totalNumber;
+    public Button edit;
+    public Button delete;
 
     public void initialize() throws IOException {
         Platform.runLater(() -> {
             className.setText(classes.getName());
-            courseName.setText(classes.getCourse());
-            reload();
+            courseName.setText(classes.getCourse().getCourseName());
+            try {
+                search("");
+            } catch (SQLException | IOException e) {
+                try {
+                    ErrorController.show(e.getMessage());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
         });
     }
 
@@ -60,72 +84,47 @@ public class LessonController {
         general.toFront();
     }
 
-    public void reload() {
-        ObservableList<Lesson> lessons = FXCollections.observableArrayList(
-                new Lesson("Introduce to Toeic", "Reading", "Test of English for International Communication", "12/12/2020"),
-                new Lesson("Intermediate Ielts", "Intermediate", "International English Language Testing System", "12/12/2020"),
-                new Lesson("Introduce to Toeic", "Reading", "Test of English for International Communication", "12/12/2020"),
-                new Lesson("Intermediate Ielts", "Intermediate", "International English Language Testing System", "12/12/2020"),
-                new Lesson("Introduce to Toeic", "Reading", "Test of English for International Communication", "12/12/2020"),
-                new Lesson("Intermediate Ielts", "Intermediate", "International English Language Testing System", "12/12/2020"),
-                new Lesson("Introduce to Toeic", "Reading", "Test of English for International Communication", "12/12/2020"),
-                new Lesson("Intermediate Ielts", "Intermediate", "International English Language Testing System", "12/12/2020"),
-                new Lesson("Introduce to Toeic", "Reading", "Test of English for International Communication", "12/12/2020"),
-                new Lesson("Intermediate Ielts", "Intermediate", "International English Language Testing System", "12/12/2020"),
-                new Lesson("Introduce to Toeic", "Reading", "Test of English for International Communication", "12/12/2020"),
-                new Lesson("Intermediate Ielts", "Intermediate", "International English Language Testing System", "12/12/2020")
-        );
+    public void search(String keyWord) throws SQLException, IOException {
+        ObservableList<Lesson> lessons = LessonService.search(classes.getId(), keyWord);
         int row = lessons.size();
         gridPane.getChildren().clear();
         for (int i = 0; i < row; i++) {
-            RowConstraints rowConst = new RowConstraints();
-            rowConst.setPrefHeight(67);
-            gridPane.getRowConstraints().add(rowConst);
-        }
-        for (int i = 0; i < row; i++) {
             Lesson lesson = lessons.get(i);
-            Node lessonCard = null;
-            try {
-                lessonCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_LESSON_CARD)));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            Node lessonCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_LESSON_CARD)));
             AnchorPane cardPane = (AnchorPane) lessonCard.lookup(".cardPane");
             AnchorPane homepage = (AnchorPane) lessonPane.getParent();
-            Node description = null;
-            try {
-                description = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_DESCRIPTION_POP_UP)));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            ((Label) ((AnchorPane) description.lookup("#anchor")).lookup("#description")).setText(lesson.getDescription());
-            Node finalDescription = description;
+            Node description = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_DESCRIPTION_POP_UP)));
+            ((Label) ((AnchorPane) description.lookup("#anchor")).lookup("#description")).setText(lesson.getChapter().getChapterDescription());
             cardPane.setOnMouseMoved(e -> {
-                homepage.getChildren().removeAll(finalDescription);
-                finalDescription.setId("description");
-                finalDescription.setLayoutX(e.getSceneX() - e.getX() + 200);
-                finalDescription.setLayoutY(max(e.getSceneY() - e.getY() - 175, 69));
-                homepage.getChildren().add(finalDescription);
+                homepage.getChildren().removeAll(description);
+                description.setId("description");
+                description.setLayoutX(e.getSceneX() - e.getX() + 200);
+                description.setLayoutY(max(e.getSceneY() - e.getY() - 175, 69));
+                homepage.getChildren().add(description);
             });
             cardPane.setOnMouseExited(e -> {
-                homepage.getChildren().removeAll(finalDescription);
+                homepage.getChildren().removeAll(description);
             });
             cardPane.setOnMouseClicked(e -> {
+                if (gridPane.lookup(".cardPaneSelected") != null) {
+                    gridPane.lookup(".cardPaneSelected").getStyleClass().remove("cardPaneSelected");
+                }
+                cardPane.getStyleClass().add("cardPaneSelected");
                 selectedLesson = lesson;
-                if (lessonPane.lookup(".emptyTab") != null) {
-                    lessonPane.getChildren().remove(lessonPane.lookup(".emptyTab"));
+                if (lessonPane.lookup(".emptyTab").isVisible()) {
+                    lessonPane.lookup(".emptyTab").setVisible(false);
                 }
                 lessonTab.setVisible(true);
                 try {
-                    reloadMaterialPane();
-                    reloadAttendancePane();
-                } catch (IOException ex) {
+                    searchMaterialPane("");
+                    searchAttendancePane("");
+                } catch (IOException | SQLException ex) {
                     throw new RuntimeException(ex);
                 }
             });
-            ((Label) cardPane.lookup("#name")).setText(lesson.getName());
-            ((Label) cardPane.lookup("#category")).setText(lesson.getCategory());
-            switch (lesson.getCategory()) {
+            ((Label) cardPane.lookup("#name")).setText(lesson.getChapter().getChapterName());
+            ((Label) cardPane.lookup("#category")).setText(lesson.getChapter().getCategory());
+            switch (lesson.getChapter().getCategory()) {
                 case "Reading":
                     ((Label) cardPane.lookup("#category")).getStyleClass().add("reading");
                     break;
@@ -147,43 +146,120 @@ public class LessonController {
         }
     }
 
-    public void reloadMaterialPane() throws IOException {
-        ObservableList<Material> materials = FXCollections.observableArrayList(
-                new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf"), new Material("#2133", "C://Users//Admin//Desktop//Toeic//Reading//Reading 1.pdf")
-        );
+    public void searchMaterialPane(String keyWord) throws IOException, SQLException {
+        ObservableList<Material> materials = MaterialService.search(selectedLesson.getId(), keyWord);
+        materialGridPane.getChildren().clear();
         for (int i = 0; i < materials.size(); i++) {
+            Material material = materials.get(i);
             Node fileItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_FILE_ITEM)));
+            String fileName = material.getPath().split("\\\\")[material.getPath().split("\\\\").length - 1];
+            ((Label) fileItem.lookup(".fileName")).setText(fileName);
+            ((Label) fileItem.lookup(".fileName")).setOnMouseClicked(e -> {
+                DirectoryChooser directoryChooser = new DirectoryChooser();
+                File selectedDirectory = directoryChooser.showDialog(lessonPane.getScene().getWindow());
+                if (selectedDirectory != null) {
+                    try {
+                        Files.copy(Paths.get(material.getPath()), Paths.get(selectedDirectory.getAbsolutePath() + "\\" + fileName));
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+            ((Button) fileItem.lookup(".deleteBtn")).setOnAction(e -> {
+                try {
+                    DeleteMaterial.show(material.getId(), this);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
             materialGridPane.add(fileItem, 0, i);
         }
     }
 
 
-    public void reloadAttendancePane() throws IOException {
-        ObservableList<Student> absentStudent = FXCollections.observableArrayList(
-                new Student("1232", "Le asjlkdhasdjk"),
-                new Student("1232", "Le asjlkdhasdjk"),
-                new Student("1232", "Le asjlkdhasdjk")
-        );
-        ObservableList<Student> presentStudent = FXCollections.observableArrayList(
-                new Student("1232", "Le asjlkdhasdjk"),
-                new Student("1232", "Le asjlkdhasdjk"),
-                new Student("1232", "Le asjlkdhasdjk")
-        );
+    public void searchAttendancePane(String keyWord) throws IOException, SQLException {
+        ObservableList<Student> absentStudent = StudentService.absentStudent(classes.getId(), selectedLesson.getId(), keyWord);
+        ObservableList<Student> presentStudent = StudentService.presentStudent(selectedLesson.getId());
         absentNumber.setText(Integer.toString(absentStudent.size()));
         totalNumber.setText(Integer.toString(absentStudent.size() + presentStudent.size()));
+        absentGridPane.getChildren().clear();
+        presentGridPane.getChildren().clear();
         for (int i = 0; i < absentStudent.size(); i++) {
+            Student student = absentStudent.get(i);
             Node studentItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
+            ((Label) studentItem.lookup(".name")).setText(student.getName());
+            ((Label) studentItem.lookup(".id")).setText(student.getId());
+            studentItem.lookup("#rollCallBtn").setOnMouseClicked(e -> {
+                try {
+                    StudentService.RollCall(student.getId(), selectedLesson.getId());
+                    searchAttendancePane("");
+                } catch (SQLException | IOException ex) {
+                    try {
+                        ErrorController.show(ex.getMessage());
+                    } catch (IOException exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
             absentGridPane.add(studentItem, 0, i);
         }
         for (int i = 0; i < presentStudent.size(); i++) {
+            Student student = presentStudent.get(i);
             Node studentItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
+            ((Label) studentItem.lookup(".name")).setText(student.getName());
+            ((Label) studentItem.lookup(".id")).setText(student.getId());
             studentItem.lookup("#rollCallBtn").setVisible(false);
             studentItem.lookup("#removeBtn").setVisible(true);
+            studentItem.lookup("#removeBtn").setOnMouseClicked(e -> {
+                try {
+                    StudentService.removeRollCall(student.getId(), selectedLesson.getId());
+                    searchAttendancePane("");
+                } catch (SQLException | IOException ex) {
+                    try {
+                        ErrorController.show(ex.getMessage());
+                    } catch (IOException exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
             presentGridPane.add(studentItem, 0, i);
         }
 
     }
 
-    public void add(ActionEvent actionEvent) {
+    public void add(ActionEvent actionEvent) throws SQLException, IOException {
+        EditLessonController.show(null, classes, this);
+    }
+
+    public void edit(ActionEvent actionEvent) throws SQLException, IOException {
+        if (selectedLesson == null) {
+            try {
+                ErrorController.show("Please select a lesson");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return;
+        }
+        EditLessonController.show(selectedLesson, classes, this);
+    }
+
+    public void delete(ActionEvent actionEvent) {
+        if (selectedLesson == null) {
+            try {
+                ErrorController.show("Please select a lesson");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return;
+        }
+        try {
+            DeleteLesson.show(selectedLesson.getId(), this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void upload() throws IOException {
+        UploadMaterial.show(selectedLesson.getId(), this);
     }
 }

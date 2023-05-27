@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="uploadPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="401.0" prefWidth="760.0" styleClass="editPane" stylesheets="@../css/Edit.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.controller.UploadMaterial">
+    <Button layoutX="722.0" layoutY="14.0" mnemonicParsing="false" onAction="#close" styleClass="closeBtn">
+        <graphic>
+            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <Image url="@../image/close.png"/>
+            </ImageView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <VBox layoutX="53.0" layoutY="33.0" spacing="3.0">
+        <Label styleClass="editTitle" text="Upload Material"/>
+        <Label styleClass="editSmallTitle" text="Browse your material."/>
+    </VBox>
+    <Button fx:id="save" layoutX="597.0" layoutY="331.0" mnemonicParsing="false" styleClass="submitBtn" text="Save">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <AnchorPane layoutX="63.0" layoutY="125.0" prefHeight="200.0" prefWidth="200.0" styleClass="uploadPane">
+        <ImageView fitHeight="40.0" fitWidth="46.0" layoutX="125.0" layoutY="45.0" onMouseClicked="#chooseFile"
+                   pickOnBounds="true" preserveRatio="true">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+            <Image url="@../image/upload.png"/>
+        </ImageView>
+        <Label layoutX="129.0" layoutY="89.0" onMouseClicked="#chooseFile" styleClass="uploadText" text="Browse">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Label>
+        <Label layoutX="33.0" layoutY="112.0" styleClass="uploadSupportText"
+               text="Supported formats: JPEG, PNG, GIF, MP4, PDF, PSD, AI, Word, PPT"/>
+    </AnchorPane>
+    <ScrollPane hbarPolicy="NEVER" layoutX="409.0" layoutY="113.0" prefHeight="178.0" prefWidth="297.0"
+                vbarPolicy="NEVER">
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity">
+            <GridPane fx:id="gridPane" layoutY="4.0" vgap="23.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                </columnConstraints>
+            </GridPane>
+        </AnchorPane>
+    </ScrollPane>
+</AnchorPane>

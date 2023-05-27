@@ -60,6 +60,10 @@ public class EditCourseController {
             controller.setDataToEdit(course);
             controller.submit.setOnAction(e -> {
                 try {
+                    if (controller.courseName.getText().isEmpty() || controller.courseDescription.getText().isEmpty() || controller.courseLevel.getValue() == null) {
+                        ErrorController.show("Please fill all the fields");
+                        return;
+                    }
                     CourseService.UpdateCourse(controller.course.getCourseID(), controller.courseName.getText(), controller.courseDescription.getText(), controller.courseLevel.getValue());
                     handle.search("");
                     controller.close();

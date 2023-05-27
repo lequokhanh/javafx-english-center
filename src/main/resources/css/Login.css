@@ -35,6 +35,7 @@
     -fx-text-fill: #2d3a80;
 }
 
+
 .input {
     -fx-font-family: "Maven Pro";
     -fx-font-style: normal;
@@ -47,7 +48,9 @@
     -fx-border-width: 2px;
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
+    -fx-text-fill: rgba(64, 65, 70, 0.8);
 }
+
 
 .login {
     -fx-pref-width: 0px;

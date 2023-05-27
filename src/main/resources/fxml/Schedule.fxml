@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0"
+            prefWidth="1226.0" stylesheets="@../css/Schedule.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ScheduleController">
+    <GridPane fx:id="gridPane" gridLinesVisible="true" layoutX="263.0" layoutY="142.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+        </rowConstraints>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header"/>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="1">
+            <Label styleClass="dayText" text="Monday"/>
+        </StackPane>
+        <StackPane maxHeight="661.0" maxWidth="609.0" prefHeight="661.0" prefWidth="609.0" styleClass="header"
+                   GridPane.columnIndex="2">
+            <Label styleClass="dayText" text="Tuesday"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="3">
+            <Label styleClass="dayText" text="Wednesday"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="4">
+            <Label styleClass="dayText" text="Thursday"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="5">
+            <Label styleClass="dayText" text="Friday"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="6">
+            <Label styleClass="dayText" text="Saturday"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="1">
+            <Label styleClass="sessionText" text="Session 1"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="2">
+            <Label styleClass="sessionText" text="Session 2"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="3">
+            <Label styleClass="sessionText" text="Session 3"/>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="4">
+            <Label styleClass="sessionText" text="Session 4"/>
+        </StackPane>
+    </GridPane>
+    <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="Schedule"/>
+    <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="Schedule for user"/>
+    <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
+</AnchorPane>

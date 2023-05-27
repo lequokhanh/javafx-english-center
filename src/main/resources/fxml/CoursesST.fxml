@@ -14,33 +14,27 @@
 <AnchorPane prefHeight="860.0" prefWidth="1226.0" stylesheets="@../css/CourseST.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.CourseSTController"
             fx:id="coursePane">
-    <children>
-        <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="Courses"/>
-        <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="List of courses in the center"/>
-        <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
-        <Group layoutX="48.0" layoutY="136.0">
-            <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
-            <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" x="8.0"
-                       y="9.0">
-                <Image url="@../image/search.png"/>
-            </ImageView>
-        </Group>
-        <ScrollPane hbarPolicy="NEVER" layoutX="48.0" layoutY="212.0" pannable="true" prefHeight="200.0"
-                    prefWidth="200.0" styleClass="scrollPane" vbarPolicy="NEVER">
-            <content>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                    <children>
-                        <GridPane fx:id="gridPane" layoutY="4.0" styleClass="gridPane">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                            </columnConstraints>
-                        </GridPane>
-                    </children>
-                </AnchorPane>
-            </content>
-        </ScrollPane>
-    </children>
+    <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="Courses"/>
+    <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="List of courses in the center"/>
+    <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
+    <Group layoutX="48.0" layoutY="136.0">
+        <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+        <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" x="8.0"
+                   y="9.0">
+            <Image url="@../image/search.png"/>
+        </ImageView>
+    </Group>
+    <ScrollPane hbarPolicy="NEVER" layoutX="48.0" layoutY="212.0" pannable="true" prefHeight="200.0"
+                prefWidth="200.0" styleClass="scrollPane" vbarPolicy="NEVER">
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <GridPane fx:id="gridPane" layoutY="4.0" styleClass="gridPane">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                </columnConstraints>
+            </GridPane>
+        </AnchorPane>
+    </ScrollPane>
 </AnchorPane>

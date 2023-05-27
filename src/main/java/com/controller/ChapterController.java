@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -33,6 +35,7 @@ public class ChapterController {
     public Label chapterNumber;
     public Label level;
     public Label courseDescription;
+    public TextField searchField;
 
     public void initialize() {
         chapterID.setPrefWidth(200);
@@ -109,5 +112,13 @@ public class ChapterController {
 
     public void add(ActionEvent actionEvent) throws IOException {
         EditChapterController.show(null, course.getCourseID(), this);
+    }
+
+    public void searchAction(KeyEvent keyEvent) throws IOException {
+        try {
+            search(searchField.getText());
+        } catch (SQLException | IOException e) {
+            ErrorController.show(e.getMessage());
+        }
     }
 }

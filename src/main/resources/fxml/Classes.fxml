@@ -44,6 +44,11 @@
                         <PropertyValueFactory property="teacher"/>
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn fx:id="room" prefWidth="75.0" text="Room">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="room"/>
+                    </cellValueFactory>
+                </TableColumn>
                 <TableColumn fx:id="start" prefWidth="75.0" text="Start date">
                     <cellValueFactory>
                         <PropertyValueFactory property="start"/>

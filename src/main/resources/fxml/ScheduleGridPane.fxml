@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+
+<GridPane fx:id="gridPane" gridLinesVisible="true" stylesheets="@../css/Schedule.css"
+          xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header"/>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="1">
+            <children>
+                <Label styleClass="dayText" text="Monday"/>
+            </children>
+        </StackPane>
+        <StackPane maxHeight="661.0" maxWidth="609.0" prefHeight="661.0" prefWidth="609.0" styleClass="header"
+                   GridPane.columnIndex="2">
+            <children>
+                <Label styleClass="dayText" text="Tuesday"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="3">
+            <children>
+                <Label styleClass="dayText" text="Wednesday"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="4">
+            <children>
+                <Label styleClass="dayText" text="Thursday"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="5">
+            <children>
+                <Label styleClass="dayText" text="Friday"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="header" GridPane.columnIndex="6">
+            <children>
+                <Label styleClass="dayText" text="Saturday"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="1">
+            <children>
+                <Label styleClass="sessionText" text="Session 1"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="2">
+            <children>
+                <Label styleClass="sessionText" text="Session 2"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="3">
+            <children>
+                <Label styleClass="sessionText" text="Session 3"/>
+            </children>
+        </StackPane>
+        <StackPane prefHeight="150.0" prefWidth="200.0" styleClass="cell" GridPane.rowIndex="4">
+            <children>
+                <Label styleClass="sessionText" text="Session 4"/>
+            </children>
+        </StackPane>
+    </children>
+</GridPane>

@@ -16,65 +16,53 @@
             prefHeight="650.0" prefWidth="400.0" styleClass="editPane" stylesheets="@../css/Edit.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.controller.EditCourseController">
-    <children>
-        <Button layoutX="367.0" layoutY="9.0" mnemonicParsing="false" onAction="#close" styleClass="closeBtn">
-            <graphic>
-                <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../image/close.png"/>
-                    </image>
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </ImageView>
-            </graphic>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </Button>
-        <VBox layoutX="53.0" layoutY="33.0" spacing="3.0">
-            <children>
-                <Label styleClass="editTitle" text="Course Information"/>
-                <Label styleClass="editSmallTitle" text="Fill in the data for course."/>
-            </children>
-        </VBox>
-        <VBox layoutX="53.0" layoutY="122.0" spacing="8.0">
-            <children>
-                <Label styleClass="editNameField" text="Course ID"/>
-                <Label fx:id="courseID" styleClass="editField" text="id"/>
-            </children>
-        </VBox>
-        <VBox layoutX="53.0" layoutY="208.0" spacing="8.0">
-            <children>
-                <Label styleClass="editNameField" text="Course Name"/>
-                <TextField fx:id="courseName" promptText="Enter the course name" styleClass="editField"/>
-            </children>
-        </VBox>
-        <VBox layoutX="53.0" layoutY="304.0" spacing="8.0">
-            <children>
-                <Label styleClass="editNameField" text="Description"/>
-                <TextArea fx:id="courseDescription" prefHeight="200.0" prefWidth="200.0"
-                          promptText="Describe the course"
-                          styleClass="editTextArea"/>
-            </children>
-        </VBox>
-        <VBox layoutX="53.0" layoutY="457.0" spacing="8.0">
-            <Label styleClass="editNameField" text="Level"/>
-            <ComboBox fx:id="courseLevel" prefWidth="150.0" promptText="Choose course level" styleClass="editChooseBox">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Beginner"/>
-                        <String fx:value="Intermediate"/>
-                        <String fx:value="Advanced"/>
-                    </FXCollections>
-                </items>
-            </ComboBox>
-        </VBox>
-        <Button layoutX="255.0" layoutY="580.0" mnemonicParsing="false" fx:id="submit" styleClass="submitBtn"
-                text="Submit">
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </Button>
-    </children>
+    <Button layoutX="367.0" layoutY="9.0" mnemonicParsing="false" onAction="#close" styleClass="closeBtn">
+        <graphic>
+            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <Image url="@../image/close.png"/>
+            </ImageView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <VBox layoutX="53.0" layoutY="33.0" spacing="3.0">
+        <Label styleClass="editTitle" text="Course Information"/>
+        <Label styleClass="editSmallTitle" text="Fill in the data for course."/>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="122.0" spacing="8.0">
+        <Label styleClass="editNameField" text="Course ID"/>
+        <Label fx:id="courseID" styleClass="editField" text="id"/>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="208.0" spacing="8.0">
+        <Label styleClass="editNameField" text="Course Name"/>
+        <TextField fx:id="courseName" promptText="Enter the course name" styleClass="editField"/>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="304.0" spacing="8.0">
+        <Label styleClass="editNameField" text="Description"/>
+        <TextArea fx:id="courseDescription" prefHeight="200.0" prefWidth="200.0"
+                  promptText="Describe the course"
+                  styleClass="editTextArea"/>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="457.0" spacing="8.0">
+        <Label styleClass="editNameField" text="Level"/>
+        <ComboBox fx:id="courseLevel" prefWidth="150.0" promptText="Choose course level" styleClass="editChooseBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Beginner"/>
+                    <String fx:value="Intermediate"/>
+                    <String fx:value="Advanced"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </VBox>
+    <Button layoutX="255.0" layoutY="580.0" mnemonicParsing="false" fx:id="submit" styleClass="submitBtn"
+            text="Submit">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
 </AnchorPane>

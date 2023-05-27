@@ -1,0 +1,62 @@
+@import "Font.css";
+@import "Tabpane.css";
+
+.header {
+    -fx-min-width: 100px;
+    -fx-min-height: 50px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-max-width: 100px;
+    -fx-max-height: 50px;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(91, 91, 91, 0.25);
+}
+
+.cell {
+    -fx-min-width: 100px;
+    -fx-min-height: 150px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 150px;
+    -fx-max-width: 100px;
+    -fx-max-height: 150px;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(247, 246, 254, 0.5);
+}
+
+.dayText {
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 17px;
+    -fx-line-height: 20px;
+    -fx-text-fill: #000000;
+}
+
+.sessionText {
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 900;
+    -fx-font-size: 19px;
+    -fx-line-height: 22px;
+    -fx-text-fill: #000000;
+}
+
+.cellNotNull {
+    -fx-min-width: 100px;
+    -fx-min-height: 150px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 150px;
+    -fx-max-width: 100px;
+    -fx-max-height: 150px;
+    -fx-border-width: 0;
+    -fx-background-color: #fbe7e8;
+}
+
+.scheduleText {
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 900;
+    -fx-font-size: 19px;
+    -fx-line-height: 22px;
+    -fx-text-fill: #a51115;
+}

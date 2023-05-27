@@ -27,6 +27,11 @@ public class Course {
     public Course() {
     }
 
+    public Course(String courseID, String courseName) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+    }
+
     public Course(String courseID, String courseName, String courseDescription, String courseLevel, Integer numberOfChapter) throws IOException {
         this.courseID = courseID;
         this.courseName = courseName;
@@ -49,5 +54,9 @@ public class Course {
         action.setId("action");
         action.getStyleClass().add("action");
         this.action = (HBox) action;
+    }
+
+    public String toString() {
+        return courseName;
     }
 }

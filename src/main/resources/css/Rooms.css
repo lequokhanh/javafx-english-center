@@ -1,0 +1,38 @@
+@import "Font.css";
+@import "Tabpane.css";
+@import "Schedule.css";
+
+.searchBox {
+    -fx-pref-width: 267;
+    -fx-pref-height: 41;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-pref-width: 270px;
+    -fx-pref-height: 634px;
+    -fx-background-color: transparent;
+}
+
+.roomLine {
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-color: #9E9E9E;
+}
+
+.emptyText {
+    -fx-font-family: 'Roboto';
+    -fx-font-style: italic;
+    -fx-font-weight: 300;
+    -fx-font-size: 32px;
+    -fx-line-height: 38px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #414141;
+    -fx-background-color: transparent;
+    -fx-pref-width: 230px;
+    -fx-pref-height: 80px;
+    -fx-wrap-text: true;
+}

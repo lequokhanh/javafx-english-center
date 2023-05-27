@@ -31,4 +31,8 @@ public class Chapter {
         action.getStyleClass().add("action");
         this.action = (HBox) action;
     }
+
+    public String toString() {
+        return chapterName + " - " + category;
+    }
 }

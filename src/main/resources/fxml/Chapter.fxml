@@ -17,91 +17,78 @@
 <AnchorPane fx:id="chapterPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="860.0" prefWidth="1226.0" stylesheets="@../css/Chapter.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ChapterController">
-    <children>
-        <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Chapters"/>
-        <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Chapters in a Course"/>
-        <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
-        <HBox layoutX="57.0" layoutY="804.0" onMouseClicked="#backToCourseBtn" styleClass="manageChapterBtn">
-            <children>
-                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../image/arrow_left.png"/>
-                    </image>
-                </ImageView>
-                <Label styleClass="manageChapterBtn" text="Back to Courses"/>
-            </children>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </HBox>
-        <AnchorPane layoutX="51.0" layoutY="130.0" prefHeight="200.0" prefWidth="200.0" styleClass="titlePane">
-            <children>
-                <Label fx:id="courseName" layoutX="44.0" layoutY="25.0" styleClass="titleCourseName" text="Name"/>
-                <Label fx:id="chapterNumber" layoutX="44.0" layoutY="107.0" styleClass="titleChapter"
-                       text="19 Chapters"/>
-                <Label fx:id="level" layoutX="141.0" layoutY="101.0" styleClass="courseLevel" text="Level"/>
-                <Line endY="115.0" layoutX="448.0" layoutY="26.0" styleClass="titleLine"/>
-                <Label layoutX="482.0" layoutY="33.0" styleClass="titleDescription" text="Course description"/>
-                <Label fx:id="courseDescription" layoutX="482.0" layoutY="63.0" styleClass="titleDescriptionContent"
-                       text="Test of English for International Communication. Lorem ipsum dolor sit amet. Aut aperiam omnis est laborum inventore in ipsam asperiores aut dolorum eligendi ut molestiae cumque qui quos dolores. Aut esse esse in laboriosam voluptate in cupiditate distinctio ut ipsam error sed tempore libero aut consequatur galisum!"/>
-            </children>
-        </AnchorPane>
-        <Group layoutX="53.0" layoutY="300.0">
-            <children>
-                <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
-                <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"
-                           x="8.0" y="9.0">
-                    <image>
-                        <Image url="@../image/search.png"/>
-                    </image>
-                </ImageView>
-            </children>
-        </Group>
-        <Button layoutX="1051.0" layoutY="307.0" mnemonicParsing="false" onAction="#add" styleClass="addBtn"
-                text="Add Course">
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-            <graphic>
-                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../image/add.png"/>
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <TableView fx:id="ChapterTable" layoutX="53.0" layoutY="350.0" pickOnBounds="false" prefHeight="200.0"
-                   prefWidth="1121.0">
-            <placeholder>
-                <Label text=""/>
-            </placeholder>
-            <columns>
-                <TableColumn fx:id="chapterID" text="Chapter ID">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="chapterID"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="chapterName" text="Name">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="chapterName"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="description" text="Description">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="chapterDescription"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="category" text="Category">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="category"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn fx:id="action" text="Action">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="action"/>
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
-    </children>
+    <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Chapters"/>
+    <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Chapters in a Course"/>
+    <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
+    <HBox layoutX="57.0" layoutY="804.0" onMouseClicked="#backToCourseBtn" styleClass="manageChapterBtn">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../image/arrow_left.png"/>
+        </ImageView>
+        <Label styleClass="manageChapterBtn" text="Back to Courses"/>
+    </HBox>
+    <AnchorPane layoutX="51.0" layoutY="130.0" prefHeight="200.0" prefWidth="200.0" styleClass="titlePane">
+        <Label fx:id="courseName" layoutX="44.0" layoutY="25.0" styleClass="titleCourseName" text="Name"/>
+        <Label fx:id="chapterNumber" layoutX="44.0" layoutY="107.0" styleClass="titleChapter"
+               text="19 Chapters"/>
+        <Label fx:id="level" layoutX="141.0" layoutY="101.0" styleClass="courseLevel" text="Level"/>
+        <Line endY="115.0" layoutX="448.0" layoutY="26.0" styleClass="titleLine"/>
+        <Label layoutX="482.0" layoutY="33.0" styleClass="titleDescription" text="Course description"/>
+        <Label fx:id="courseDescription" layoutX="482.0" layoutY="63.0" styleClass="titleDescriptionContent"
+               text="Test of English for International Communication. Lorem ipsum dolor sit amet. Aut aperiam omnis est laborum inventore in ipsam asperiores aut dolorum eligendi ut molestiae cumque qui quos dolores. Aut esse esse in laboriosam voluptate in cupiditate distinctio ut ipsam error sed tempore libero aut consequatur galisum!"/>
+    </AnchorPane>
+    <Group layoutX="53.0" layoutY="300.0">
+        <TextField fx:id="searchField" layoutY="8.0" promptText="Search..." styleClass="searchBox"
+                   onKeyTyped="#searchAction"/>
+        <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"
+                   x="8.0" y="9.0">
+            <Image url="@../image/search.png"/>
+        </ImageView>
+    </Group>
+    <Button layoutX="1051.0" layoutY="307.0" mnemonicParsing="false" onAction="#add" styleClass="addBtn"
+            text="Add Course">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="@../image/add.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+    <TableView fx:id="ChapterTable" layoutX="53.0" layoutY="350.0" pickOnBounds="false" prefHeight="200.0"
+               prefWidth="1121.0">
+        <placeholder>
+            <Label text=""/>
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="chapterID" text="Chapter ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="chapterID"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="chapterName" text="Name">
+                <cellValueFactory>
+                    <PropertyValueFactory property="chapterName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="description" text="Description">
+                <cellValueFactory>
+                    <PropertyValueFactory property="chapterDescription"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="category" text="Category">
+                <cellValueFactory>
+                    <PropertyValueFactory property="category"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="action" text="Action">
+                <cellValueFactory>
+                    <PropertyValueFactory property="action"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
 </AnchorPane>

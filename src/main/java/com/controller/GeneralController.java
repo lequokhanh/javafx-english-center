@@ -24,7 +24,7 @@ public class GeneralController {
 
     @FXML
     private void initialize() throws SQLException {
-        numberCountingUp(stu_number, 1234);
+        numberCountingUp(stu_number, 100);
         numberCountingUp(class_number, 12);
         numberCountingUp(course_number, CourseService.getNumberOfCourse());
         numberCountingUp(room_number, 10);
@@ -32,7 +32,7 @@ public class GeneralController {
 
     private void numberCountingUp(Label label, int end) {
         label.setText(Integer.toString(0));
-        Timeline numberCountingUp = new Timeline(new KeyFrame(Duration.millis(1000 / (float) (end)), event -> {
+        Timeline numberCountingUp = new Timeline(new KeyFrame(Duration.millis(750 / (float) (end)), event -> {
             label.setText(String.valueOf(Integer.parseInt(label.getText()) + 1));
         }));
         numberCountingUp.setCycleCount(end);

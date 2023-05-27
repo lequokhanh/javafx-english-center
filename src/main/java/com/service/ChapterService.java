@@ -36,7 +36,6 @@ public class ChapterService {
                     result.getString("category")
             ));
         }
-        chapters.add(new Chapter());
         return chapters;
     }
 

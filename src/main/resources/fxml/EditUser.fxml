@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane fx:id="editPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="650.0" prefWidth="400.0" styleClass="editPane" stylesheets="@../css/Edit.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.controller.EditUserController">
+    <Button layoutX="367.0" layoutY="9.0" mnemonicParsing="false" onAction="#close" styleClass="closeBtn">
+        <graphic>
+            <ImageView fitHeight="10.0" fitWidth="10.0" pickOnBounds="true" preserveRatio="true">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <Image url="@../image/close.png"/>
+            </ImageView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <VBox layoutX="53.0" layoutY="33.0" spacing="3.0">
+        <Label styleClass="editTitle" text="User Information"/>
+        <Label styleClass="editSmallTitle" text="Fill in the data for user."/>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="122.0" spacing="8.0">
+        <Label styleClass="editNameField" text="User ID"/>
+        <Label fx:id="userID" styleClass="editField" text="id"/>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="208.0" spacing="8.0">
+        <Label styleClass="editNameField" text="Username"/>
+        <TextField fx:id="username" promptText="Enter the username" styleClass="editField"/>
+    </VBox>
+    <Button fx:id="submit" layoutX="240.0" layoutY="584.0" mnemonicParsing="false" styleClass="submitBtn" text="Submit">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <VBox layoutX="53.0" layoutY="289.0" spacing="8.0">
+        <children>
+            <Label styleClass="editNameField" text="Password"/>
+            <TextField fx:id="password" promptText="Enter the password" styleClass="editField"/>
+        </children>
+    </VBox>
+    <VBox layoutX="51.0" layoutY="376.0" spacing="8.0">
+        <children>
+            <Label styleClass="editNameField" text="Full name"/>
+            <TextField fx:id="fullname" promptText="Enter full name" styleClass="editField"/>
+        </children>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="469.0" spacing="8.0">
+        <children>
+            <Label styleClass="editNameField" text="Role"/>
+            <ComboBox fx:id="role" prefWidth="298.0" promptText="Choose role" style="-fx-pref-width: 298;"
+                      styleClass="editChooseBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Manager"/>
+                        <String fx:value="Teacher"/>
+                        <String fx:value="Student"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </children>
+    </VBox>
+</AnchorPane>

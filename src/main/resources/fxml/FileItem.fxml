@@ -7,22 +7,21 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="44.0" prefWidth="647.0" styleClass="filePane" stylesheets="@../css/FileItem.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label layoutX="21.0" layoutY="11.0" styleClass="fileName" text="filename.extension">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Label>
-      <Button layoutX="608.0" layoutY="10.0" mnemonicParsing="false" styleClass="deleteBtn">
-         <graphic>
+<AnchorPane prefHeight="44.0" prefWidth="647.0" styleClass="filePane" stylesheets="@../css/FileItem.css"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <Label layoutX="21.0" layoutY="11.0" styleClass="fileName" text="filename.extension">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Label>
+    <Button layoutX="608.0" layoutY="10.0" mnemonicParsing="false" styleClass="deleteBtn">
+        <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/delete2.png" />
-               </image>
+                <Image url="@../image/delete2.png"/>
             </ImageView>
-         </graphic>
-      </Button>
-   </children>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
 </AnchorPane>

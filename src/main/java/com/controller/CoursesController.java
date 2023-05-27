@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -44,9 +45,10 @@ public class CoursesController {
 
     @FXML
     private void initialize() throws SQLException, IOException {
-        courseID.setPrefWidth(150);
+
+        courseID.setPrefWidth(120);
         courseName.setPrefWidth(150);
-        description.setPrefWidth(220);
+        description.setPrefWidth(250);
         level.setPrefWidth(110);
         chapter.setPrefWidth(70);
         action.setPrefWidth(100);
@@ -86,6 +88,11 @@ public class CoursesController {
             }
         }
         CourseTable.setItems(courses);
+        if (!emptyPreview.isVisible()) {
+            emptyPreview.setVisible(true);
+            previewPane.setVisible(false);
+            manageChapterBtn.setVisible(false);
+        }
     }
 
     public void preview(MouseEvent mouseEvent) {
@@ -125,18 +132,20 @@ public class CoursesController {
     }
 
     public void manageChapter(MouseEvent mouseEvent) throws IOException {
-        AnchorPane homepage = (AnchorPane) coursePane.getParent();
-        homepage.getChildren().remove(homepage.lookup("#tabpane"));
-        FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER)));
-        Node chapter = fxml.load();
-        ChapterController controller = fxml.getController();
-        controller.course = CourseTable.getSelectionModel().getSelectedItem();
-        chapter.setId("tabpane");
-        chapter.getStyleClass().add("tabpane");
-        homepage.getChildren().add(chapter);
-        chapter.setLayoutX(345);
-        chapter.setLayoutY(20);
-        chapter.toFront();
+        if (CourseTable.getSelectionModel().getSelectedItem() != null) {
+            AnchorPane homepage = (AnchorPane) coursePane.getParent();
+            homepage.getChildren().remove(homepage.lookup("#tabpane"));
+            FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER)));
+            Node chapter = fxml.load();
+            ChapterController controller = fxml.getController();
+            controller.course = CourseTable.getSelectionModel().getSelectedItem();
+            chapter.setId("tabpane");
+            chapter.getStyleClass().add("tabpane");
+            homepage.getChildren().add(chapter);
+            chapter.setLayoutX(345);
+            chapter.setLayoutY(20);
+            chapter.toFront();
+        }
     }
 
     public void searchAction() throws IOException {

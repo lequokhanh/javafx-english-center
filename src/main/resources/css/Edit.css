@@ -1,8 +1,6 @@
 @import "Font.css";
 
 .editPane {
-    -fx-pref-width: 400px;
-    -fx-pref-height: 650px;
     -fx-background-color: #ffffff;
     -fx-border-width: 1px;
     -fx-border-color: #DEE2E6;
@@ -48,7 +46,12 @@
     -fx-border-radius: 6px;
     -fx-font-family: 'Roboto Italic';
     -fx-font-size: 14px;
-    -fx-text-fill: #41414188;
+    -fx-prompt-text-fill: #41414188;
+}
+
+.text-field .text {
+    -fx-font-family: 'Roboto';
+    -fx-prompt-text-fill: #414141;
 }
 
 .editField:focused {
@@ -87,14 +90,19 @@
     -fx-border-radius: 6px;
     -fx-font-family: 'Roboto Italic';
     -fx-font-size: 14px;
-    -fx-text-fill: #41414188;
+    -fx-prompt-text-fill: #41414188;
     -fx-wrap-text: true;
 }
 
+.editTextArea .text {
+    -fx-font-family: 'Roboto';
+    -fx-text-fill: #414141;
+}
 
 .editTextArea:focused {
     -fx-border-color: #4277FF;
 }
+
 
 .editChooseBox {
     -fx-pref-width: 202px;
@@ -106,11 +114,20 @@
     -fx-border-radius: 6px;
     -fx-font-family: 'Roboto Italic';
     -fx-font-size: 14px;
-    -fx-text-fill: rgba(65, 65, 65, 0.5);
+    -fx-text-fill: #414141;
 }
 
 .editChooseBox:focused {
     -fx-border-color: #4277FF;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #41414188;
+}
+
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell {
+    -fx-font-family: 'Roboto';
+    -fx-text-fill: #414141;
 }
 
 .submitBtn {
@@ -133,4 +150,96 @@
     -fx-background-color: #E5E5E5;
     -fx-background-radius: 29px;
     -fx-border-radius: 29px;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-image: url("../image/calendar.png");
+    -fx-background-size: 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-opacity: 0;
+}
+
+.date-picker > .date-picker-display-node {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.editDatePicker {
+    -fx-pref-width: 140px;
+    -fx-pref-height: 44px;
+    -fx-border-width: 1px;
+    -fx-border-color: #D4D4D4;
+    -fx-background-color: #ffffff00;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(65, 65, 65, 0.5);
+}
+
+.editDatePicker:focused {
+    -fx-border-color: #4277FF;
+}
+
+.uploadPane {
+    -fx-pref-width: 295px;
+    -fx-pref-height: 178px;
+
+    -fx-background-color: #F8F8FF;
+    -fx-border-color: rgba(56, 78, 183, 0.3);
+    -fx-border-style: segments(5, 5);
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+.uploadText {
+    -fx-font-family: 'Roboto Bold';
+    -fx-font-size: 11px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #483EA8;
+    -fx-alignment: center;
+    -fx-align-items: center;
+}
+
+.uploadText:hover {
+    -fx-underline: true;
+}
+
+.uploadSupportText {
+    -fx-font-family: 'Roboto Medium';
+    -fx-font-size: 8px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #676767;
+    -fx-alignment: center;
+    -fx-align-items: center;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 190px;
+    -fx-background-color: transparent;
+}
+
+.spinner {
+    -fx-pref-width: 298px;
+    -fx-pref-height: 44px;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1px;
+    -fx-border-color: #D4D4D4;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+}
+
+.spinner > .text-field {
+    -fx-background-color: transparent, white, transparent, white;
 }

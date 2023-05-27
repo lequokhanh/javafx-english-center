@@ -6,30 +6,23 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0"
-            prefWidth="270.0" stylesheets="@../css/AttendanceItem.css" xmlns="http://javafx.com/javafx/19"
+            prefWidth="270.0" stylesheets="@../css/StudentItem.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <Label styleClass="id" text="ID"/>
-        <Label layoutX="70.0" styleClass="name" text="Name"/>
-        <ImageView fx:id="rollCallBtn" fitHeight="16.0" fitWidth="16.0" layoutX="253.0" pickOnBounds="true"
-                   preserveRatio="true" styleClass="imageBtn">
-            <image>
-                <Image url="@../image/rollcall.png"/>
-            </image>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </ImageView>
-        <ImageView fx:id="removeBtn" fitHeight="16.0" fitWidth="16.0" layoutX="253.0" pickOnBounds="true"
-                   preserveRatio="true" styleClass="imageBtn" visible="false">
-            <image>
-                <Image url="@../image/remove.png"/>
-            </image>
-            <cursor>
-                <Cursor fx:constant="HAND"/>
-            </cursor>
-        </ImageView>
-    </children>
+    <Label prefHeight="18.0" prefWidth="60.0" styleClass="id" text="ID"/>
+    <Label layoutX="70.0" styleClass="name" text="Name"/>
+    <ImageView fx:id="rollCallBtn" fitHeight="16.0" fitWidth="16.0" layoutX="253.0" pickOnBounds="true"
+               preserveRatio="true" styleClass="imageBtn">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <Image url="@../image/rollcall.png"/>
+    </ImageView>
+    <ImageView fx:id="removeBtn" fitHeight="16.0" fitWidth="16.0" layoutX="253.0" pickOnBounds="true"
+               preserveRatio="true" styleClass="imageBtn" visible="false">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+        <Image url="@../image/remove.png"/>
+    </ImageView>
 </AnchorPane>

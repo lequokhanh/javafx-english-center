@@ -9,17 +9,12 @@ public class DBConnection {
     private static final String DB_PASSWORD = Env.get("DB_PASSWORD");
     private Connection connection;
 
-    public DBConnection() {
+    public DBConnection() throws SQLException {
         connect();
     }
 
-    public void connect() {
-        try {
-            connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-        } catch (SQLException e) {
-            System.out.println("ERROR connecting to database!");
-            System.out.println(e.toString());
-        }
+    public void connect() throws SQLException {
+        connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
     }
 
     public ResultSet select(String query) throws SQLException {

@@ -19,9 +19,9 @@
         <Label layoutX="32.0" styleClass="title" text="Welcome back"/>
         <Line endX="150.0" layoutX="151.0" layoutY="56.0" startX="-150.0" styleClass="line"/>
         <Label layoutX="94.0" layoutY="80.0" styleClass="inputtitle" text="Username"/>
-        <Group layoutX="1.0" layoutY="110.0">
+        <Group layoutX="1.0" layoutY="117.0">
             <TextField onAction="#onEnter" fx:id="username" promptText="username" styleClass="input"/>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="16.0" layoutY="9.0" pickOnBounds="true"
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="16.0" layoutY="10.0" pickOnBounds="true"
                        preserveRatio="true">
                 <Image url="@../image/account.png"/>
             </ImageView>

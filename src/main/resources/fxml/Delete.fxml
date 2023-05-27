@@ -10,26 +10,20 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
             prefWidth="400.0" styleClass="dialogDelete" stylesheets="@../css/Delete.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <VBox alignment="CENTER" layoutX="114.0" layoutY="40.0" spacing="8.0">
-            <children>
-                <Label styleClass="dialogTitle" text="Confirm delete"/>
-                <Label styleClass="dialogMessage" text="Are you sure you want to accept this?"/>
-            </children>
-        </VBox>
-        <HBox alignment="CENTER" layoutX="40.0" layoutY="113.0" spacing="24.0">
-            <children>
-                <Button mnemonicParsing="false" styleClass="dialogCancelBtn" text="No, cancel" fx:id="cancel">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </Button>
-                <Button mnemonicParsing="false" styleClass="dialogConfirmBtn" text="Yes, Confirm" fx:id="confirm">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                </Button>
-            </children>
-        </HBox>
-    </children>
+    <VBox alignment="CENTER" layoutX="114.0" layoutY="40.0" spacing="8.0">
+        <Label styleClass="dialogTitle" text="Confirm delete"/>
+        <Label styleClass="dialogMessage" text="Are you sure you want to accept this?"/>
+    </VBox>
+    <HBox alignment="CENTER" layoutX="40.0" layoutY="113.0" spacing="24.0">
+        <Button mnemonicParsing="false" styleClass="dialogCancelBtn" text="No, cancel" fx:id="cancel">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+        <Button mnemonicParsing="false" styleClass="dialogConfirmBtn" text="Yes, Confirm" fx:id="confirm">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+        </Button>
+    </HBox>
 </AnchorPane>

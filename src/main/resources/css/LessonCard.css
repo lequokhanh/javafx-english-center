@@ -10,6 +10,10 @@
     -fx-background-color: rgba(185, 185, 185, 0.4);
 }
 
+.cardPaneSelected {
+    -fx-background-color: rgba(185, 185, 185, 0.4);
+}
+
 .date {
     -fx-font-family: 'Roboto Italic';
     -fx-font-size: 14px;

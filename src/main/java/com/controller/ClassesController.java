@@ -1,8 +1,8 @@
 package com.controller;
 
 import com.models.Class;
+import com.service.ClassService;
 import com.utilities.Constants;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class ClassesController {
@@ -26,33 +27,50 @@ public class ClassesController {
     public TableColumn<Class, String> action;
     public HBox manageLessonBtn;
     public AnchorPane classPane;
+    public TableColumn<Class, String> room;
 
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, SQLException {
         classID.setPrefWidth(120);
         className.setPrefWidth(120);
         courseName.setPrefWidth(290);
         teacher.setPrefWidth(180);
-        start.setPrefWidth(155);
-        end.setPrefWidth(155);
+        room.setPrefWidth(90);
+        start.setPrefWidth(110);
+        end.setPrefWidth(110);
         action.setPrefWidth(100);
         classTable.getColumns().forEach(e -> {
             e.setReorderable(false);
             e.setResizable(false);
         });
-        reload();
+        search("");
     }
 
-    public void reload() throws IOException {
-        ObservableList<Class> classes = FXCollections.observableArrayList(
-                new Class("1", "Class 1", "Course 1", "Teacher 1", "1/1/2021", "1/1/2021"),
-                new Class("2", "Class 2", "Course 2", "Teacher 2", "1/1/2021", "1/1/2021"),
-                new Class("3", "Class 3", "Course 3", "Teacher 3", "1/1/2021", "1/1/2021")
-        );
+    public void search(String keyWord) throws IOException, SQLException {
+        ObservableList<Class> classes = ClassService.search(keyWord);
+        for (Class clas : classes) {
+            HBox action = clas.getAction();
+            if (action != null) {
+                action.lookup("#edit").setOnMouseClicked(mouseEvent -> {
+                    try {
+                        EditClassController.show(clas, this);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                action.lookup("#delete").setOnMouseClicked(mouseEvent -> {
+                    try {
+                        DeleteClass.show(clas.getId(), this);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            }
+        }
         classTable.setItems(classes);
     }
 
-    public void add() {
-
+    public void add() throws IOException {
+        EditClassController.show(null, this);
     }
 
     public void manageBtn(MouseEvent mouseEvent) {
