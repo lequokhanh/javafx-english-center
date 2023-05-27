@@ -5,7 +5,6 @@ import com.models.Course;
 import com.service.ChapterService;
 import com.utilities.Constants;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -49,7 +46,8 @@ public class ChapterSTController {
                 ObservableList<Chapter> chapters = ChapterService.search(course.getCourseID(), "");
                 for (int i = 0; i < chapters.size(); i++) {
                     Chapter chapter = chapters.get(i);
-                    Node chapterCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_CARD)));
+                    Node chapterCard = FXMLLoader
+                            .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_CARD)));
                     ((Label) chapterCard.lookup(".nameChapter")).setText(chapter.getChapterName());
                     ((Label) chapterCard.lookup(".descriptionChapter")).setText(chapter.getChapterDescription());
                     ((Label) chapterCard.lookup(".categoryChapter")).setText(chapter.getCategory());

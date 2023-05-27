@@ -1,8 +1,5 @@
 package com.models;
 
-import com.controller.CoursesController;
-import com.controller.DeleteCourse;
-import com.controller.EditCourseController;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,7 +8,6 @@ import javafx.scene.layout.HBox;
 import lombok.*;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 @Getter
@@ -32,7 +28,8 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public Course(String courseID, String courseName, String courseDescription, String courseLevel, Integer numberOfChapter) throws IOException {
+    public Course(String courseID, String courseName, String courseDescription, String courseLevel,
+            Integer numberOfChapter) throws IOException {
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseDescription = courseDescription;

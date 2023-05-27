@@ -3,15 +3,12 @@ package com.controller;
 import com.models.Course;
 import com.service.CourseService;
 import com.utilities.Constants;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -30,7 +27,8 @@ public class CourseSTController {
                 AnchorPane homepage = (AnchorPane) coursePane.getParent();
                 homepage.getChildren().remove(homepage.lookup("#tabpane"));
                 try {
-                    FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_ST)));
+                    FXMLLoader fxml = new FXMLLoader(
+                            Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_ST)));
                     Node chapter = fxml.load();
                     ChapterSTController controller = fxml.getController();
                     controller.course = course;

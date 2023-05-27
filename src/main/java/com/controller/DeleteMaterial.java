@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.App;
-import com.service.LessonService;
 import com.service.MaterialService;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +12,8 @@ import java.util.Objects;
 
 public class DeleteMaterial {
     public static void show(String materialID, LessonController handle) throws IOException {
-        Parent delete = FXMLLoader.load(Objects.requireNonNull(EditCourseController.class.getResource(Constants.FXML_DELETE)));
+        Parent delete = FXMLLoader
+                .load(Objects.requireNonNull(EditCourseController.class.getResource(Constants.FXML_DELETE)));
         App.addPopup(delete);
         delete.lookup("#cancel").setOnMouseClicked(e -> {
             try {

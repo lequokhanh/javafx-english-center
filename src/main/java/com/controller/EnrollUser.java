@@ -6,9 +6,7 @@ import com.models.User;
 import com.service.AccountService;
 import com.service.ClassService;
 import com.utilities.Constants;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -32,7 +30,8 @@ public class EnrollUser {
     }
 
     public static void show(User user) throws SQLException, IOException {
-        FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(EnrollUser.class.getResource(Constants.FXML_ENROLL_USER)));
+        FXMLLoader fxml = new FXMLLoader(
+                Objects.requireNonNull(EnrollUser.class.getResource(Constants.FXML_ENROLL_USER)));
         Parent edit = fxml.load();
         EnrollUser controller = fxml.getController();
         controller.id.setText(AccountService.getNewStudentId());
@@ -42,7 +41,8 @@ public class EnrollUser {
                     ErrorController.show("Please fill all the fields");
                     return;
                 }
-                AccountService.enrollToClass(controller.id.getText(), user.getId(), controller.classes.getValue().getId());
+                AccountService.enrollToClass(controller.id.getText(), user.getId(),
+                        controller.classes.getValue().getId());
                 controller.close();
             } catch (SQLException | IOException ex) {
                 try {

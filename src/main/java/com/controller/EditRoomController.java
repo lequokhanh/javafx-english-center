@@ -6,7 +6,6 @@ import com.service.RoomService;
 import com.utilities.Constants;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -30,7 +29,7 @@ public class EditRoomController {
         capacity.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
+                    String newValue) {
                 if (!newValue.matches("\\d*")) {
                     capacity.setText(newValue.replaceAll("[^\\d]", ""));
                 }
@@ -39,7 +38,8 @@ public class EditRoomController {
     }
 
     public static void show(Room room, RoomController handle) throws SQLException, IOException {
-        FXMLLoader fxml = new FXMLLoader(Objects.requireNonNull(EditClassController.class.getResource(Constants.FXML_EDIT_ROOM)));
+        FXMLLoader fxml = new FXMLLoader(
+                Objects.requireNonNull(EditClassController.class.getResource(Constants.FXML_EDIT_ROOM)));
         Parent editLesson = fxml.load();
         EditRoomController controller = fxml.getController();
         if (room == null) {
@@ -50,7 +50,8 @@ public class EditRoomController {
                         ErrorController.show("Please fill in all fields");
                         return;
                     }
-                    RoomService.Insert(controller.roomID.getText(), controller.roomName.getText(), controller.capacity.getText());
+                    RoomService.Insert(controller.roomID.getText(), controller.roomName.getText(),
+                            controller.capacity.getText());
                     handle.search("");
                     controller.close();
                 } catch (SQLException | IOException ex) {

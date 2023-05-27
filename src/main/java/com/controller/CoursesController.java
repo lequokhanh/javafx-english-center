@@ -3,11 +3,7 @@ package com.controller;
 import com.models.Course;
 import com.service.CourseService;
 import com.utilities.Constants;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -102,12 +97,16 @@ public class CoursesController {
                 previewPane.setVisible(true);
                 manageChapterBtn.setVisible(true);
             }
-            ((Label) previewPane.lookup(".previewCourseName")).setText(CourseTable.getSelectionModel().getSelectedItem().getCourseName());
-            ((Label) previewPane.lookup(".previewCourseDescription")).setText(CourseTable.getSelectionModel().getSelectedItem().getCourseDescription());
+            ((Label) previewPane.lookup(".previewCourseName"))
+                    .setText(CourseTable.getSelectionModel().getSelectedItem().getCourseName());
+            ((Label) previewPane.lookup(".previewCourseDescription"))
+                    .setText(CourseTable.getSelectionModel().getSelectedItem().getCourseDescription());
             if (CourseTable.getSelectionModel().getSelectedItem().getNumberOfChapter() < 10)
-                ((Label) previewPane.lookup(".previewChapterNumber")).setText("0" + CourseTable.getSelectionModel().getSelectedItem().getNumberOfChapter().toString());
+                ((Label) previewPane.lookup(".previewChapterNumber")).setText(
+                        "0" + CourseTable.getSelectionModel().getSelectedItem().getNumberOfChapter().toString());
             else
-                ((Label) previewPane.lookup(".previewChapterNumber")).setText(CourseTable.getSelectionModel().getSelectedItem().getNumberOfChapter().toString());
+                ((Label) previewPane.lookup(".previewChapterNumber"))
+                        .setText(CourseTable.getSelectionModel().getSelectedItem().getNumberOfChapter().toString());
 
             Label previewCourseLevel = (Label) previewPane.lookup("#flowPane").lookup(".courseLevel");
             previewCourseLevel.setText(CourseTable.getSelectionModel().getSelectedItem().getCourseLevel().getText());

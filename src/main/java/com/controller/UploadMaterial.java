@@ -1,10 +1,8 @@
 package com.controller;
 
 import com.App;
-import com.service.LessonService;
 import com.service.MaterialService;
 import com.utilities.Constants;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -20,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -68,7 +65,6 @@ public class UploadMaterial {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose file");
         files.addAll(fileChooser.showOpenMultipleDialog(uploadPopUp.getScene().getWindow()));
-        int row = files.size();
         reloadGridPane();
     }
 
@@ -76,7 +72,8 @@ public class UploadMaterial {
         gridPane.getChildren().clear();
         int row = files.size();
         for (int i = 0; i < row; i++) {
-            Node fileItem = FXMLLoader.load(Objects.requireNonNull(UploadMaterial.class.getResource(Constants.FXML_SMALL_FILE_ITEM)));
+            Node fileItem = FXMLLoader
+                    .load(Objects.requireNonNull(UploadMaterial.class.getResource(Constants.FXML_SMALL_FILE_ITEM)));
             File file = files.get(i);
             ((Label) fileItem.lookup(".fileName")).setText(file.getName());
             ((Button) fileItem.lookup(".deleteBtn")).setOnAction(e -> {

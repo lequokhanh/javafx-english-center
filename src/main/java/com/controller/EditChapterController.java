@@ -2,7 +2,6 @@ package com.controller;
 
 import com.App;
 import com.models.Chapter;
-import com.models.Course;
 import com.service.ChapterService;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +39,8 @@ public class EditChapterController {
                             ErrorController.show("Please fill all the fields");
                             return;
                         }
-                        ChapterService.InsertNewChapter(controller.chapterID.getText(), courseID, controller.chapterName.getText(),
+                        ChapterService.InsertNewChapter(controller.chapterID.getText(), courseID,
+                                controller.chapterName.getText(),
                                 controller.chapterDescription.getText(), controller.category.getValue());
                         handle.search("");
                         controller.close();

@@ -2,7 +2,6 @@ package com.controller;
 
 import com.App;
 import com.service.ClassService;
-import com.service.CourseService;
 import com.utilities.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +12,8 @@ import java.util.Objects;
 
 public class DeleteClass {
     public static void show(String classID, ClassesController handle) throws IOException {
-        Parent delete = FXMLLoader.load(Objects.requireNonNull(EditCourseController.class.getResource(Constants.FXML_DELETE)));
+        Parent delete = FXMLLoader
+                .load(Objects.requireNonNull(EditCourseController.class.getResource(Constants.FXML_DELETE)));
         App.addPopup(delete);
         delete.lookup("#cancel").setOnMouseClicked(e -> {
             try {

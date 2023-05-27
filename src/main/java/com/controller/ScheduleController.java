@@ -12,7 +12,6 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
-import java.util.Stack;
 
 public class ScheduleController {
 

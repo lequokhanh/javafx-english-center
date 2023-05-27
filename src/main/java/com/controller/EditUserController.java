@@ -4,7 +4,6 @@ import com.App;
 import com.models.User;
 import com.service.AccountService;
 import com.utilities.Constants;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -33,11 +32,13 @@ public class EditUserController {
             controller.userID.setText(AccountService.getNewId());
             controller.submit.setOnAction(e -> {
                 try {
-                    if (controller.username.getText().isEmpty() || controller.password.getText().isEmpty() || controller.fullname.getText().isEmpty() || controller.role.getValue() == null) {
+                    if (controller.username.getText().isEmpty() || controller.password.getText().isEmpty()
+                            || controller.fullname.getText().isEmpty() || controller.role.getValue() == null) {
                         ErrorController.show("Please fill all the fields");
                         return;
                     }
-                    AccountService.Insert(controller.userID.getText(), controller.username.getText(), controller.password.getText(), controller.fullname.getText(), controller.role.getValue());
+                    AccountService.Insert(controller.userID.getText(), controller.username.getText(),
+                            controller.password.getText(), controller.fullname.getText(), controller.role.getValue());
                     handle.search("");
                     controller.close();
                 } catch (SQLException | IOException ex) {
@@ -56,11 +57,13 @@ public class EditUserController {
             controller.role.setValue(user.getRole());
             controller.submit.setOnAction(e -> {
                 try {
-                    if (controller.username.getText().isEmpty() || controller.password.getText().isEmpty() || controller.fullname.getText().isEmpty() || controller.role.getValue() == null) {
+                    if (controller.username.getText().isEmpty() || controller.password.getText().isEmpty()
+                            || controller.fullname.getText().isEmpty() || controller.role.getValue() == null) {
                         ErrorController.show("Please fill all the fields");
                         return;
                     }
-                    AccountService.Update(controller.userID.getText(), controller.username.getText(), controller.password.getText(), controller.fullname.getText(), controller.role.getValue());
+                    AccountService.Update(controller.userID.getText(), controller.username.getText(),
+                            controller.password.getText(), controller.fullname.getText(), controller.role.getValue());
                     handle.search("");
                     controller.close();
                 } catch (SQLException | IOException ex) {

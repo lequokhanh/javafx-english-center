@@ -1,3 +1,4 @@
+
 package com.controller;
 
 import java.util.regex.Matcher;
@@ -5,7 +6,6 @@ import java.util.regex.Pattern;
 
 import com.App;
 import com.service.AccountService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import com.utilities.*;
@@ -29,11 +29,13 @@ public class LoginController {
             Matcher userValidate = pattern.matcher(username.getText());
             Matcher passValidate = pattern.matcher(password.getText());
             if (!userValidate.matches()) {
-                ErrorController.show("Username must be at least 4 characters and contain only letters, numbers, hyphens, periods and underscores");
+                ErrorController.show(
+                        "Username must be at least 4 characters and contain only letters, numbers, hyphens, periods and underscores");
                 return;
             }
             if (!passValidate.matches()) {
-                ErrorController.show("Password must be at least 4 characters and contain only letters, numbers, hyphens, periods and underscores");
+                ErrorController.show(
+                        "Password must be at least 4 characters and contain only letters, numbers, hyphens, periods and underscores");
                 return;
             }
             String result = AccountService.checkLogin(username.getText(), password.getText());

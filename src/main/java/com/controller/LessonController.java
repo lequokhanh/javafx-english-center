@@ -9,7 +9,6 @@ import com.service.MaterialService;
 import com.service.StudentService;
 import com.utilities.Constants;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -18,21 +17,15 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-
 import java.io.File;
 
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
 
 import static java.lang.Math.max;
@@ -90,11 +83,14 @@ public class LessonController {
         gridPane.getChildren().clear();
         for (int i = 0; i < row; i++) {
             Lesson lesson = lessons.get(i);
-            Node lessonCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_LESSON_CARD)));
+            Node lessonCard = FXMLLoader
+                    .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_LESSON_CARD)));
             AnchorPane cardPane = (AnchorPane) lessonCard.lookup(".cardPane");
             AnchorPane homepage = (AnchorPane) lessonPane.getParent();
-            Node description = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_DESCRIPTION_POP_UP)));
-            ((Label) ((AnchorPane) description.lookup("#anchor")).lookup("#description")).setText(lesson.getChapter().getChapterDescription());
+            Node description = FXMLLoader
+                    .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_DESCRIPTION_POP_UP)));
+            ((Label) ((AnchorPane) description.lookup("#anchor")).lookup("#description"))
+                    .setText(lesson.getChapter().getChapterDescription());
             cardPane.setOnMouseMoved(e -> {
                 homepage.getChildren().removeAll(description);
                 description.setId("description");
@@ -159,7 +155,8 @@ public class LessonController {
                 File selectedDirectory = directoryChooser.showDialog(lessonPane.getScene().getWindow());
                 if (selectedDirectory != null) {
                     try {
-                        Files.copy(Paths.get(material.getPath()), Paths.get(selectedDirectory.getAbsolutePath() + "\\" + fileName));
+                        Files.copy(Paths.get(material.getPath()),
+                                Paths.get(selectedDirectory.getAbsolutePath() + "\\" + fileName));
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -176,9 +173,9 @@ public class LessonController {
         }
     }
 
-
     public void searchAttendancePane(String keyWord) throws IOException, SQLException {
-        ObservableList<Student> absentStudent = StudentService.absentStudent(classes.getId(), selectedLesson.getId(), keyWord);
+        ObservableList<Student> absentStudent = StudentService.absentStudent(classes.getId(), selectedLesson.getId(),
+                keyWord);
         ObservableList<Student> presentStudent = StudentService.presentStudent(selectedLesson.getId());
         absentNumber.setText(Integer.toString(absentStudent.size()));
         totalNumber.setText(Integer.toString(absentStudent.size() + presentStudent.size()));
@@ -186,7 +183,8 @@ public class LessonController {
         presentGridPane.getChildren().clear();
         for (int i = 0; i < absentStudent.size(); i++) {
             Student student = absentStudent.get(i);
-            Node studentItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
+            Node studentItem = FXMLLoader
+                    .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
             ((Label) studentItem.lookup(".name")).setText(student.getName());
             ((Label) studentItem.lookup(".id")).setText(student.getId());
             studentItem.lookup("#rollCallBtn").setOnMouseClicked(e -> {
@@ -205,7 +203,8 @@ public class LessonController {
         }
         for (int i = 0; i < presentStudent.size(); i++) {
             Student student = presentStudent.get(i);
-            Node studentItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
+            Node studentItem = FXMLLoader
+                    .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
             ((Label) studentItem.lookup(".name")).setText(student.getName());
             ((Label) studentItem.lookup(".id")).setText(student.getId());
             studentItem.lookup("#rollCallBtn").setVisible(false);

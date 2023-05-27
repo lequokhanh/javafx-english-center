@@ -1,6 +1,5 @@
 package com.service;
 
-import com.models.Room;
 import com.models.Schedule;
 import com.utilities.DBConnection;
 
@@ -10,7 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ScheduleService {
-    private static Schedule addToSchedule(ResultSet session1, ResultSet session2, ResultSet session3, ResultSet session4) throws SQLException {
+    private static Schedule addToSchedule(ResultSet session1, ResultSet session2, ResultSet session3,
+            ResultSet session4) throws SQLException {
         List<String> session1List = Arrays.asList("", "", "", "", "", "", "");
         List<String> session2List = Arrays.asList("", "", "", "", "", "", "");
         List<String> session3List = Arrays.asList("", "", "", "", "", "", "");
@@ -52,28 +52,44 @@ public class ScheduleService {
 
     public static Schedule getScheduleWithRoom(String id) throws SQLException {
         DBConnection dbConnection = new DBConnection();
-        ResultSet session1 = dbConnection.select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
-        ResultSet session2 = dbConnection.select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
-        ResultSet session3 = dbConnection.select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
-        ResultSet session4 = dbConnection.select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
+        ResultSet session1 = dbConnection
+                .select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
+        ResultSet session2 = dbConnection.select(
+                "SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
+        ResultSet session3 = dbConnection
+                .select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
+        ResultSet session4 = dbConnection
+                .select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
         return addToSchedule(session1, session2, session3, session4);
     }
 
     public static Schedule getScheduleWithStudent(String id) throws SQLException {
         DBConnection dbConnection = new DBConnection();
-        ResultSet session1 = dbConnection.select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
-        ResultSet session2 = dbConnection.select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
-        ResultSet session3 = dbConnection.select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
-        ResultSet session4 = dbConnection.select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
+        ResultSet session1 = dbConnection
+                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                        + id + "' AND session_time = 'Session 1 (7am->9am)'");
+        ResultSet session2 = dbConnection
+                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                        + id + "' AND session_time = 'Session 2 (9am->11am)'");
+        ResultSet session3 = dbConnection
+                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                        + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
+        ResultSet session4 = dbConnection
+                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                        + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
         return addToSchedule(session1, session2, session3, session4);
     }
 
     public static Schedule getScheduleWithTeacher(String id) throws SQLException {
         DBConnection dbConnection = new DBConnection();
-        ResultSet session1 = dbConnection.select("SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
-        ResultSet session2 = dbConnection.select("SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
-        ResultSet session3 = dbConnection.select("SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
-        ResultSet session4 = dbConnection.select("SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
+        ResultSet session1 = dbConnection.select(
+                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
+        ResultSet session2 = dbConnection.select(
+                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
+        ResultSet session3 = dbConnection.select(
+                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
+        ResultSet session4 = dbConnection.select(
+                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
         return addToSchedule(session1, session2, session3, session4);
     }
 }

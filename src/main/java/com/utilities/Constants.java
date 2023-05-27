@@ -5,8 +5,6 @@
  */
 package com.utilities;
 
-import java.io.File;
-
 /**
  * @author Tony Manjarres
  */

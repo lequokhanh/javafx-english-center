@@ -5,8 +5,6 @@ import com.models.User;
 import com.utilities.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,22 +35,30 @@ public class AccountService {
     public static ObservableList<User> search(String keyWord) throws SQLException, IOException {
         keyWord = keyWord.toUpperCase();
         DBConnection db = new DBConnection();
-        ResultSet result = db.select("select * from account where upper(id) like '%%" + keyWord + "%%' or upper(account_name) like '%%" + keyWord + "%%' or upper(display_name) like '%%" + keyWord + "%%' or upper(role) like '%%" + keyWord + "%%' order by role asc");
+        ResultSet result = db.select("select * from account where upper(id) like '%%" + keyWord
+                + "%%' or upper(account_name) like '%%" + keyWord + "%%' or upper(display_name) like '%%" + keyWord
+                + "%%' or upper(role) like '%%" + keyWord + "%%' order by role asc");
         ObservableList<User> users = FXCollections.observableArrayList();
         while (result.next()) {
-            users.add(new User(result.getString("id"), result.getString("account_name"), result.getString("password"), result.getString("display_name"), result.getString("role")));
+            users.add(new User(result.getString("id"), result.getString("account_name"), result.getString("password"),
+                    result.getString("display_name"), result.getString("role")));
         }
         return users;
     }
 
-    public static void Insert(String id, String account_name, String password, String display_name, String role) throws SQLException {
+    public static void Insert(String id, String account_name, String password, String display_name, String role)
+            throws SQLException {
         DBConnection db = new DBConnection();
-        db.insert(String.format("insert into account values ('%s', '%s', '%s', '%s', '%s')", id, account_name, password, role, display_name));
+        db.insert(String.format("insert into account values ('%s', '%s', '%s', '%s', '%s')", id, account_name, password,
+                role, display_name));
     }
 
-    public static void Update(String id, String account_name, String password, String display_name, String role) throws SQLException {
+    public static void Update(String id, String account_name, String password, String display_name, String role)
+            throws SQLException {
         DBConnection db = new DBConnection();
-        db.update(String.format("update account set account_name = '%s', password = '%s', display_name = '%s', role = '%s' where id = '%s'", account_name, password, display_name, role, id));
+        db.update(String.format(
+                "update account set account_name = '%s', password = '%s', display_name = '%s', role = '%s' where id = '%s'",
+                account_name, password, display_name, role, id));
     }
 
     public static void Delete(String id) throws SQLException {
