@@ -43,6 +43,7 @@ public class EditCourseController {
                                 controller.courseDescription.getText(), controller.courseLevel.getValue());
                         handle.search("");
                         controller.close();
+                        SuccessfulController.show();
                     } catch (IOException | SQLException ex) {
                         try {
                             ErrorController.show(ex.toString());
@@ -68,6 +69,7 @@ public class EditCourseController {
                             controller.courseDescription.getText(), controller.courseLevel.getValue());
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (IOException | SQLException ex) {
                     try {
                         ErrorController.show(ex.toString());

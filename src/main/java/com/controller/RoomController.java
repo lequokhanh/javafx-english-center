@@ -5,6 +5,7 @@ import com.models.Schedule;
 import com.service.RoomService;
 import com.service.ScheduleService;
 import com.utilities.Constants;
+import com.utilities.Manager;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -29,8 +31,11 @@ public class RoomController {
     public AnchorPane roomPane;
     public Button edit;
     public TextField searchBox;
+    public HBox action;
 
     public void initialize() throws SQLException, IOException {
+        if (Manager.getAuth().split("/")[2].equals("Teacher"))
+            action.setVisible(false);
         search("");
     }
 

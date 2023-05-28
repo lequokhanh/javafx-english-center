@@ -30,6 +30,7 @@ public class DeleteLesson {
                 }
                 handle.lessonPane.lookup(".emptyTab").setVisible(true);
                 App.removePopUp(delete);
+                SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
                     ErrorController.show(ex.toString());

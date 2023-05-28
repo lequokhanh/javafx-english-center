@@ -47,6 +47,7 @@ public class EditLessonController {
                         LessonService.Insert(clas.getId(), controller.lessonID.getText(), controller.chapter.getValue().getChapterID(), df.toString(controller.learnDate.getValue()));
                         handle.search("");
                         controller.close();
+                        SuccessfulController.show();
                     } catch (SQLException | IOException ex) {
                         try {
                             ErrorController.show(ex.getMessage());
@@ -66,6 +67,7 @@ public class EditLessonController {
                     LessonService.Update(lesson.getId(), controller.chapter.getValue().getChapterID(), df.toString(controller.learnDate.getValue()));
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());

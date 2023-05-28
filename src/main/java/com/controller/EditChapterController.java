@@ -44,6 +44,7 @@ public class EditChapterController {
                                 controller.chapterDescription.getText(), controller.category.getValue());
                         handle.search("");
                         controller.close();
+                        SuccessfulController.show();
                     } catch (IOException | SQLException ex) {
                         try {
                             ErrorController.show(ex.toString());
@@ -64,6 +65,7 @@ public class EditChapterController {
                             controller.chapterDescription.getText(), controller.category.getValue());
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (IOException | SQLException ex) {
                     try {
                         ErrorController.show(ex.toString());

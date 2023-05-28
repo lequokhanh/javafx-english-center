@@ -3,6 +3,7 @@ package com.controller;
 import com.models.Schedule;
 import com.service.ScheduleService;
 import com.utilities.Constants;
+import com.utilities.Manager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -18,7 +19,11 @@ public class ScheduleController {
     public GridPane gridPane;
 
     public void initialize() throws SQLException, IOException {
-        Schedule schedule = ScheduleService.getScheduleWithStudent("6dc24a08");
+        Schedule schedule = new Schedule();
+        if (Manager.getAuth().split("/")[2].equals("Student"))
+            schedule = ScheduleService.getScheduleWithStudent(Manager.getAuth().split("/")[0]);
+        else if (Manager.getAuth().split("/")[2].equals("Teacher"))
+            schedule = ScheduleService.getScheduleWithTeacher(Manager.getAuth().split("/")[0]);
         for (int i = 0; i < 6; i++) {
             if (schedule.getSession1().get(i).equals("")) {
                 StackPane empty = new StackPane();

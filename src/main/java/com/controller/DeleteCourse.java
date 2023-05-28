@@ -27,6 +27,7 @@ public class DeleteCourse {
                 CourseService.DeleteCourse(courseID);
                 handle.search("");
                 App.removePopUp(delete);
+                SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
                     ErrorController.show(ex.toString());

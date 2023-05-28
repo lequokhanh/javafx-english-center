@@ -27,6 +27,7 @@ public class DeleteUser {
                 AccountService.Delete(id);
                 handle.search("");
                 App.removePopUp(delete);
+                SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
                     ErrorController.show(ex.toString());

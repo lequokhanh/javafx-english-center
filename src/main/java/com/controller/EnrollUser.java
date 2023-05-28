@@ -44,6 +44,7 @@ public class EnrollUser {
                 AccountService.enrollToClass(controller.id.getText(), user.getId(),
                         controller.classes.getValue().getId());
                 controller.close();
+                SuccessfulController.show();
             } catch (SQLException | IOException ex) {
                 try {
                     ErrorController.show(ex.getMessage());

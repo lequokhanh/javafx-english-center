@@ -41,6 +41,7 @@ public class EditUserController {
                             controller.password.getText(), controller.fullname.getText(), controller.role.getValue());
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());
@@ -66,6 +67,7 @@ public class EditUserController {
                             controller.password.getText(), controller.fullname.getText(), controller.role.getValue());
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());

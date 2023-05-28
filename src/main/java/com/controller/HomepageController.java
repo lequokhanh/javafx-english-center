@@ -27,12 +27,17 @@ public class HomepageController {
 
     @FXML
     private void initialize() {
-        if (Manager.getAuth().split("/")[2].equals("Student")) {
-            sidebar.getChildren().removeAll(roomsBtn, usersBtn, generalBtn);
-        } else if (Manager.getAuth().split("/")[2].equals("Teacher")) {
-            sidebar.getChildren().removeAll(classesBtn, roomsBtn, scheduleBtn, generalBtn);
-        } else if (Manager.getAuth().split("/")[2].equals("Manager")) {
-            sidebar.getChildren().removeAll(scheduleBtn);
+        String role = Manager.getAuth().split("/")[2];
+        switch (role) {
+            case "Manager":
+                sidebar.getChildren().removeAll(scheduleBtn);
+                break;
+            case "Teacher":
+                sidebar.getChildren().removeAll(generalBtn, usersBtn);
+                break;
+            default:
+                sidebar.getChildren().removeAll(roomsBtn, usersBtn, generalBtn);
+                break;
         }
         generalBtn.setOnAction(e -> {
             try {
@@ -75,7 +80,11 @@ public class HomepageController {
                     homePageImage.setVisible(false);
                     coursesBtn.getStyleClass().add("tabbtnactive");
                     Node courses = FXMLLoader
-                            .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_COURSES)));
+                            .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_COURSES_ST)));
+                    if (role.equals("Manager")) {
+                        courses = FXMLLoader
+                                .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_COURSES)));
+                    }
                     courses.setId("tabpane");
                     courses.getStyleClass().add("tabpane");
                     homepage.getChildren().add(courses);

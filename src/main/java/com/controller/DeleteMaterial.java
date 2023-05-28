@@ -27,6 +27,7 @@ public class DeleteMaterial {
                 MaterialService.Delete(materialID);
                 handle.searchMaterialPane("");
                 App.removePopUp(delete);
+                SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
                     ErrorController.show(ex.toString());

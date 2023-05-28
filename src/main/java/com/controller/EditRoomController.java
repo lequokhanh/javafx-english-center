@@ -29,7 +29,7 @@ public class EditRoomController {
         capacity.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
-                    String newValue) {
+                                String newValue) {
                 if (!newValue.matches("\\d*")) {
                     capacity.setText(newValue.replaceAll("[^\\d]", ""));
                 }
@@ -54,6 +54,7 @@ public class EditRoomController {
                             controller.capacity.getText());
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());
@@ -75,6 +76,7 @@ public class EditRoomController {
                     RoomService.Update(room.getId(), controller.roomName.getText(), controller.capacity.getText());
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());

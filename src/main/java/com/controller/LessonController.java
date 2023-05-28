@@ -8,23 +8,27 @@ import com.service.LessonService;
 import com.service.MaterialService;
 import com.service.StudentService;
 import com.utilities.Constants;
+import com.utilities.Manager;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+
 import java.io.File;
 
+import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -39,17 +43,26 @@ public class LessonController {
     public AnchorPane lessonPane;
     public Lesson selectedLesson;
     public Group lessonTab;
-    public AnchorPane materialPane;
+    public Tab materialPane;
     public Tab attendancePane;
     public GridPane materialGridPane;
     public GridPane absentGridPane;
     public GridPane presentGridPane;
     public Label absentNumber;
     public Label totalNumber;
-    public Button edit;
-    public Button delete;
+    public HBox action;
+    public TabPane tabPane;
+    public Button uploadBtn;
+    public TextField searchMaterial;
+    public TextField searchLesson;
 
     public void initialize() throws IOException {
+        if (Manager.getAuth().split("/")[2].equals("Student") || Manager.getAuth().split("/")[2].equals("Teacher"))
+            action.setVisible(false);
+        if (Manager.getAuth().split("/")[2].equals("Student")) {
+            tabPane.getTabs().remove(attendancePane);
+            uploadBtn.setVisible(false);
+        }
         Platform.runLater(() -> {
             className.setText(classes.getName());
             courseName.setText(classes.getCourse().getCourseName());
@@ -122,19 +135,19 @@ public class LessonController {
             ((Label) cardPane.lookup("#category")).setText(lesson.getChapter().getCategory());
             switch (lesson.getChapter().getCategory()) {
                 case "Reading":
-                    ((Label) cardPane.lookup("#category")).getStyleClass().add("reading");
+                    cardPane.lookup("#category").getStyleClass().add("reading");
                     break;
                 case "Listening":
-                    ((Label) cardPane.lookup("#category")).getStyleClass().add("listening");
+                    cardPane.lookup("#category").getStyleClass().add("listening");
                     break;
                 case "Speaking":
-                    ((Label) cardPane.lookup("#category")).getStyleClass().add("speaking");
+                    cardPane.lookup("#category").getStyleClass().add("speaking");
                     break;
                 case "Writing":
-                    ((Label) cardPane.lookup("#category")).getStyleClass().add("writing");
+                    cardPane.lookup("#category").getStyleClass().add("writing");
                     break;
                 default:
-                    ((Label) cardPane.lookup("#category")).getStyleClass().add("other");
+                    cardPane.lookup("#category").getStyleClass().add("other");
                     break;
             }
             ((Label) lessonCard.lookup("#date")).setText(lesson.getDate());
@@ -150,13 +163,14 @@ public class LessonController {
             Node fileItem = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_FILE_ITEM)));
             String fileName = material.getPath().split("\\\\")[material.getPath().split("\\\\").length - 1];
             ((Label) fileItem.lookup(".fileName")).setText(fileName);
-            ((Label) fileItem.lookup(".fileName")).setOnMouseClicked(e -> {
+            fileItem.lookup(".fileName").setOnMouseClicked(e -> {
                 DirectoryChooser directoryChooser = new DirectoryChooser();
                 File selectedDirectory = directoryChooser.showDialog(lessonPane.getScene().getWindow());
                 if (selectedDirectory != null) {
                     try {
                         Files.copy(Paths.get(material.getPath()),
-                                Paths.get(selectedDirectory.getAbsolutePath() + "\\" + fileName));
+                                Paths.get(selectedDirectory.getAbsolutePath() + "\\" + fileName), StandardCopyOption.REPLACE_EXISTING);
+                        SuccessfulController.show();
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -169,6 +183,8 @@ public class LessonController {
                     throw new RuntimeException(ex);
                 }
             });
+            if (Manager.getAuth().split("/")[2].equals("Student"))
+                fileItem.lookup(".deleteBtn").setVisible(false);
             materialGridPane.add(fileItem, 0, i);
         }
     }
@@ -260,5 +276,21 @@ public class LessonController {
 
     public void upload() throws IOException {
         UploadMaterial.show(selectedLesson.getId(), this);
+    }
+
+    public void searchMaterial(KeyEvent keyEvent) {
+        try {
+            searchMaterialPane(searchMaterial.getText());
+        } catch (IOException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void searchLesson(KeyEvent keyEvent) {
+        try {
+            search(searchLesson.getText());
+        } catch (IOException | SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

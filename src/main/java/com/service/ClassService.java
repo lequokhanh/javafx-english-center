@@ -48,6 +48,78 @@ public class ClassService {
         return classes;
     }
 
+    public static ObservableList<Class> searchWithTeacherID(String teacherID, String keyWord) throws SQLException, IOException {
+        DateFormat dateFormat = new DateFormat();
+        keyWord = keyWord.toUpperCase();
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name " +
+                "from classes cl " +
+                "join account ac on cl.teacher_id = ac.id " +
+                "join course co on cl.course_id = co.id " +
+                "join room ro on cl.room_id = ro.id " +
+                "where teacher_id = '%s' " +
+                "and (upper(cl.id) like '%%%s%%' " +
+                "or upper(ac.display_name) like '%%%s%%' " +
+                "or upper(co.name) like '%%%s%%' " +
+                "or upper(cl.name) like '%%%s%%' " +
+                "or upper(cl.date_start) like '%%%s%%' " +
+                "or upper(cl.date_end) like '%%%s%%'" +
+                "or upper(ro.name) like '%%%s%%')", teacherID, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord));
+        ObservableList<Class> classes = javafx.collections.FXCollections.observableArrayList();
+        while (result.next()) {
+            classes.add(new Class(result.getString("id"),
+                    result.getString("name"),
+                    new Course(result.getString("course_id"),
+                            result.getString("course_name")),
+                    new Teacher(result.getString("teacher_id"),
+                            result.getString("teacher_name")),
+                    new Room(result.getString("room_id"),
+                            result.getString("room_name")),
+                    result.getString("session_day"),
+                    result.getString("session_time"),
+                    dateFormat.toString(result.getDate("date_start").toLocalDate()),
+                    dateFormat.toString(result.getDate("date_end").toLocalDate())));
+        }
+        return classes;
+    }
+
+    public static ObservableList<Class> searchWithStudentID(String studentID, String keyWord) throws SQLException, IOException {
+        DateFormat dateFormat = new DateFormat();
+        keyWord = keyWord.toUpperCase();
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name " +
+                "from classes cl " +
+                "join student st on st.class_id = cl.id " +
+                "join account ac on cl.teacher_id = ac.id " +
+                "join course co on cl.course_id = co.id " +
+                "join room ro on cl.room_id = ro.id " +
+                "where st.user_id ='%s' " +
+                "and (upper(cl.id) like '%%%s%%' " +
+                "or upper(ac.display_name) like '%%%s%%' " +
+                "or upper(co.name) like '%%%s%%' " +
+                "or upper(cl.name) like '%%%s%%' " +
+                "or upper(cl.date_start) like '%%%s%%' " +
+                "or upper(cl.date_end) like '%%%s%%'" +
+                "or upper(ro.name) like '%%%s%%')", studentID, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord));
+        ObservableList<Class> classes = javafx.collections.FXCollections.observableArrayList();
+        while (result.next()) {
+            classes.add(new Class(result.getString("id"),
+                    result.getString("name"),
+                    new Course(result.getString("course_id"),
+                            result.getString("course_name")),
+                    new Teacher(result.getString("teacher_id"),
+                            result.getString("teacher_name")),
+                    new Room(result.getString("room_id"),
+                            result.getString("room_name")),
+                    result.getString("session_day"),
+                    result.getString("session_time"),
+                    dateFormat.toString(result.getDate("date_start").toLocalDate()),
+                    dateFormat.toString(result.getDate("date_end").toLocalDate())));
+        }
+        return classes;
+    }
+
+
     public static void Insert(String id, String name, String course, String teacher, String room, String session_day, String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
         db.insert(String.format("INSERT INTO classes(id,teacher_id,name,course_id,date_start,date_end,session_time,session_day,room_id) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')", id, teacher, name, course, start, end, session_time, session_day, room));

@@ -26,6 +26,7 @@ public class DeleteChapter {
                 ChapterService.DeleteChapter(chapterID);
                 handle.search("");
                 App.removePopUp(delete);
+                SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
                     ErrorController.show(ex.toString());

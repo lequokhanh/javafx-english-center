@@ -44,6 +44,7 @@ public class UploadMaterial {
                     MaterialService.Insert(String.valueOf(dest.toPath()), lessonID);
                     handle.searchMaterialPane("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (IOException | SQLException ex) {
                     try {
                         ErrorController.show(ex.getMessage());

@@ -36,14 +36,15 @@
         </AnchorPane>
     </ScrollPane>
     <Group layoutX="46.0" layoutY="764.0">
-        <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+        <TextField fx:id="searchLesson" onKeyTyped="#searchLesson" layoutY="8.0" promptText="Search..."
+                   styleClass="searchBox"/>
         <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"
                    x="8.0" y="9.0">
             <Image url="@../image/search.png"/>
         </ImageView>
     </Group>
-    <HBox layoutX="367.0" layoutY="772.0" spacing="5.0">
-        <Button fx:id="edit" mnemonicParsing="false" onAction="#edit" styleClass="actionBtn">
+    <HBox fx:id="action" layoutX="367.0" layoutY="772.0" spacing="5.0">
+        <Button mnemonicParsing="false" onAction="#edit" styleClass="actionBtn">
             <graphic>
                 <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../image/edit.png"/>
@@ -53,7 +54,7 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </Button>
-        <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" styleClass="actionBtn">
+        <Button mnemonicParsing="false" onAction="#delete" styleClass="actionBtn">
             <graphic>
                 <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                     <Image url="@../image/delete.png"/>
@@ -82,15 +83,18 @@
         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../image/arrow_left.png"/>
         </ImageView>
-        <Label styleClass="manageChapterBtn" text="Back to Courses"/>
+        <Label styleClass="manageChapterBtn" text="Back to Classes"/>
     </HBox>
     <Group fx:id="lessonTab" layoutX="528.0" layoutY="133.0" visible="false">
-        <TabPane focusTraversable="false" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
-            <Tab closable="false" text="Materials">
-                <AnchorPane fx:id="materialPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+        <TabPane fx:id="tabPane" focusTraversable="false" prefHeight="200.0" prefWidth="200.0"
+                 tabClosingPolicy="UNAVAILABLE">
+            <Tab fx:id="materialPane" closable="false" text="Materials">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
                             prefWidth="200.0">
                     <Group layoutX="15.0" layoutY="22.0">
-                        <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+                        <TextField fx:id="searchMaterial" onKeyTyped="#searchMaterial" layoutY="8.0"
+                                   promptText="Search..."
+                                   styleClass="searchBox"/>
                         <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0"
                                    pickOnBounds="true" preserveRatio="true" x="8.0" y="9.0">
                             <Image url="@../image/search.png"/>
@@ -110,7 +114,7 @@
                             </GridPane>
                         </AnchorPane>
                     </ScrollPane>
-                    <Button layoutX="544.0" layoutY="30.0" mnemonicParsing="false"
+                    <Button fx:id="uploadBtn" layoutX="544.0" layoutY="30.0" mnemonicParsing="false"
                             onAction="#upload" prefWidth="99.0"
                             style="-fx-pref-width: 110; -fx-pref-height: 31;" styleClass="addBtn"
                             text="Upload File">

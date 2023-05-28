@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -69,6 +70,7 @@ public class EditClassController {
                                 df.toString(controller.finishDate.getValue()));
                         handle.search("");
                         controller.close();
+                        SuccessfulController.show();
                     } catch (IOException | SQLException ex) {
                         try {
                             ErrorController.show(ex.toString());
@@ -98,6 +100,7 @@ public class EditClassController {
                             df.toString(controller.finishDate.getValue()));
                     handle.search("");
                     controller.close();
+                    SuccessfulController.show();
                 } catch (IOException | SQLException ex) {
                     try {
                         ErrorController.show(ex.toString());

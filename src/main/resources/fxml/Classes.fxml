@@ -18,8 +18,9 @@
             prefWidth="1226.0" stylesheets="@../css/Classes.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ClassesController" fx:id="classPane">
     <children>
-        <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Classes"/>
-        <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Class for adminstator"/>
+        <Label fx:id="title" layoutX="47.0" layoutY="37.0" styleClass="title" text="Classes"/>
+        <Label fx:id="smallTitle" layoutX="47.0" layoutY="79.0" styleClass="smalltitle"
+               text="Manage Class for adminstator"/>
         <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
         <TableView fx:id="classTable" layoutX="47.0" layoutY="198.0" prefHeight="200.0" prefWidth="200.0"
                    onMouseClicked="#manageBtn">
@@ -77,7 +78,8 @@
                 </ImageView>
             </children>
         </Group>
-        <Button layoutX="1038.0" layoutY="149.0" mnemonicParsing="false" onAction="#add" styleClass="addBtn"
+        <Button fx:id="addBtn" layoutX="1038.0" layoutY="149.0" mnemonicParsing="false" onAction="#add"
+                styleClass="addBtn"
                 text="Add Class">
             <cursor>
                 <Cursor fx:constant="HAND"/>
@@ -93,7 +95,7 @@
         <HBox fx:id="manageLessonBtn" layoutX="996.0" layoutY="810.0" styleClass="manageChapterBtn" visible="false"
               onMouseClicked="#manageLessons">
             <children>
-                <Label styleClass="manageChapterBtn" text="Manage Lessons"/>
+                <Label fx:id="manageBtn" styleClass="manageChapterBtn" text="Manage Lessons"/>
                 <ImageView fitHeight="8.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../image/arrow_right.png"/>

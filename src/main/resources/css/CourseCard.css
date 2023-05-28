@@ -13,6 +13,7 @@
 
 
 .cardCourseName {
+    -fx-pref-width: 190px;
     -fx-font-family: 'Roboto Bold';
     -fx-font-size: 18px;
 
