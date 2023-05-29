@@ -9,9 +9,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -24,6 +27,7 @@ public class ChapterSTController {
     public Label level;
     public Label courseDescription;
     public GridPane gridPane;
+    public TextField searchField;
 
     public void initialize() {
         Platform.runLater(() -> {
@@ -43,33 +47,7 @@ public class ChapterSTController {
             }
             courseDescription.setText(course.getCourseDescription());
             try {
-                ObservableList<Chapter> chapters = ChapterService.search(course.getCourseID(), "");
-                for (int i = 0; i < chapters.size(); i++) {
-                    Chapter chapter = chapters.get(i);
-                    Node chapterCard = FXMLLoader
-                            .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_CARD)));
-                    ((Label) chapterCard.lookup(".nameChapter")).setText(chapter.getChapterName());
-                    ((Label) chapterCard.lookup(".descriptionChapter")).setText(chapter.getChapterDescription());
-                    ((Label) chapterCard.lookup(".categoryChapter")).setText(chapter.getCategory());
-                    switch (chapter.getCategory()) {
-                        case "Reading":
-                            ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("reading");
-                            break;
-                        case "Listening":
-                            ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("listening");
-                            break;
-                        case "Speaking":
-                            ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("speaking");
-                            break;
-                        case "Writing":
-                            ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("writing");
-                            break;
-                        default:
-                            ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("other");
-                            break;
-                    }
-                    gridPane.add(chapterCard, 0, i);
-                }
+                reload("");
             } catch (IOException | SQLException e) {
                 try {
                     ErrorController.show(e.getMessage());
@@ -78,6 +56,36 @@ public class ChapterSTController {
                 }
             }
         });
+    }
+
+    public void reload(String keyWord) throws IOException, SQLException {
+        ObservableList<Chapter> chapters = ChapterService.search(course.getCourseID(), "");
+        for (int i = 0; i < chapters.size(); i++) {
+            Chapter chapter = chapters.get(i);
+            Node chapterCard = FXMLLoader
+                    .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_CHAPTER_CARD)));
+            ((Label) chapterCard.lookup(".nameChapter")).setText(chapter.getChapterName());
+            ((Label) chapterCard.lookup(".descriptionChapter")).setText(chapter.getChapterDescription());
+            ((Label) chapterCard.lookup(".categoryChapter")).setText(chapter.getCategory());
+            switch (chapter.getCategory()) {
+                case "Reading":
+                    ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("reading");
+                    break;
+                case "Listening":
+                    ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("listening");
+                    break;
+                case "Speaking":
+                    ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("speaking");
+                    break;
+                case "Writing":
+                    ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("writing");
+                    break;
+                default:
+                    ((Label) chapterCard.lookup(".categoryChapter")).getStyleClass().add("other");
+                    break;
+            }
+            gridPane.add(chapterCard, 0, i);
+        }
     }
 
     public void backToCourseBtn(MouseEvent mouseEvent) throws IOException {
@@ -90,5 +98,9 @@ public class ChapterSTController {
         general.setLayoutX(345);
         general.setLayoutY(20);
         general.toFront();
+    }
+
+    public void search(KeyEvent keyEvent) throws SQLException, IOException {
+        reload(searchField.getText());
     }
 }

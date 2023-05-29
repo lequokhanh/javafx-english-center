@@ -62,6 +62,10 @@
     -fx-background-color: #B8B3D7;
 }
 
+.table-row-cell:selected {
+    -fx-background-color: #B8B3D7;
+}
+
 .manageChapterBtn {
     -fx-alignment: center;
     -fx-spacing: 10;

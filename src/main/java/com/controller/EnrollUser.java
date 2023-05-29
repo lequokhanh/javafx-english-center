@@ -23,6 +23,8 @@ public class EnrollUser {
     public Button submit;
     public Label id;
     public ComboBox<Class> classes;
+    public Label userID;
+    public Label displayName;
 
     public void initialize() throws SQLException, IOException {
         ObservableList<Class> classes = ClassService.search("");
@@ -35,6 +37,8 @@ public class EnrollUser {
         Parent edit = fxml.load();
         EnrollUser controller = fxml.getController();
         controller.id.setText(AccountService.getNewStudentId());
+        controller.userID.setText(user.getId());
+        controller.displayName.setText(user.getDisplayName());
         controller.submit.setOnAction(e -> {
             try {
                 if (controller.classes.getValue() == null) {

@@ -30,9 +30,10 @@ public class EditRoomController {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue,
                                 String newValue) {
-                if (!newValue.matches("\\d*")) {
+                if (!newValue.matches("\\d*"))
                     capacity.setText(newValue.replaceAll("[^\\d]", ""));
-                }
+                if (!capacity.getText().equals("") && Integer.parseInt(capacity.getText()) > 100)
+                    capacity.setText("100");
             }
         });
     }

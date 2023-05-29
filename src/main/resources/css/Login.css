@@ -3,7 +3,7 @@
 .background {
     -fx-pref-width: 960px;
     -fx-pref-height: 540px;
-    -fx-background-color: #f3f3f7;
+    -fx-background-color: #FFFFFF;
 }
 
 .title {
@@ -49,6 +49,10 @@
     -fx-border-radius: 15px;
     -fx-background-radius: 15px;
     -fx-text-fill: rgba(64, 65, 70, 0.8);
+}
+
+.input .text {
+    -fx-text-fill: rgba(64, 65, 70);
 }
 
 

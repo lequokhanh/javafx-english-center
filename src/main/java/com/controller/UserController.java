@@ -81,10 +81,6 @@ public class UserController {
     }
 
     public void enroll(ActionEvent actionEvent) throws IOException {
-        if (UserTable.getSelectionModel().getSelectedItem() == null || !UserTable.getSelectionModel().getSelectedItem().getRole().equals("Student")) {
-            ErrorController.show("Please select a student");
-            return;
-        }
         try {
             EnrollUser.show(UserTable.getSelectionModel().getSelectedItem());
         } catch (IOException | SQLException e) {
@@ -93,8 +89,10 @@ public class UserController {
     }
 
     public void clickToEnroll(MouseEvent mouseEvent) {
-        if (!enrollBtn.isVisible()) {
-            enrollBtn.setVisible(true);
+        if (UserTable.getSelectionModel().getSelectedItem() == null || !UserTable.getSelectionModel().getSelectedItem().getRole().equals("Student")) {
+            enrollBtn.setVisible(false);
+            return;
         }
+        enrollBtn.setVisible(true);
     }
 }

@@ -81,3 +81,27 @@
     -fx-background-radius: 10px;
     -fx-border-radius: 10px;
 }
+
+.displayName {
+    -fx-pref-width: 190px;
+    -fx-pref-height: 28px;
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 700;
+    -fx-font-size: 24px;
+    -fx-line-height: 28px;
+    -fx-text-fill: #000000;
+    -fx-alignment: center-right;
+}
+
+.role {
+    -fx-pref-width: 190px;
+    -fx-pref-height: 23px;
+    -fx-font-family: 'Roboto';
+    -fx-font-style: normal;
+    -fx-font-weight: 300;
+    -fx-font-size: 20px;
+    -fx-line-height: 23px;
+    -fx-text-fill: #000000;
+    -fx-alignment: center-right;
+}

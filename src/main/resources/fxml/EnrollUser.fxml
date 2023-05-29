@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane fx:id="editPopUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="376.0" prefWidth="400.0" styleClass="editPane" stylesheets="@../css/Edit.css"
+            prefHeight="457.0" prefWidth="400.0" styleClass="editPane" stylesheets="@../css/Edit.css"
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.controller.EnrollUser">
     <Button layoutX="367.0" layoutY="9.0" mnemonicParsing="false" onAction="#close" styleClass="closeBtn">
@@ -34,16 +34,28 @@
         <Label styleClass="editNameField" text="User ID"/>
         <Label fx:id="id" styleClass="editField" text="id"/>
     </VBox>
-    <Button fx:id="submit" layoutX="237.0" layoutY="303.0" mnemonicParsing="false" styleClass="submitBtn" text="Submit">
-        <cursor>
-            <Cursor fx:constant="HAND"/>
-        </cursor>
-    </Button>
-    <VBox layoutX="53.0" layoutY="212.0" spacing="8.0">
+    <VBox layoutX="53.0" layoutY="206.0" prefHeight="71.0" prefWidth="129.0" spacing="8.0">
+        <children>
+            <Label styleClass="editNameField" text="Account ID"/>
+            <Label fx:id="userID" prefWidth="143.0" styleClass="editField" text="id"/>
+        </children>
+    </VBox>
+    <VBox layoutX="53.0" layoutY="293.0" prefHeight="71.0" prefWidth="298.0" spacing="8.0">
         <children>
             <Label styleClass="editNameField" text="Class"/>
             <ComboBox fx:id="classes" prefWidth="298.0" promptText="Choose a Class" style="-fx-pref-width: 298;"
                       styleClass="editChooseBox"/>
+        </children>
+    </VBox>
+    <Button fx:id="submit" layoutX="237.0" layoutY="384.0" mnemonicParsing="false" styleClass="submitBtn" text="Submit">
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+    </Button>
+    <VBox layoutX="191.0" layoutY="206.0" prefHeight="71.0" prefWidth="157.0" spacing="8.0">
+        <children>
+            <Label styleClass="editNameField" text="Display name"/>
+            <Label fx:id="displayName" prefWidth="143.0" styleClass="editField" text="id"/>
         </children>
     </VBox>
 </AnchorPane>

@@ -1,6 +1,9 @@
 @import "Font.css";
 @import "Tabpane.css";
 
+.addBtn {
+    -fx-pref-width: 150px;
+}
 
 .manageChapterBtn {
     -fx-alignment: center;

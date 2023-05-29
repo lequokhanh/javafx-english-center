@@ -32,8 +32,8 @@ public class UploadMaterial {
         Parent upload = fxml.load();
         UploadMaterial controller = fxml.getController();
         controller.save.setOnAction(e -> {
-            controller.files.forEach(file -> {
-                try {
+            try {
+                for (File file : controller.files) {
                     File folder = new File(Constants.MATERIAL_PATH + "/" + lessonID);
                     if (!folder.exists()) {
                         if (!folder.mkdirs())
@@ -45,15 +45,14 @@ public class UploadMaterial {
                     handle.searchMaterialPane("");
                     controller.close();
                     SuccessfulController.show();
-                } catch (IOException | SQLException ex) {
-                    try {
-                        ErrorController.show(ex.getMessage());
-                        return;
-                    } catch (IOException exc) {
-                        throw new RuntimeException(exc);
-                    }
                 }
-            });
+            } catch (SQLException | IOException ex) {
+                try {
+                    ErrorController.show(ex.getMessage());
+                } catch (IOException exc) {
+                    throw new RuntimeException(exc);
+                }
+            }
         });
         App.addPopup(upload);
     }

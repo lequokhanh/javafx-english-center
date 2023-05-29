@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -24,10 +25,14 @@ public class HomepageController {
     public Button usersBtn;
     public AnchorPane homepage;
     public VBox sidebar;
+    public Label displayName;
+    public Label role;
 
     @FXML
     private void initialize() {
+        displayName.setText(Manager.getAuth().split("/")[1]);
         String role = Manager.getAuth().split("/")[2];
+        this.role.setText(role);
         switch (role) {
             case "Manager":
                 sidebar.getChildren().removeAll(scheduleBtn);

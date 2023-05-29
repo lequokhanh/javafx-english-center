@@ -61,6 +61,10 @@
     -fx-background-color: #B8B3D7;
 }
 
+.table-row-cell:selected {
+    -fx-background-color: #B8B3D7;
+}
+
 .enrrolBtn {
     -fx-alignment: center;
     -fx-padding: 8px 12px;

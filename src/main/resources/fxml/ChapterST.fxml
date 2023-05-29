@@ -21,7 +21,8 @@
     <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Chapters in a Course"/>
     <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
     <Group layoutX="810.0" layoutY="313.0">
-        <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+        <TextField fx:id="searchField" onKeyTyped="#search" layoutY="8.0" promptText="Search..."
+                   styleClass="searchBox"/>
         <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"
                    x="8.0" y="9.0">
             <Image url="@../image/search.png"/>
