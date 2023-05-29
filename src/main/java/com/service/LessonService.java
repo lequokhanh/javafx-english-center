@@ -2,8 +2,10 @@ package com.service;
 
 import com.models.Chapter;
 import com.models.Lesson;
+import com.models.Point;
 import com.utilities.DBConnection;
 import com.utilities.DateFormat;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
@@ -55,4 +57,19 @@ public class LessonService {
         db.delete(String.format("DELETE FROM lesson WHERE id = '%s'", id));
     }
 
+    public static ObservableList<Point> getLessonPresentStudent(String classID) throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet resultSet = db.select(String.format("SELECT count(st.id) as number_of_student, ca.name as lesson_name\n" +
+                "from lesson le\n" +
+                "join classes cl on le.class_id = cl.id\n" +
+                "join student st on cl.id = st.class_id\n" +
+                "join chapter ca on le.chapter_id = ca.id\n" +
+                "where le.class_id = '%s' and st.id not in (select student_id from class_attendance where lesson_id = le.id) \n" +
+                "group by ca.name", classID));
+        ObservableList<Point> points = FXCollections.observableArrayList();
+        while (resultSet.next()) {
+            points.add(new Point(resultSet.getString("lesson_name"), resultSet.getInt("number_of_student")));
+        }
+        return points;
+    }
 }

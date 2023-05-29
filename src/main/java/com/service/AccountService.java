@@ -5,6 +5,7 @@ import com.models.User;
 import com.utilities.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class AccountService {
 
     public static ObservableList<Teacher> getAllTeacher() throws SQLException {
         DBConnection db = new DBConnection();
-        ResultSet result = db.select("select * from account where role = 'teacher'");
+        ResultSet result = db.select("select * from account where role = 'Teacher'");
         ObservableList<Teacher> teachers = FXCollections.observableArrayList();
         while (result.next()) {
             teachers.add(new Teacher(result.getString("id"), result.getString("display_name")));
@@ -78,6 +79,14 @@ public class AccountService {
 
     public static void enrollToClass(String id, String studentID, String classID) throws SQLException {
         DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from student where user_id = '%s' and class_id = '%s'", studentID, classID));
+        if (result.next()) {
+            throw new SQLException("Student already enrolled in this class");
+        }
+        result = db.select(String.format("select * from student join classes cl on student.class_id = cl.id where student.user_id = '%s' and cl.session_time = (select session_time from classes where id = '%s') and cl.session_day = (select session_day from classes where id = '%s')", studentID, classID, classID));
+        if (result.next()) {
+            throw new SQLException("Student already enrolled in a class at this time");
+        }
         db.insert(String.format("insert into student values ('%s', '%s', '%s')", id, studentID, classID));
     }
 

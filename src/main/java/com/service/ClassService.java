@@ -1,11 +1,10 @@
 package com.service;
 
+import com.models.*;
 import com.models.Class;
-import com.models.Course;
-import com.models.Room;
-import com.models.Teacher;
 import com.utilities.DBConnection;
 import com.utilities.DateFormat;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;
@@ -14,6 +13,15 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class ClassService {
+    public static Integer getNumberOfClasses() throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select("select count(*) as number_of_classes from classes");
+        if (result.next()) {
+            return result.getInt("number_of_classes");
+        }
+        return 0;
+    }
+
     public static ObservableList<Class> search(String keyWord) throws SQLException, IOException {
         DateFormat dateFormat = new DateFormat();
         keyWord = keyWord.toUpperCase();
@@ -122,11 +130,19 @@ public class ClassService {
 
     public static void Insert(String id, String name, String course, String teacher, String room, String session_day, String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s'", session_day, session_time, room));
+        if (result.next()) {
+            throw new SQLException("This room is not available");
+        }
         db.insert(String.format("INSERT INTO classes(id,teacher_id,name,course_id,date_start,date_end,session_time,session_day,room_id) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')", id, teacher, name, course, start, end, session_time, session_day, room));
     }
 
     public static void Update(String id, String name, String course, String teacher, String room, String session_day, String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s' and id != '%s'", session_day, session_time, room, id));
+        if (result.next()) {
+            throw new SQLException("This room is not available");
+        }
         db.update(String.format("update classes set teacher_id = '%s', name = '%s', course_id = '%s', date_start = '%s', date_end = '%s', session_time = '%s', session_day = '%s', room_id = '%s' where id = '%s'", teacher, name, course, start, end, session_time, session_day, room, id));
     }
 
@@ -143,5 +159,18 @@ public class ClassService {
             return getNewId();
         }
         return id;
+    }
+
+    public static ObservableList<Point> getClassPopulation() throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select("select count(st.user_id) as population, cl.name as class_name " +
+                "from student st " +
+                "join classes cl on st.class_id = cl.id " +
+                "group by cl.name");
+        ObservableList<Point> points = FXCollections.observableArrayList();
+        while (result.next()) {
+            points.add(new Point(result.getString("class_name"), result.getInt("population")));
+        }
+        return points;
     }
 }

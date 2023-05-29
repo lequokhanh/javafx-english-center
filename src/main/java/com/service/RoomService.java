@@ -9,6 +9,14 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class RoomService {
+    public static Integer getNumberOfRoom() throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select("select count(*) as number_of_room from room");
+        if (result.next()) {
+            return result.getInt("number_of_room");
+        }
+        return 0;
+    }
 
     public static String getNewID() throws SQLException {
         String id = UUID.randomUUID().toString().substring(0, 8);

@@ -7,3 +7,26 @@
     -fx-font-family: "Roboto Mono Bold";
     -fx-font-size: 64px;
 }
+
+.editChooseBox {
+    -fx-pref-width: 202px;
+    -fx-pref-height: 44px;
+    -fx-border-width: 1px;
+    -fx-border-color: #D4D4D4;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-font-family: 'Roboto Italic';
+    -fx-font-size: 14px;
+    -fx-text-fill: #414141;
+}
+
+.editChooseBox:focused {
+    -fx-border-color: #4277FF;
+}
+
+.editNameField {
+    -fx-font-family: 'Poppins Medium';
+    -fx-font-size: 13px;
+    -fx-text-fill: #242731;
+}

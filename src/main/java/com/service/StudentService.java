@@ -9,6 +9,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StudentService {
+    public static Integer getNumberOfStudent() throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet resultSet = db.select("select count(*) as count from student");
+        if (resultSet.next()) {
+            return resultSet.getInt("count");
+        }
+        return 0;
+    }
+
     public static ObservableList<Student> absentStudent(String classID, String lessonID, String keyWord) throws SQLException {
         DBConnection db = new DBConnection();
         ResultSet resultSet = db.select(String.format("SELECT * \n" +
