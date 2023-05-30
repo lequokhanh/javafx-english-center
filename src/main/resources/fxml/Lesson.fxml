@@ -20,7 +20,7 @@
             xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.controller.LessonController">
     <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Lesson"/>
-    <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Lessons in Class"/>
+    <Label fx:id="smallTittle" layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage Lessons in Class"/>
     <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
     <Label fx:id="className" layoutX="47.0" layoutY="133.0" styleClass="nameClass" text="CLASS"/>
     <Label fx:id="courseName" layoutX="47.0" layoutY="171.0" prefHeight="39.0" prefWidth="450.0"

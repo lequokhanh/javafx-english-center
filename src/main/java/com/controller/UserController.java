@@ -2,12 +2,10 @@ package com.controller;
 
 import com.models.User;
 import com.service.AccountService;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -25,6 +23,8 @@ public class UserController {
     public TableColumn<User, HBox> action;
     public TextField searchField;
     public Button enrollBtn;
+    public Button showPasswordBtn;
+    public Button hidePasswordBtn;
 
     public void initialize() throws IOException {
         id.setPrefWidth(130);
@@ -65,7 +65,33 @@ public class UserController {
                 });
             }
         }
+        enrollBtn.setVisible(false);
         UserTable.setItems(users);
+        hidePassword();
+    }
+
+    public void hidePassword() {
+        hidePasswordBtn.setVisible(false);
+        showPasswordBtn.setVisible(true);
+        password.setCellFactory(column -> new TableCell<User, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : "**************");
+            }
+        });
+    }
+
+    public void showPassword() {
+        hidePasswordBtn.setVisible(true);
+        showPasswordBtn.setVisible(false);
+        password.setCellFactory(column -> new TableCell<User, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty ? "" : getItem());
+            }
+        });
     }
 
     public void searchAction(KeyEvent keyEvent) throws IOException {

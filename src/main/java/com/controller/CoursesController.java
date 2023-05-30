@@ -40,7 +40,6 @@ public class CoursesController {
 
     @FXML
     private void initialize() throws SQLException, IOException {
-
         courseID.setPrefWidth(120);
         courseName.setPrefWidth(150);
         description.setPrefWidth(250);

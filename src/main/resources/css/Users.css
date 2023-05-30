@@ -3,7 +3,7 @@
 
 .table-view {
     -fx-pref-width: 1120px;
-    -fx-pref-height: 656px;
+    -fx-pref-height: 574px;
 
     -fx-border-color: #ffffff;
     -fx-background-color: #ffffff;
@@ -80,4 +80,16 @@
     -fx-font-size: 12px;
     -fx-line-height: 15px;
     -fx-text-fill: #FFFFFF;
+}
+
+.passwordBtn {
+    -fx-pref-height: 40px;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-font-family: 'Poppins Bold';
+    -fx-font-size: 12px;
+    -fx-line-height: 24px;
+    -fx-alignment: center;
+    -fx-text-fill: #242731;
+    -fx-graphic-text-gap: 16;
 }

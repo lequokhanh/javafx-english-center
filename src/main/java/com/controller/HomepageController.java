@@ -7,6 +7,7 @@ import com.utilities.Manager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -210,6 +211,7 @@ public class HomepageController {
 
     @FXML
     private void signout() throws Exception {
+        Manager.clear();
         App.setRoot(Constants.FXML_LOGIN, 960, 540);
     }
 }

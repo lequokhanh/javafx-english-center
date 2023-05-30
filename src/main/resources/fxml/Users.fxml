@@ -19,8 +19,8 @@
     <Label layoutX="47.0" layoutY="37.0" styleClass="title" text="Manage Users"/>
     <Label layoutX="47.0" layoutY="79.0" styleClass="smalltitle" text="Manage all Users in system"/>
     <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
-    <TableView fx:id="UserTable" layoutX="47.0" layoutY="191.0" pickOnBounds="false" prefHeight="200.0"
-               prefWidth="200.0" onMouseClicked="#clickToEnroll">
+    <TableView fx:id="UserTable" layoutX="47.0" layoutY="191.0" onMouseClicked="#clickToEnroll" pickOnBounds="false"
+               prefHeight="200.0" prefWidth="200.0">
         <placeholder>
             <Label text="Empty data"/>
         </placeholder>
@@ -80,14 +80,33 @@
         </graphic>
     </Button>
     <Button fx:id="enrollBtn" layoutX="898.0" layoutY="133.0" mnemonicParsing="false" onAction="#enroll"
-            styleClass="enrrolBtn"
-            text="Enroll in Class" visible="false">
+            styleClass="enrrolBtn" text="Enroll in Class" visible="false">
         <cursor>
             <Cursor fx:constant="HAND"/>
         </cursor>
         <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../image/arrow_right_3.png"/>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="showPasswordBtn" layoutX="1014.0" layoutY="806.0" mnemonicParsing="false" styleClass="passwordBtn"
+            text="Show Password" onAction="#showPassword">
+        <graphic>
+            <ImageView fitHeight="150.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../image/view.png"/>
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
+    <Button fx:id="hidePasswordBtn" layoutX="1014.0" layoutY="806.0" mnemonicParsing="false" styleClass="passwordBtn"
+            text="Hide Password" visible="false" onAction="#hidePassword">
+        <graphic>
+            <ImageView fitHeight="150.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../image/hide.png"/>
+                </image>
             </ImageView>
         </graphic>
     </Button>

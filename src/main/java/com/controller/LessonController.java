@@ -55,10 +55,13 @@ public class LessonController {
     public Button uploadBtn;
     public TextField searchMaterial;
     public TextField searchLesson;
+    public Label smallTittle;
 
     public void initialize() throws IOException {
-        if (Manager.getAuth().split("/")[2].equals("Student") || Manager.getAuth().split("/")[2].equals("Teacher"))
+        if (Manager.getAuth().split("/")[2].equals("Student") || Manager.getAuth().split("/")[2].equals("Teacher")) {
             action.setVisible(false);
+            smallTittle.setText("Lessons in Class");
+        }
         if (Manager.getAuth().split("/")[2].equals("Student")) {
             tabPane.getTabs().remove(attendancePane);
             uploadBtn.setVisible(false);
