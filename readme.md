@@ -30,9 +30,9 @@ To create a .env file for the app, follow these steps:
 
     **DB_URL=jdbc:mysql://localhost:3306/mydatabase**
 
-    **DB_USERNAME=root**
+    **DB_USER=root**
 
     **DB_PASSWORD=password123**
 
     Note that you should replace `VARIABLE_NAME` and `variable_value` with the actual name and value of the environment variable you want to set.
-    You can then access these environment variables in your Java code using the `System.getenv("VARIABLE_NAME")` method.
+    You can then access these environment variables in your Java code using the `Env.get("VARIABLE_NAME")` method.
