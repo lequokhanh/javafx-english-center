@@ -2,7 +2,6 @@ package com.controller;
 
 import com.models.User;
 import com.service.AccountService;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -115,7 +114,8 @@ public class UserController {
     }
 
     public void clickToEnroll(MouseEvent mouseEvent) {
-        if (UserTable.getSelectionModel().getSelectedItem() == null || !UserTable.getSelectionModel().getSelectedItem().getRole().equals("Student")) {
+        if (UserTable.getSelectionModel().getSelectedItem() == null
+                || !UserTable.getSelectionModel().getSelectedItem().getRole().equals("Student")) {
             enrollBtn.setVisible(false);
             return;
         }
