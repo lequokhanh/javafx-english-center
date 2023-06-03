@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class StudentService {
     public static Integer getNumberOfStudent() throws SQLException {
         DBConnection db = new DBConnection();
-        ResultSet resultSet = db.select("select count(*) as count from student");
+        ResultSet resultSet = db.select("select count(distinct user_id) as count from student ");
         if (resultSet.next()) {
             return resultSet.getInt("count");
         }
