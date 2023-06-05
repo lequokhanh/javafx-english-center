@@ -44,8 +44,8 @@ public class UploadMaterial {
                     MaterialService.Insert(String.valueOf(dest.toPath()), lessonID);
                     handle.searchMaterialPane("");
                     controller.close();
-                    SuccessfulController.show();
                 }
+                SuccessfulController.show();
             } catch (SQLException | IOException ex) {
                 try {
                     ErrorController.show(ex.getMessage());
@@ -61,7 +61,7 @@ public class UploadMaterial {
         uploadPopUp.getScene().getWindow().hide();
     }
 
-    public void chooseFile(MouseEvent mouseEvent) throws IOException {
+    public void chooseFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose file");
         files.addAll(fileChooser.showOpenMultipleDialog(uploadPopUp.getScene().getWindow()));
