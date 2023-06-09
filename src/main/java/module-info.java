@@ -5,6 +5,8 @@ module com.english_center {
     requires javafx.fxml;
     requires io.github.cdimascio.dotenv.java;
     requires lombok;
+    requires org.apache.pdfbox;
+    requires java.desktop;
 
     exports com.controller;
     exports com.models;

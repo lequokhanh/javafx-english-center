@@ -32,8 +32,10 @@ public class EditRoomController {
                                 String newValue) {
                 if (!newValue.matches("\\d*"))
                     capacity.setText(newValue.replaceAll("[^\\d]", ""));
-                if (!capacity.getText().equals("") && Integer.parseInt(capacity.getText()) > 100)
-                    capacity.setText("100");
+                if (!capacity.getText().equals("") && Integer.parseInt(capacity.getText()) < 1)
+                    capacity.setText("1");
+                if (!capacity.getText().equals("") && Integer.parseInt(capacity.getText()) > 50)
+                    capacity.setText("50");
             }
         });
     }

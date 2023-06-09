@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class DeleteCourse {
-    public static void show(String courseID, CoursesController handle) throws IOException {
+    public static void show(Integer numberOfChapters, String courseID, CoursesController handle) throws IOException {
         Parent delete = FXMLLoader
                 .load(Objects.requireNonNull(EditCourseController.class.getResource(Constants.FXML_DELETE)));
         App.addPopup(delete);
@@ -24,9 +24,14 @@ public class DeleteCourse {
         });
         delete.lookup("#confirm").setOnMouseClicked(e -> {
             try {
+                if (numberOfChapters > 0) {
+                    App.removePopUp(delete);
+                    ErrorController.show("Please delete all the chapters first");
+                    return;
+                }
                 CourseService.DeleteCourse(courseID);
-                handle.search("");
                 App.removePopUp(delete);
+                handle.search("");
                 SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {

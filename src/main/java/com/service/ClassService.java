@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ClassService {
@@ -172,5 +174,55 @@ public class ClassService {
             points.add(new Point(result.getString("class_name"), result.getInt("population")));
         }
         return points;
+    }
+
+    public static void removeStudent(String studentID, String classID) throws SQLException {
+        DBConnection db = new DBConnection();
+        db.delete(String.format("delete from student where id = '%s' and class_id = '%s'", studentID, classID));
+    }
+
+    public static ObservableList<Student> getStudents(String classID) throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet resultSet = db.select(String.format("select st.id, ac.display_name " +
+                "from student st " +
+                "join account ac on st.user_id = ac.id " +
+                "where st.class_id = '%s'", classID));
+        ObservableList<Student> students = FXCollections.observableArrayList();
+        while (resultSet.next()) {
+            students.add(new Student(resultSet.getString("id"),
+                    resultSet.getString("display_name")));
+        }
+        return students;
+    }
+
+    public static int getNumberOfStudentInClass(String classID) throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet resultSet = db.select(String.format("select count(*) as number_of_student " +
+                "from student st " +
+                "where st.class_id = '%s'", classID));
+        if (resultSet.next()) {
+            return resultSet.getInt("number_of_student");
+        }
+        return 0;
+    }
+
+    public static ArrayList<String[]> getLessons(String classID) throws SQLException {
+        DateFormat dateFormat = new DateFormat();
+        DBConnection db = new DBConnection();
+        ResultSet resultSet = db.select(String.format("select name, learn_date, count(student_id) as number_of_present_student\n" +
+                "from lesson le\n" +
+                "join chapter ch on chapter_id = ch.id\n" +
+                "left join class_attendance ca on ca.lesson_id = le.id\n" +
+                "where class_id = '%s'\n" +
+                "group by name, learn_date", classID));
+        ArrayList<String[]> lessons = new ArrayList<>();
+        while (resultSet.next()) {
+            lessons.add(new String[]{
+                    resultSet.getString("name"),
+                    dateFormat.toString(resultSet.getDate("learn_date").toLocalDate()),
+                    resultSet.getString("number_of_present_student")
+            });
+        }
+        return lessons;
     }
 }

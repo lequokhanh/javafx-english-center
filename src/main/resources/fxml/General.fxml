@@ -17,64 +17,73 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1226.0" stylesheets="@../css/General.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.GeneralController">
-    <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="General" />
-    <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="English Center Overview" />
-    <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0"
+            prefWidth="1226.0" stylesheets="@../css/General.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.GeneralController">
+    <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="General"/>
+    <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="English Center Overview"/>
+    <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
     <GridPane hgap="10.0" layoutX="48.0" layoutY="130.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity"/>
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES"/>
         </rowConstraints>
         <Group>
             <ImageView fitHeight="280.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" styleClass="panel">
-                <Image url="@../image/general_student.png" />
+                <Image url="@../image/general_student.png"/>
             </ImageView>
-            <Label fx:id="stu_number" layoutX="31.0" layoutY="110.0" prefWidth="0.0" styleClass="panelnumber" text="----" textAlignment="RIGHT" textFill="#9fd486" />
+            <Label fx:id="stu_number" layoutX="31.0" layoutY="110.0" prefWidth="0.0" styleClass="panelnumber"
+                   text="----" textAlignment="RIGHT" textFill="#9fd486"/>
         </Group>
         <Group GridPane.columnIndex="1">
             <ImageView fitHeight="280.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" styleClass="panel">
-                <Image url="@../image/general_class.png" />
+                <Image url="@../image/general_class.png"/>
             </ImageView>
-            <Label fx:id="class_number" layoutX="31.0" layoutY="110.0" prefWidth="0.0" styleClass="panelnumber" text="----" textAlignment="RIGHT" textFill="#e6bf92" />
+            <Label fx:id="class_number" layoutX="31.0" layoutY="110.0" prefWidth="0.0" styleClass="panelnumber"
+                   text="----" textAlignment="RIGHT" textFill="#e6bf92"/>
         </Group>
         <Group GridPane.columnIndex="2">
-            <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="30.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" styleClass="panel">
-                <Image url="@../image/general_course.png" />
+            <ImageView fitHeight="280.0" fitWidth="280.0" layoutX="30.0" layoutY="76.0" pickOnBounds="true"
+                       preserveRatio="true" styleClass="panel">
+                <Image url="@../image/general_course.png"/>
             </ImageView>
-            <Label fx:id="course_number" layoutX="62.0" layoutY="190.0" styleClass="panelnumber" text="----" textAlignment="RIGHT" textFill="#6cbdeb" />
+            <Label fx:id="course_number" layoutX="62.0" layoutY="190.0" styleClass="panelnumber" text="----"
+                   textAlignment="RIGHT" textFill="#6cbdeb"/>
         </Group>
         <Group GridPane.columnIndex="3">
             <ImageView fitHeight="280.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" styleClass="panel">
-                <Image url="@../image/general_room.png" />
+                <Image url="@../image/general_room.png"/>
             </ImageView>
-            <Label fx:id="room_number" layoutX="31.0" layoutY="110.0" prefWidth="0.0" styleClass="panelnumber" text="----" textAlignment="RIGHT" textFill="#d89c9c" />
+            <Label fx:id="room_number" layoutX="31.0" layoutY="110.0" prefWidth="0.0" styleClass="panelnumber"
+                   text="----" textAlignment="RIGHT" textFill="#d89c9c"/>
         </Group>
     </GridPane>
-    <LineChart fx:id="lineChart" layoutX="278.0" layoutY="399.0" legendSide="RIGHT" legendVisible="false" prefHeight="451.0" prefWidth="900.0" titleSide="BOTTOM">
+    <LineChart fx:id="lineChart" layoutX="278.0" layoutY="399.0" legendSide="RIGHT" legendVisible="false"
+               prefHeight="451.0" prefWidth="900.0" titleSide="BOTTOM">
         <xAxis>
-            <CategoryAxis autoRanging="false" side="BOTTOM" />
+            <CategoryAxis autoRanging="false" side="BOTTOM"/>
         </xAxis>
         <yAxis>
-            <NumberAxis side="LEFT" />
+            <NumberAxis side="LEFT"/>
         </yAxis>
     </LineChart>
     <VBox layoutX="48.0" layoutY="399.0" spacing="8.0">
-        <Label styleClass="editNameField" text="Chart" />
-        <MenuButton mnemonicParsing="false" styleClass="editChooseBox" text="Choose chart to view">
+        <Label styleClass="editNameField" text="Chart"/>
+        <MenuButton fx:id="menuButton" mnemonicParsing="false" styleClass="editChooseBox" text="Choose chart to view">
             <items>
-                <MenuItem fx:id="attendanceChart" mnemonicParsing="false" text="Attendance rate for each lesson in a Class" />
-                <MenuItem fx:id="courseChart" mnemonicParsing="false" text="Course popular based on enrollment" />
+                <MenuItem fx:id="attendanceChart" mnemonicParsing="false"
+                          text="Attendance rate for each lesson in a Class"/>
+                <MenuItem fx:id="courseChart" mnemonicParsing="false" text="Course popular based on enrollment"/>
             </items>
         </MenuButton>
     </VBox>
     <VBox fx:id="classGroup" layoutX="48.0" layoutY="492.0" spacing="8.0" visible="false">
-        <Label styleClass="editNameField" text="Class" />
-        <ComboBox fx:id="classes" prefWidth="150.0" promptText="Choose class to view chart" styleClass="editChooseBox" />
+        <Label styleClass="editNameField" text="Class"/>
+        <ComboBox fx:id="classes" prefWidth="150.0" promptText="Choose class to view chart" styleClass="editChooseBox"/>
     </VBox>
 </AnchorPane>

@@ -74,7 +74,7 @@ public class CoursesController {
                 });
                 action.lookup("#delete").setOnMouseClicked(mouseEvent -> {
                     try {
-                        DeleteCourse.show(course.getCourseID(), this);
+                        DeleteCourse.show(course.getNumberOfChapter(), course.getCourseID(), this);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

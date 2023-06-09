@@ -30,7 +30,8 @@
         <Label styleClass="manageChapterBtn" text="Back to Courses"/>
     </HBox>
     <AnchorPane layoutX="51.0" layoutY="130.0" prefHeight="200.0" prefWidth="200.0" styleClass="titlePane">
-        <Label fx:id="courseName" layoutX="44.0" layoutY="25.0" styleClass="titleCourseName" text="Name"/>
+        <Label fx:id="courseName" layoutX="44.0" layoutY="18.0" prefHeight="78.0" styleClass="titleCourseName"
+               wrapText="true"/>
         <Label fx:id="chapterNumber" layoutX="44.0" layoutY="107.0" styleClass="titleChapter" text="19 Chapters"/>
         <Label fx:id="level" layoutX="141.0" layoutY="101.0" styleClass="courseLevel" text="Level"/>
         <Line endY="115.0" layoutX="448.0" layoutY="26.0" styleClass="titleLine"/>

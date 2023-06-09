@@ -13,6 +13,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
@@ -30,6 +31,7 @@ public class GeneralController {
     public Label course_number;
     public Label room_number;
     public VBox classGroup;
+    public MenuButton menuButton;
 
     @FXML
     private void initialize() throws SQLException, IOException {
@@ -51,6 +53,7 @@ public class GeneralController {
         attendanceChart.setOnAction(e -> {
             lineChart.getData().clear();
             classGroup.setVisible(true);
+            menuButton.setText(attendanceChart.getText());
             try {
                 attendanceChart(classes.get(0).getId());
             } catch (SQLException ex) {
@@ -60,6 +63,7 @@ public class GeneralController {
         courseChart.setOnAction(e -> {
             lineChart.getData().clear();
             classGroup.setVisible(false);
+            menuButton.setText(courseChart.getText());
             try {
                 courseChart();
             } catch (SQLException ex) {

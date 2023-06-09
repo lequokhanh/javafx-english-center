@@ -171,9 +171,9 @@
                         </ImageView>
                     </Group>
                     <Label layoutX="180.0" layoutY="170.0" styleClass="titleAttendance"
-                           text="List of absent Students"/>
+                           text="List of absent students"/>
                     <Label layoutX="512.0" layoutY="170.0" styleClass="titleAttendance"
-                           text="List of absent Students"/>
+                           text="List of present students"/>
                     <AnchorPane layoutX="15.0" layoutY="36.0" prefHeight="200.0" prefWidth="200.0"
                                 styleClass="absentPane">
                         <Label layoutX="22.0" layoutY="10.0" styleClass="absentText"

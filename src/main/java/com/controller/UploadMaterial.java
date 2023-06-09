@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,7 +65,14 @@ public class UploadMaterial {
     public void chooseFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose file");
-        files.addAll(fileChooser.showOpenMultipleDialog(uploadPopUp.getScene().getWindow()));
+        ArrayList<File> files = new ArrayList<>();
+        files = (ArrayList<File>) fileChooser.showOpenMultipleDialog(uploadPopUp.getScene().getWindow());
+        if (files != null) {
+            for (File file : files) {
+                if (!this.files.contains(file))
+                    this.files.add(file);
+            }
+        }
         reloadGridPane();
     }
 

@@ -45,5 +45,6 @@ public class Constants {
     public static String FXML_EDIT_ROOM = "/fxml/EditRoom.fxml";
     public static String FXML_EDIT_USER = "/fxml/EditUser.fxml";
     public static String FXML_ENROLL_USER = "/fxml/EnrollUser.fxml";
+    public static String FXML_STUDENT_LIST = "/fxml/StudentList.fxml";
 
 }

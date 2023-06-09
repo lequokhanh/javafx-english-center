@@ -14,16 +14,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0"
-            prefWidth="1226.0" stylesheets="@../css/Classes.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ClassesController" fx:id="classPane">
+<AnchorPane fx:id="classPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="860.0" prefWidth="1226.0" stylesheets="@../css/Classes.css" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.ClassesController">
     <children>
         <Label fx:id="title" layoutX="47.0" layoutY="37.0" styleClass="title" text="Classes"/>
         <Label fx:id="smallTitle" layoutX="47.0" layoutY="79.0" styleClass="smalltitle"
                text="Manage Class for adminstator"/>
         <Line endX="1120.0" layoutX="47.0" layoutY="118.0" styleClass="line"/>
-        <TableView fx:id="classTable" layoutX="47.0" layoutY="198.0" prefHeight="200.0" prefWidth="200.0"
-                   onMouseClicked="#manageBtn">
+        <TableView fx:id="classTable" layoutX="47.0" layoutY="198.0" onMouseClicked="#manageBtn" prefHeight="200.0"
+                   prefWidth="200.0">
             <columns>
                 <TableColumn fx:id="classID" prefWidth="75.0" text="Class ID">
                     <cellValueFactory>
@@ -69,7 +69,8 @@
         </TableView>
         <Group layoutX="47.0" layoutY="142.0">
             <children>
-                <TextField layoutY="8.0" promptText="Search..." styleClass="searchBox"/>
+                <TextField fx:id="searchField" layoutY="8.0" promptText="Search..." styleClass="searchBox"
+                           onKeyTyped="#searchAction"/>
                 <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true"
                            x="8.0" y="9.0">
                     <image>
@@ -79,8 +80,7 @@
             </children>
         </Group>
         <Button fx:id="addBtn" layoutX="1038.0" layoutY="149.0" mnemonicParsing="false" onAction="#add"
-                styleClass="addBtn"
-                text="Add Class">
+                styleClass="addBtn" text="Add Class">
             <cursor>
                 <Cursor fx:constant="HAND"/>
             </cursor>
@@ -92,8 +92,8 @@
                 </ImageView>
             </graphic>
         </Button>
-        <HBox fx:id="manageLessonBtn" layoutX="996.0" layoutY="810.0" styleClass="manageChapterBtn" visible="false"
-              onMouseClicked="#manageLessons">
+        <HBox fx:id="manageLessonBtn" layoutX="996.0" layoutY="810.0" onMouseClicked="#manageLessons"
+              styleClass="manageChapterBtn" visible="false">
             <children>
                 <Label fx:id="manageBtn" styleClass="manageChapterBtn" text="Manage Lessons"/>
                 <ImageView fitHeight="8.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
@@ -106,5 +106,33 @@
                 <Cursor fx:constant="HAND"/>
             </cursor>
         </HBox>
+        <Button fx:id="studentListBtn" layoutX="904.0" layoutY="150.0" mnemonicParsing="false" onAction="#studentList"
+                style="-fx-background-color: rgba(205, 98, 0, 0.65);" styleClass="addBtn" text="Student List"
+                visible="false">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/list.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="exportReportBtn" layoutX="748.0" layoutY="150.0" mnemonicParsing="false" onAction="#exportReport"
+                prefWidth="128.0" style="-fx-background-color: rgba(31, 146, 84, 0.8); -fx-pref-width: 140;"
+                styleClass="addBtn" text="Export Report" visible="false">
+            <cursor>
+                <Cursor fx:constant="HAND"/>
+            </cursor>
+            <graphic>
+                <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../image/print.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
     </children>
 </AnchorPane>

@@ -17,7 +17,7 @@
 <AnchorPane fx:id="roomPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="860.0" prefWidth="1226.0" stylesheets="@../css/Rooms.css" xmlns="http://javafx.com/javafx/19"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controller.RoomController">
-    <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="Manage Room"/>
+    <Label layoutX="48.0" layoutY="37.0" styleClass="title" text="Room"/>
     <Label layoutX="48.0" layoutY="79.0" styleClass="smalltitle" text="List of classrooms"/>
     <Line endX="1120.0" layoutX="48.0" layoutY="118.0" styleClass="line"/>
     <Group layoutX="48.0" layoutY="136.0">

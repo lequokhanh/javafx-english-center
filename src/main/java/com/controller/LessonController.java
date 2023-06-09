@@ -24,6 +24,7 @@ import java.io.File;
 
 import javafx.scene.layout.HBox;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -167,13 +168,16 @@ public class LessonController {
             String fileName = material.getPath().split("\\\\")[material.getPath().split("\\\\").length - 1];
             ((Label) fileItem.lookup(".fileName")).setText(fileName);
             fileItem.lookup(".fileName").setOnMouseClicked(e -> {
-                DirectoryChooser directoryChooser = new DirectoryChooser();
-                File selectedDirectory = directoryChooser.showDialog(lessonPane.getScene().getWindow());
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save File");
+                fileChooser.setInitialFileName(fileName);
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
+                fileChooser.getExtensionFilters().add(extFilter);
+                File selectedDirectory = fileChooser.showSaveDialog(fileItem.getScene().getWindow());
                 if (selectedDirectory != null) {
                     try {
-                        Files.copy(Paths.get(material.getPath()),
-                                Paths.get(selectedDirectory.getAbsolutePath() + "\\" + fileName), StandardCopyOption.REPLACE_EXISTING);
-                        SuccessfulController.show();
+                        Files.copy(Paths.get(material.getPath()), Paths.get(selectedDirectory.getPath()),
+                                StandardCopyOption.REPLACE_EXISTING);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
