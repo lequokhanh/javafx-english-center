@@ -18,34 +18,34 @@ public class ScheduleService {
         while (session1.next()) {
             if (session1.getString("session_day").equals("Tue - Thu - Sat"))
                 for (int i = 1; i < 6; i += 2)
-                    session1List.set(i, session1.getString("name"));
+                    session1List.set(i, session1.getString("name") + " (" + session1.getString("room_name") + ")");
             else
                 for (int i = 0; i < 6; i += 2)
-                    session1List.set(i, session1.getString("name"));
+                    session1List.set(i, session1.getString("name") + " (" + session1.getString("room_name") + ")");
         }
         while (session2.next()) {
             if (session2.getString("session_day").equals("Tue - Thu - Sat"))
                 for (int i = 1; i < 6; i += 2)
-                    session2List.set(i, session2.getString("name"));
+                    session2List.set(i, session2.getString("name") + " (" + session2.getString("room_name") + ")");
             else
                 for (int i = 0; i < 6; i += 2)
-                    session2List.set(i, session2.getString("name"));
+                    session2List.set(i, session2.getString("name") + " (" + session2.getString("room_name") + ")");
         }
         while (session3.next()) {
             if (session3.getString("session_day").equals("Tue - Thu - Sat"))
                 for (int i = 1; i < 6; i += 2)
-                    session3List.set(i, session3.getString("name"));
+                    session3List.set(i, session3.getString("name") + " (" + session3.getString("room_name") + ")");
             else
                 for (int i = 0; i < 6; i += 2)
-                    session3List.set(i, session3.getString("name"));
+                    session3List.set(i, session3.getString("name") + " (" + session3.getString("room_name") + ")");
         }
         while (session4.next()) {
             if (session4.getString("session_day").equals("Tue - Thu - Sat"))
                 for (int i = 1; i < 6; i += 2)
-                    session4List.set(i, session4.getString("name"));
+                    session4List.set(i, session4.getString("name") + " (" + session4.getString("room_name") + ")");
             else
                 for (int i = 0; i < 6; i += 2)
-                    session4List.set(i, session4.getString("name"));
+                    session4List.set(i, session4.getString("name") + " (" + session4.getString("room_name") + ")");
         }
         return new Schedule(session1List, session2List, session3List, session4List);
     }
@@ -53,29 +53,37 @@ public class ScheduleService {
     public static Schedule getScheduleWithRoom(String id) throws SQLException {
         DBConnection dbConnection = new DBConnection();
         ResultSet session1 = dbConnection
-                .select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE room_id = '"
+                        + id
+                        + "' AND session_time = 'Session 1 (7am->9am)'");
         ResultSet session2 = dbConnection.select(
-                "SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
+                "SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE room_id = '"
+                        + id
+                        + "' AND session_time = 'Session 2 (9am->11am)'");
         ResultSet session3 = dbConnection
-                .select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE room_id = '"
+                        + id
+                        + "' AND session_time = 'Session 3 (1pm->3pm)'");
         ResultSet session4 = dbConnection
-                .select("SELECT * FROM classes WHERE room_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE room_id = '"
+                        + id
+                        + "' AND session_time = 'Session 4 (3pm->5pm)'");
         return addToSchedule(session1, session2, session3, session4);
     }
 
     public static Schedule getScheduleWithStudent(String id) throws SQLException {
         DBConnection dbConnection = new DBConnection();
         ResultSet session1 = dbConnection
-                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id join student on classes.id = student.class_id WHERE student.user_id = '"
                         + id + "' AND session_time = 'Session 1 (7am->9am)'");
         ResultSet session2 = dbConnection
-                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id join student on classes.id = student.class_id WHERE student.user_id = '"
                         + id + "' AND session_time = 'Session 2 (9am->11am)'");
         ResultSet session3 = dbConnection
-                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id join student on classes.id = student.class_id WHERE student.user_id = '"
                         + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
         ResultSet session4 = dbConnection
-                .select("SELECT * FROM classes join student on classes.id = student.class_id WHERE student.user_id = '"
+                .select("SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id join student on classes.id = student.class_id WHERE student.user_id = '"
                         + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
         return addToSchedule(session1, session2, session3, session4);
     }
@@ -83,13 +91,21 @@ public class ScheduleService {
     public static Schedule getScheduleWithTeacher(String id) throws SQLException {
         DBConnection dbConnection = new DBConnection();
         ResultSet session1 = dbConnection.select(
-                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 1 (7am->9am)'");
+                "SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE teacher_id = '"
+                        + id
+                        + "' AND session_time = 'Session 1 (7am->9am)'");
         ResultSet session2 = dbConnection.select(
-                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 2 (9am->11am)'");
+                "SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE teacher_id = '"
+                        + id
+                        + "' AND session_time = 'Session 2 (9am->11am)'");
         ResultSet session3 = dbConnection.select(
-                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 3 (1pm->3pm)'");
+                "SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE teacher_id = '"
+                        + id
+                        + "' AND session_time = 'Session 3 (1pm->3pm)'");
         ResultSet session4 = dbConnection.select(
-                "SELECT * FROM classes WHERE teacher_id = '" + id + "' AND session_time = 'Session 4 (3pm->5pm)'");
+                "SELECT classes.name as name, room.name as room_name, session_time, session_day FROM classes join room on room.id = room_id WHERE teacher_id = '"
+                        + id
+                        + "' AND session_time = 'Session 4 (3pm->5pm)'");
         return addToSchedule(session1, session2, session3, session4);
     }
 }

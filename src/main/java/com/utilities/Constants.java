@@ -9,7 +9,7 @@ package com.utilities;
  * @author Tony Manjarres
  */
 public class Constants {
-    public static String MATERIAL_PATH = "D:/material/";
+    public static String MATERIAL_PATH = Env.get("MATERIAL_PATH");
     public static String APP_TITLE = "English Center";
     public static String FXML_LOGIN = "/fxml/Login.fxml";
     public static String FXML_HOMEPAGE = "/fxml/Homepage.fxml";

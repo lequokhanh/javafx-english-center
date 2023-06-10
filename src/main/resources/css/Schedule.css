@@ -56,7 +56,9 @@
     -fx-font-family: 'Roboto';
     -fx-font-style: normal;
     -fx-font-weight: 900;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
     -fx-line-height: 22px;
     -fx-text-fill: #a51115;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
 }

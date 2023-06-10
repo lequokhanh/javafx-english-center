@@ -21,18 +21,19 @@ To build and run the app, follow these steps:
 To create a .env file for the app, follow these steps:
 
 1. Create a new file in the root directory of the project.
-2. Name the file `.env`.
-3. Add any environment variables you need to the file in the following format:
+2. Name the file `.env`. 3. Add any environment variables you need to the file in the following format:
 
     **VARIABLE_NAME=variable_value**
 
     For example:
 
-    **DB_URL=jdbc:mysql://localhost:3306/mydatabase**
+    | Variable Name     | Variable Value                        | Note                                  |
+    | ----------------- | ------------------------------------- | ------------------------------------- |
+    | **DB_URL**        | jdbc:oracle:thin:@localhost:1521:orcl | or whatever your database URL is      |
+    | **DB_USER**       | c##center_name                        | or whatever your database username is |
+    | **DB_PASSWORD**   | password123                           | or whatever your database password is |
+    | **MATERIAL_PATH** | D:\\Materials                         | or whatever your material path is     |
 
-    **DB_USER=root**
-
-    **DB_PASSWORD=password123**
-
-    Note that you should replace `VARIABLE_NAME` and `variable_value` with the actual name and value of the environment variable you want to set.
+    Note that you should replace `VARIABLE_NAME` and `variable_value` with the actual name and value of the
+    environment variable you want to set.
     You can then access these environment variables in your Java code using the `Env.get("VARIABLE_NAME")` method.

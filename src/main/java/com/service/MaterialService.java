@@ -5,8 +5,10 @@ import com.utilities.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class MaterialService {
     public static ObservableList<Material> search(String lessonID, String keyWord) throws SQLException {
@@ -38,6 +40,17 @@ public class MaterialService {
 
     public static void Delete(String id) throws SQLException {
         DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from material where id = '%s'", id));
+        if (!result.next())
+            throw new SQLException("Material not found");
+        File file = new File(result.getString("path"));
+        if (file.exists()) {
+            if (!file.delete())
+                throw new SQLException("Cannot delete file");
+            if (Objects.requireNonNull(file.getParentFile().list()).length == 0)
+                if (!file.getParentFile().delete())
+                    throw new SQLException("Cannot delete file");
+        }
         db.delete(String.format("delete from material where id = '%s'", id));
     }
 
