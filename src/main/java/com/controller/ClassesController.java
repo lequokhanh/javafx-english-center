@@ -160,7 +160,7 @@ public class ClassesController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save File");
         fileChooser.setInitialFileName("Report.pdf");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("All Files", "*.*");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF file", ".pdf");
         fileChooser.getExtensionFilters().add(extFilter);
         File selectedDirectory = fileChooser.showSaveDialog(null);
         if (selectedDirectory != null) {
