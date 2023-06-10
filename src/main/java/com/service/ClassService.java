@@ -214,7 +214,8 @@ public class ClassService {
                 "join chapter ch on chapter_id = ch.id\n" +
                 "left join class_attendance ca on ca.lesson_id = le.id\n" +
                 "where class_id = '%s'\n" +
-                "group by name, learn_date", classID));
+                "group by name, learn_date\n" +
+                "order by learn_date", classID));
         ArrayList<String[]> lessons = new ArrayList<>();
         while (resultSet.next()) {
             lessons.add(new String[]{
