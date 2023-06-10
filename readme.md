@@ -21,7 +21,8 @@ To build and run the app, follow these steps:
 To create a .env file for the app, follow these steps:
 
 1. Create a new file in the root directory of the project.
-2. Name the file `.env`. 3. Add any environment variables you need to the file in the following format:
+2. Name the file `.env`. 
+3. Add any environment variables you need to the file in the following format:
 
     **VARIABLE_NAME=variable_value**
 
