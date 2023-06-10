@@ -163,7 +163,9 @@
                         <Image url="@../image/arrow_right_2.png"/>
                     </ImageView>
                     <Group layoutX="15.0" layoutY="148.0">
-                        <TextField layoutY="8.0" prefWidth="150.0" promptText="Search..."
+                        <TextField layoutY="8.0"
+                                   prefWidth="150.0"
+                                   promptText="Search..."
                                    style="-fx-pref-width: 143;" styleClass="searchBox"/>
                         <ImageView fitHeight="16.0" fitWidth="16.0" layoutY="6.0"
                                    pickOnBounds="true" preserveRatio="true" x="8.0" y="9.0">

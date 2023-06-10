@@ -23,7 +23,6 @@ import javafx.scene.layout.GridPane;
 import java.io.File;
 
 import javafx.scene.layout.HBox;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 import java.io.IOException;
@@ -130,7 +129,7 @@ public class LessonController {
                 lessonTab.setVisible(true);
                 try {
                     searchMaterialPane("");
-                    searchAttendancePane("");
+                    reloadAttendancePane();
                 } catch (IOException | SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -196,9 +195,8 @@ public class LessonController {
         }
     }
 
-    public void searchAttendancePane(String keyWord) throws IOException, SQLException {
-        ObservableList<Student> absentStudent = StudentService.absentStudent(classes.getId(), selectedLesson.getId(),
-                keyWord);
+    public void reloadAttendancePane() throws IOException, SQLException {
+        ObservableList<Student> absentStudent = StudentService.absentStudent(classes.getId(), selectedLesson.getId());
         ObservableList<Student> presentStudent = StudentService.presentStudent(selectedLesson.getId());
         absentNumber.setText(Integer.toString(absentStudent.size()));
         totalNumber.setText(Integer.toString(absentStudent.size() + presentStudent.size()));
@@ -213,7 +211,7 @@ public class LessonController {
             studentItem.lookup("#rollCallBtn").setOnMouseClicked(e -> {
                 try {
                     StudentService.RollCall(student.getId(), selectedLesson.getId());
-                    searchAttendancePane("");
+                    reloadAttendancePane();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());
@@ -235,7 +233,7 @@ public class LessonController {
             studentItem.lookup("#removeBtn").setOnMouseClicked(e -> {
                 try {
                     StudentService.removeRollCall(student.getId(), selectedLesson.getId());
-                    searchAttendancePane("");
+                    reloadAttendancePane();
                 } catch (SQLException | IOException ex) {
                     try {
                         ErrorController.show(ex.getMessage());
@@ -300,4 +298,5 @@ public class LessonController {
             throw new RuntimeException(e);
         }
     }
+
 }

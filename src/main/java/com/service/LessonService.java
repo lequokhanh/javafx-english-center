@@ -58,6 +58,7 @@ public class LessonService {
     }
 
     public static ObservableList<Point> getLessonPresentStudent(String classID) throws SQLException {
+        DateFormat dateFormat = new DateFormat();
         DBConnection db = new DBConnection();
         ResultSet resultSet = db.select(String.format("SELECT count(st.id) as number_of_student, learn_date\n" +
                 "from lesson le\n" +
@@ -65,10 +66,13 @@ public class LessonService {
                 "join student st on cl.id = st.class_id\n" +
                 "join chapter ca on le.chapter_id = ca.id\n" +
                 "where le.class_id = '%s' and st.id in (select student_id from class_attendance where lesson_id = le.id) \n" +
-                "group by ca.name, learn_date", classID));
+                "group by ca.name, learn_date\n" +
+                "order by learn_date", classID));
         ObservableList<Point> points = FXCollections.observableArrayList();
         while (resultSet.next()) {
-            points.add(new Point(resultSet.getString("learn_date"), resultSet.getInt("number_of_student")));
+            points.add(new Point(
+                    dateFormat.toString(resultSet.getDate("learn_date").toLocalDate()),
+                    resultSet.getInt("number_of_student")));
         }
         return points;
     }

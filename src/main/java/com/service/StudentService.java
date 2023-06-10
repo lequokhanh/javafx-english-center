@@ -18,7 +18,7 @@ public class StudentService {
         return 0;
     }
 
-    public static ObservableList<Student> absentStudent(String classID, String lessonID, String keyWord) throws SQLException {
+    public static ObservableList<Student> absentStudent(String classID, String lessonID) throws SQLException {
         DBConnection db = new DBConnection();
         ResultSet resultSet = db.select(String.format("SELECT * \n" +
                 "from student st\n" +
@@ -26,8 +26,7 @@ public class StudentService {
                 "where class_id = '%s' and st.id not in (select id\n" +
                 "from student\n" +
                 "    join class_attendance ca on student.id = ca.student_id\n" +
-                "where ca.lesson_id = '%s')\n" +
-                "and (upper(st.id) like '%%%s%%' or upper(ac.display_name) like '%%%s%%')", classID, lessonID, keyWord, keyWord));
+                "where ca.lesson_id = '%s')", classID, lessonID));
         ObservableList<Student> students = FXCollections.observableArrayList();
         while (resultSet.next()) {
             students.add(new Student(resultSet.getString("id"),
