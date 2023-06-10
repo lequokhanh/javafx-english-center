@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -54,10 +55,10 @@ public class ClassesController {
     public Button studentListBtn;
     public Button exportReportBtn;
     public TextField searchField;
+    public FlowPane flowPane;
 
     public void initialize() throws IOException, SQLException {
         if (Manager.getAuth().split("/")[2].equals("Student") || Manager.getAuth().split("/")[2].equals("Teacher")) {
-            manageLessonBtn.setVisible(false);
             title.setText("Classes");
             smallTitle.setText("List of classes");
             classID.setPrefWidth(120);
@@ -68,9 +69,8 @@ public class ClassesController {
             start.setPrefWidth(130);
             end.setPrefWidth(110);
             classTable.getColumns().remove(action);
-            addBtn.setVisible(false);
+            flowPane.getChildren().remove(addBtn);
             manageBtn.setText("View Lessons");
-
         } else {
             classID.setPrefWidth(120);
             className.setPrefWidth(120);
@@ -128,10 +128,10 @@ public class ClassesController {
     public void manageBtn(MouseEvent mouseEvent) {
         if (classTable.getSelectionModel().getSelectedItem() != null) {
             if (!manageLessonBtn.isVisible()) {
-                if (Manager.getAuth().split("/")[2].equals("Manager")) {
+                if (Manager.getAuth().split("/")[2].equals("Manager"))
                     exportReportBtn.setVisible(true);
+                if (Manager.getAuth().split("/")[2].equals("Manager") || Manager.getAuth().split("/")[2].equals("Teacher"))
                     studentListBtn.setVisible(true);
-                }
                 manageLessonBtn.setVisible(true);
             }
         }

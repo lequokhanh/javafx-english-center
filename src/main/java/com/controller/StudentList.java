@@ -5,6 +5,7 @@ import com.models.Student;
 import com.service.ClassService;
 import com.service.StudentService;
 import com.utilities.Constants;
+import com.utilities.Manager;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -41,7 +42,8 @@ public class StudentList {
             ((Label) studentItem.lookup(".name")).setText(student.getName());
             ((Label) studentItem.lookup(".id")).setText(student.getId());
             studentItem.lookup("#rollCallBtn").setVisible(false);
-            studentItem.lookup("#removeBtn").setVisible(true);
+            if (!Manager.getAuth().split("/")[2].equals("Student"))
+                studentItem.lookup("#removeBtn").setVisible(true);
             studentItem.lookup("#removeBtn").setOnMouseClicked(e -> {
                 try {
                     ClassService.removeStudent(student.getId(), classID);
