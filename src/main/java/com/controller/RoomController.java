@@ -42,6 +42,7 @@ public class RoomController {
     public void search(String keyWord) throws SQLException, IOException {
         roomGridPane.getChildren().clear();
         ObservableList<Room> rooms = RoomService.search(keyWord);
+        System.out.println(rooms.size());
         for (int i = 0; i < rooms.size(); i++) {
             Room room = rooms.get(i);
             Node roomCard = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_ROOM_CARD)));

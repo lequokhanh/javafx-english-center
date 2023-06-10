@@ -4,15 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="67.0" prefWidth="440.0" style="-fx-background-color: transparent;"
-            stylesheets="@../css/LessonCard.css" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="67.0" prefWidth="440.0" style="-fx-background-color: transparent;" stylesheets="@../css/LessonCard.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="50.0" prefWidth="440.0" styleClass="cardPane">
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
-        <Label fx:id="name" layoutX="28.0" layoutY="13.0" styleClass="nameChapter" text="Label"/>
-        <Label fx:id="category" layoutX="318.0" layoutY="13.0" styleClass="categoryChapter" text="Label"/>
+        <Label fx:id="name" layoutX="28.0" layoutY="13.0" prefHeight="23.0" prefWidth="229.0" styleClass="nameChapter" text="Label" />
+        <Label fx:id="category" layoutX="289.0" layoutY="13.0" prefHeight="23.0" prefWidth="142.0" styleClass="categoryChapter" text="Label" />
     </AnchorPane>
-    <Label fx:id="date" layoutX="353.0" layoutY="51.0" styleClass="date" text="00/00/0000"/>
+    <Label fx:id="date" layoutX="353.0" layoutY="51.0" styleClass="date" text="00/00/0000" />
 </AnchorPane>
