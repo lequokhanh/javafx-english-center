@@ -42,7 +42,7 @@ public class StudentList {
             ((Label) studentItem.lookup(".name")).setText(student.getName());
             ((Label) studentItem.lookup(".id")).setText(student.getId());
             studentItem.lookup("#rollCallBtn").setVisible(false);
-            if (!Manager.getAuth().split("/")[2].equals("Student"))
+            if (!Manager.getAuth().split("/")[2].equals("Teacher"))
                 studentItem.lookup("#removeBtn").setVisible(true);
             studentItem.lookup("#removeBtn").setOnMouseClicked(e -> {
                 try {
