@@ -65,8 +65,7 @@ public class UploadMaterial {
     public void chooseFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose file");
-        ArrayList<File> files = new ArrayList<>();
-        files = (ArrayList<File>) fileChooser.showOpenMultipleDialog(uploadPopUp.getScene().getWindow());
+        List<File> files = fileChooser.showOpenMultipleDialog(uploadPopUp.getScene().getWindow());
         if (files != null) {
             for (File file : files) {
                 if (!this.files.contains(file))
