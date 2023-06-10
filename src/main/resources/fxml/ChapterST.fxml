@@ -41,7 +41,7 @@
         <Label fx:id="courseDescription" layoutX="482.0" layoutY="63.0" styleClass="titleDescriptionContent" text="Test of English for International Communication. Lorem ipsum dolor sit amet. Aut aperiam omnis est laborum inventore in ipsam asperiores aut dolorum eligendi ut molestiae cumque qui quos dolores. Aut esse esse in laboriosam voluptate in cupiditate distinctio ut ipsam error sed tempore libero aut consequatur galisum!" />
     </AnchorPane>
     <ScrollPane hbarPolicy="NEVER" layoutX="51.0" layoutY="373.0" pannable="true" prefHeight="200.0" prefWidth="200.0" vbarPolicy="NEVER">
-        <AnchorPane prefHeight="200.0" prefWidth="1129.0">
+        <AnchorPane>
             <GridPane fx:id="gridPane" alignment="CENTER" layoutY="4.0" styleClass="gridPane" vgap="20.0">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
