@@ -2,11 +2,12 @@ module com.english_center {
     requires transitive java.sql;
     requires transitive javafx.graphics;
     requires transitive javafx.controls;
+    requires transitive org.apache.pdfbox;
+    requires transitive java.desktop;
+
     requires javafx.fxml;
     requires io.github.cdimascio.dotenv.java;
     requires lombok;
-    requires org.apache.pdfbox;
-    requires java.desktop;
 
     exports com.controller;
     exports com.models;
