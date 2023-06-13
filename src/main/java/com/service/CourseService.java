@@ -75,7 +75,7 @@ public class CourseService {
         ResultSet result = db.select("select count(st.user_id) as population, c.name as course_name from student st, course c, classes cl where st.class_id = cl.id and cl.course_id = c.id group by c.name");
         ObservableList<Point> points = FXCollections.observableArrayList();
         while (result.next()) {
-            String courseName = result.getString("course_name");
+            String courseName = result.getString("course_name").toUpperCase();
             String[] words = courseName.split(" ");
             StringBuilder sb = new StringBuilder();
             for (String word : words) {
