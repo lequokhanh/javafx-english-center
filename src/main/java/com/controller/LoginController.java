@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginController {
 
@@ -20,6 +22,19 @@ public class LoginController {
     @FXML
     private void login() throws IOException {
         try {
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9\\-._]+$");
+            Matcher userValidate = pattern.matcher(username.getText());
+            Matcher passValidate = pattern.matcher(password.getText());
+            if (!userValidate.matches()) {
+                ErrorController.show(
+                        "Username contains only letters, numbers, hyphens, periods and underscores");
+                return;
+            }
+            if (!passValidate.matches()) {
+                ErrorController.show(
+                        "Password contains only letters, numbers, hyphens, periods and underscores");
+                return;
+            }
             String result = AccountService.checkLogin(username.getText(), password.getText());
             if (result != null) {
                 Manager.setAuth(result);

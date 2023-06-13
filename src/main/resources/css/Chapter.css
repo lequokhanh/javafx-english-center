@@ -61,6 +61,7 @@
 
     -fx-text-fill: #000000;
     -fx-alignment: center;
+    -fx-text-alignment: center;
     -fx-wrap-text: true;
 }
 

@@ -41,8 +41,8 @@ public class GeneralController {
         numberCountingUp(room_number, RoomService.getNumberOfRoom());
         ObservableList<Class> classes = ClassService.search("");
         this.classes.setItems(classes);
-        this.classes.getSelectionModel().selectFirst();
         this.classes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) return;
             lineChart.getData().clear();
             try {
                 attendanceChart(newValue.getId());
@@ -51,6 +51,8 @@ public class GeneralController {
             }
         });
         attendanceChart.setOnAction(e -> {
+            if (menuButton.getText().equals(attendanceChart.getText())) return;
+            this.classes.getSelectionModel().selectFirst();
             lineChart.getData().clear();
             classGroup.setVisible(true);
             menuButton.setText(attendanceChart.getText());
@@ -61,6 +63,7 @@ public class GeneralController {
             }
         });
         courseChart.setOnAction(e -> {
+            if (menuButton.getText().equals(courseChart.getText())) return;
             lineChart.getData().clear();
             classGroup.setVisible(false);
             menuButton.setText(courseChart.getText());
