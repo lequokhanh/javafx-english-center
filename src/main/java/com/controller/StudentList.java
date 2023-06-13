@@ -46,7 +46,7 @@ public class StudentList {
                 studentItem.lookup("#removeBtn").setVisible(true);
             studentItem.lookup("#removeBtn").setOnMouseClicked(e -> {
                 try {
-                    ClassService.removeStudent(student.getId(), classID);
+                    ClassService.removeStudent(student.getId());
                     reload(classID);
                 } catch (SQLException | IOException ex) {
                     try {

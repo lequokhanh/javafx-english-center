@@ -57,7 +57,7 @@ public class UserController {
                 });
                 action.lookup("#delete").setOnMouseClicked(mouseEvent -> {
                     try {
-                        DeleteUser.show(user.getId(), this);
+                        DeleteUser.show(user.getRole(), user.getId(), this);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

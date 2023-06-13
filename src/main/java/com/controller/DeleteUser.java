@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class DeleteUser {
-    public static void show(String id, UserController handle) throws IOException {
+    public static void show(String role, String id, UserController handle) throws IOException {
         Parent delete = FXMLLoader
                 .load(Objects.requireNonNull(EditCourseController.class.getResource(Constants.FXML_DELETE)));
         App.addPopup(delete);
@@ -24,13 +24,17 @@ public class DeleteUser {
         });
         delete.lookup("#confirm").setOnMouseClicked(e -> {
             try {
+                if (role.equals("Manager")) {
+                    ErrorController.show("Cannot delete manager");
+                    return;
+                }
                 AccountService.Delete(id);
                 handle.search("");
                 App.removePopUp(delete);
                 SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
-                    ErrorController.show(ex.toString());
+                    ErrorController.show("Please remove all relate to this user first");
                 } catch (IOException exc) {
                     throw new RuntimeException(exc);
                 }

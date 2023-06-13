@@ -204,7 +204,7 @@ public class ClassesController {
         myTextClass.addSingleLineText(selectedClass.getName(), pageWidth - 330 - (int) (semiHeaderFont.getStringWidth(selectedClass.getName()) / 1000 * 12), pageHeight - 160, textfont, 12, Color.BLACK);
 
         myTextClass.addSingleLineText("Course Name ", 26, pageHeight - 190, textfont, 12, colortest);
-        String wrappedCourseName = wordWrap(selectedClass.getCourse().getCourseName(), textfont, 12, 200);
+        String wrappedCourseName = wordWrap(selectedClass.getCourse().getCourseName(), textfont);
 
         List<String> courseNameLines = Arrays.asList(wrappedCourseName.split("\n"));
         int courseNameLineHeight = 12;
@@ -255,28 +255,51 @@ public class ClassesController {
         myTextClass.addSingleLineText("Lesson Name", 50, pageHeight - 320, textfont, 12, colortest);
         myTextClass.addSingleLineText("Date", 275, pageHeight - 320, textfont, 12, colortest);
         myTextClass.addSingleLineText("Attendance", 400, pageHeight - 320, textfont, 12, colortest);
-        for (int i = 0; i < data.size(); i++) {
+        for (int i = 0; i < Math.min(data.size(), 16); i++) {
             String[] row = data.get(i);
             myTextClass.addSingleLineText((String) row[0], 50, pageHeight - 320 - 30 * (i + 1), textfont, 12, Color.BLACK);
             myTextClass.addSingleLineText((String) row[1], 275, pageHeight - 320 - 30 * (i + 1), textfont, 12, Color.BLACK);
             myTextClass.addSingleLineText((String) row[2], 425, pageHeight - 320 - 30 * (i + 1), textfont, 12, Color.BLACK);
         }
         contentStream.close();
+        if (data.size() > 16) {
+            PDPage page2 = new PDPage(PDRectangle.A4);
+            document.addPage(page2);
+            PDPageContentStream contentStream2 = new PDPageContentStream(document, page2);
+            Text myTextClass2 = new Text(document, contentStream2);
+            myTextClass2.addSingleLineText("ENGLISH CENTER", 26, pageHeight - 40, headerFont, 20, Color.BLACK);
+            myTextClass2.addSingleLineText("CLASS REPORT", pageWidth - 26 - (int) (semiHeaderFont.getStringWidth("CLASS REPORT") / 1000 * 20), pageHeight - 40, semiHeaderFont, 20, Color.BLACK);
+            contentStream2.setStrokingColor(lineColor);
+            contentStream2.setLineWidth(1);
+            contentStream2.moveTo(26, pageHeight - 65);
+            contentStream2.lineTo(pageWidth - 26, pageHeight - 65);
+            contentStream2.stroke();
+            myTextClass2.addSingleLineText("Lesson Name", 50, pageHeight - 95, textfont, 12, colortest);
+            myTextClass2.addSingleLineText("Date", 275, pageHeight - 95, textfont, 12, colortest);
+            myTextClass2.addSingleLineText("Attendance", 400, pageHeight - 95, textfont, 12, colortest);
+            for (int i = 16; i < data.size(); i++) {
+                String[] row = data.get(i);
+                myTextClass2.addSingleLineText((String) row[0], 50, pageHeight + 390 - 30 * (i + 1), textfont, 12, Color.BLACK);
+                myTextClass2.addSingleLineText((String) row[1], 275, pageHeight + 390 - 30 * (i + 1), textfont, 12, Color.BLACK);
+                myTextClass2.addSingleLineText((String) row[2], 425, pageHeight + 390 - 30 * (i + 1), textfont, 12, Color.BLACK);
+            }
+            contentStream2.close();
+        }
         document.save(path);
         document.close();
         SuccessfulController.show();
     }
 
-    private static String wordWrap(String text, PDFont font, int fontSize, int maxLineWidth) throws IOException {
+    private static String wordWrap(String text, PDFont font) throws IOException {
         StringBuilder wrappedText = new StringBuilder();
         String[] words = text.split(" ");
-        float spaceWidth = font.getSpaceWidth() / 1000 * fontSize;
+        float spaceWidth = font.getSpaceWidth() / 1000 * 12;
         float currentLineWidth = 0;
 
         for (String word : words) {
-            float wordWidth = font.getStringWidth(word) / 1000 * fontSize;
+            float wordWidth = font.getStringWidth(word) / 1000 * 12;
 
-            if (currentLineWidth + wordWidth + spaceWidth > maxLineWidth) {
+            if (currentLineWidth + wordWidth + spaceWidth > 200) {
                 wrappedText.append("\n");
                 currentLineWidth = 0;
             }

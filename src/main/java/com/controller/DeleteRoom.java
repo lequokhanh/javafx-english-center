@@ -33,7 +33,7 @@ public class DeleteRoom {
                 SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
-                    ErrorController.show(ex.toString());
+                    ErrorController.show("Please remove all relate to this room first");
                 } catch (IOException exc) {
                     throw new RuntimeException(exc);
                 }

@@ -53,13 +53,17 @@
     -fx-font-family: 'Montserrat';
     -fx-font-size: 12px;
 
-    -fx-text-fill: #9E9E9E;
+    -fx-prompt-text-fill: #9E9E9E;
     -fx-background-color: #00000000;
     -fx-background-radius: 8px;
     -fx-border-color: #9E9E9E;
     -fx-border-radius: 8px;
     -fx-border-width: 1px;
 
+}
+
+.searchBox .text {
+    -fx-prompt-text-fill: #414141;
 }
 
 .addBtn {

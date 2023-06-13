@@ -54,6 +54,8 @@ public class LessonService {
     public static void Delete(String id) throws SQLException {
         MaterialService.deleteByLesson(id);
         DBConnection db = new DBConnection();
+        db.delete(String.format("DELETE FROM class_attendance WHERE lesson_id = '%s'", id));
+        db.delete(String.format("DELETE FROM material WHERE lesson_id = '%s'", id));
         db.delete(String.format("DELETE FROM lesson WHERE id = '%s'", id));
     }
 

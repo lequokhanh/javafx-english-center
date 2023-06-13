@@ -176,9 +176,11 @@ public class ClassService {
         return points;
     }
 
-    public static void removeStudent(String studentID, String classID) throws SQLException {
+    public static void removeStudent(String studentID) throws SQLException {
         DBConnection db = new DBConnection();
-        db.delete(String.format("delete from student where id = '%s' and class_id = '%s'", studentID, classID));
+        db.delete(String.format("delete from class_attendance ca\n" +
+                "where student_id = '%s'", studentID));
+        db.delete(String.format("delete from student where id = '%s'", studentID));
     }
 
     public static ObservableList<Student> getStudents(String classID) throws SQLException {

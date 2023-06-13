@@ -30,7 +30,7 @@ public class DeleteClass {
                 SuccessfulController.show();
             } catch (IOException | SQLException ex) {
                 try {
-                    ErrorController.show(ex.toString());
+                    ErrorController.show("Please remove all relate to this class first");
                 } catch (IOException exc) {
                     throw new RuntimeException(exc);
                 }
