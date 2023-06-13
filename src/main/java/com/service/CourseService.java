@@ -1,6 +1,7 @@
 package com.service;
 
 import com.models.Course;
+import com.models.Point;
 import com.utilities.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,5 +68,24 @@ public class CourseService {
         DBConnection db = new DBConnection();
         String query = String.format("DELETE FROM course WHERE id = '%s'", id);
         db.delete(query);
+    }
+
+    public static ObservableList<Point> getCoursePopulation() throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select("select count(st.user_id) as population, c.name as course_name from student st, course c, classes cl where st.class_id = cl.id and cl.course_id = c.id group by c.name");
+        ObservableList<Point> points = FXCollections.observableArrayList();
+        while (result.next()) {
+            String courseName = result.getString("course_name");
+            String[] words = courseName.split(" ");
+            StringBuilder sb = new StringBuilder();
+            for (String word : words) {
+                sb.append(word.charAt(0));
+            }
+            courseName = sb.toString();
+            points.add(new Point(
+                    courseName,
+                    result.getInt("population")));
+        }
+        return points;
     }
 }

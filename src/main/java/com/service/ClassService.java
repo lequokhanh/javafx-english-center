@@ -137,7 +137,7 @@ public class ClassService {
     }
 
     public static void Insert(String id, String name, String course, String teacher, String room, String session_day,
-            String session_time, String start, String end) throws SQLException {
+                              String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
                 "select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s'",
@@ -151,7 +151,7 @@ public class ClassService {
     }
 
     public static void Update(String id, String name, String course, String teacher, String room, String session_day,
-            String session_time, String start, String end) throws SQLException {
+                              String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
                 "select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s' and id != '%s'",
@@ -177,19 +177,6 @@ public class ClassService {
             return getNewId();
         }
         return id;
-    }
-
-    public static ObservableList<Point> getClassPopulation() throws SQLException {
-        DBConnection db = new DBConnection();
-        ResultSet result = db.select("select count(st.user_id) as population, cl.name as class_name " +
-                "from student st " +
-                "join classes cl on st.class_id = cl.id " +
-                "group by cl.name");
-        ObservableList<Point> points = FXCollections.observableArrayList();
-        while (result.next()) {
-            points.add(new Point(result.getString("class_name"), result.getInt("population")));
-        }
-        return points;
     }
 
     public static void removeStudent(String studentID) throws SQLException {
@@ -237,7 +224,7 @@ public class ClassService {
                         "order by learn_date", classID));
         ArrayList<String[]> lessons = new ArrayList<>();
         while (resultSet.next()) {
-            lessons.add(new String[] {
+            lessons.add(new String[]{
                     resultSet.getString("name"),
                     dateFormat.toString(resultSet.getDate("learn_date").toLocalDate()),
                     resultSet.getString("number_of_present_student")

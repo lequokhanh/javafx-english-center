@@ -101,7 +101,7 @@ public class GeneralController {
     }
 
     private void courseChart() throws SQLException {
-        ObservableList<Point> points = ClassService.getClassPopulation();
+        ObservableList<Point> points = CourseService.getCoursePopulation();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         for (Point point : points) {
             series.getData().add(new XYChart.Data<>(point.getX(), point.getY()));
