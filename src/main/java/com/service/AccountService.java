@@ -77,18 +77,6 @@ public class AccountService {
         return id;
     }
 
-    public static void enrollToClass(String id, String studentID, String classID) throws SQLException {
-        DBConnection db = new DBConnection();
-        ResultSet result = db.select(String.format("select * from student where user_id = '%s' and class_id = '%s'", studentID, classID));
-        if (result.next()) {
-            throw new SQLException("Student already enrolled in this class");
-        }
-        result = db.select(String.format("select * from student join classes cl on student.class_id = cl.id where student.user_id = '%s' and cl.session_time = (select session_time from classes where id = '%s') and cl.session_day = (select session_day from classes where id = '%s')", studentID, classID, classID));
-        if (result.next()) {
-            throw new SQLException("Student already enrolled in a class at this time");
-        }
-        db.insert(String.format("insert into student values ('%s', '%s', '%s')", id, studentID, classID));
-    }
 
     public static String getNewStudentId() throws SQLException {
         String id = UUID.randomUUID().toString().substring(0, 8);

@@ -60,4 +60,16 @@ public class StudentService {
         db.delete(String.format("delete from class_attendance where student_id = '%s' and lesson_id = '%s'", studentID, lessonID));
     }
 
+    public static void enrollToClass(String id, String studentID, String classID) throws SQLException {
+        DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from student where user_id = '%s' and class_id = '%s'", studentID, classID));
+        if (result.next()) {
+            throw new SQLException("Student already enrolled in this class");
+        }
+        result = db.select(String.format("select * from student join classes cl on student.class_id = cl.id where student.user_id = '%s' and cl.session_time = (select session_time from classes where id = '%s') and cl.session_day = (select session_day from classes where id = '%s') and cl.date_end >= (select date_start from classes where id = '%s')", studentID, classID, classID, classID));
+        if (result.next()) {
+            throw new SQLException("Student already enrolled in another class at the same time");
+        }
+        db.insert(String.format("insert into student values ('%s', '%s', '%s')", id, studentID, classID));
+    }
 }

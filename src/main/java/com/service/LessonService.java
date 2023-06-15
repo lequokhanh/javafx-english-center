@@ -42,12 +42,29 @@ public class LessonService {
     }
 
     public static void Insert(String classID, String id, String chapterID, String learnDate) throws SQLException {
+        DateFormat dateFormat = new DateFormat();
         DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from classes where id = '%s'", classID));
+        if (result.next()) {
+            if (dateFormat.fromString(learnDate).isBefore(result.getDate("start").toLocalDate()) || dateFormat.fromString(learnDate).isAfter(result.getDate("end").toLocalDate())) {
+                throw new SQLException("Learn date must be between class start and end date");
+            }
+        } else {
+            throw new SQLException("Class was deleted before");
+        }
         db.insert(String.format("INSERT INTO lesson VALUES ('%s', '%s', '%s', '%s')", classID, id, learnDate, chapterID));
     }
 
     public static void Update(String id, String chapterID, String learnDate) throws SQLException {
         DBConnection db = new DBConnection();
+        ResultSet result = db.select(String.format("select * from classes join lesson on classes.id = lesson.class_id where lesson.id = '%s'", id));
+        if (result.next()) {
+            if (learnDate.compareTo(result.getDate("start").toString()) < 0 || learnDate.compareTo(result.getDate("end").toString()) > 0) {
+                throw new SQLException("Learn date must be between class start and end date");
+            }
+        } else {
+            throw new SQLException("Class was deleted before");
+        }
         db.update(String.format("UPDATE lesson SET chapter_id = '%s', learn_date = '%s' WHERE id = '%s'", chapterID, learnDate, id));
     }
 

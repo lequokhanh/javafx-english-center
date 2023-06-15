@@ -22,13 +22,14 @@ public class Class {
     private String session_time;
     private String start;
     private String end;
+    private String status;
     private HBox action;
 
     public Class() {
 
     }
 
-    public Class(String id, String name, Course course, Teacher teacher, Room room, String session_day, String session_time, String start, String end) throws IOException {
+    public Class(String id, String name, Course course, Teacher teacher, Room room, String session_day, String session_time, String start, String end, String status) throws IOException {
         this.id = id;
         this.name = name;
         this.course = course;
@@ -38,6 +39,7 @@ public class Class {
         this.session_time = session_time;
         this.start = start;
         this.end = end;
+        this.status = status;
         Node action = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(Constants.FXML_ACTION)));
         action.setId("action");
         action.getStyleClass().add("action");

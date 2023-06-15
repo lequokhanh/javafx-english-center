@@ -61,6 +61,11 @@
                         <PropertyValueFactory property="end"/>
                     </cellValueFactory>
                 </TableColumn>
+                <TableColumn fx:id="status" prefWidth="75.0" text="Status">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="status"/>
+                    </cellValueFactory>
+                </TableColumn>
                 <TableColumn fx:id="action" prefWidth="75.0" text="Action">
                     <cellValueFactory>
                         <PropertyValueFactory property="action"/>

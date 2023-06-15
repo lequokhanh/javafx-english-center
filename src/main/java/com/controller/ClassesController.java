@@ -44,7 +44,7 @@ public class ClassesController {
     public TableColumn<Class, String> teacher;
     public TableColumn<Class, String> start;
     public TableColumn<Class, String> end;
-    public TableColumn<Class, String> action;
+    public TableColumn<Class, HBox> action;
     public HBox manageLessonBtn;
     public AnchorPane classPane;
     public TableColumn<Class, String> room;
@@ -56,6 +56,7 @@ public class ClassesController {
     public Button exportReportBtn;
     public TextField searchField;
     public FlowPane flowPane;
+    public TableColumn<Class, String> status;
 
     public void initialize() throws IOException, SQLException {
         if (Manager.getAuth().split("/")[2].equals("Student") || Manager.getAuth().split("/")[2].equals("Teacher")) {
@@ -63,22 +64,24 @@ public class ClassesController {
             smallTitle.setText("List of classes");
             classID.setPrefWidth(120);
             className.setPrefWidth(140);
-            courseName.setPrefWidth(310);
+            courseName.setPrefWidth(220);
             teacher.setPrefWidth(200);
             room.setPrefWidth(110);
             start.setPrefWidth(130);
             end.setPrefWidth(110);
+            status.setPrefWidth(90);
             classTable.getColumns().remove(action);
             flowPane.getChildren().remove(addBtn);
             manageBtn.setText("View Lessons");
         } else {
             classID.setPrefWidth(120);
             className.setPrefWidth(120);
-            courseName.setPrefWidth(290);
+            courseName.setPrefWidth(200);
             teacher.setPrefWidth(180);
             room.setPrefWidth(90);
             start.setPrefWidth(110);
             end.setPrefWidth(110);
+            status.setPrefWidth(90);
             action.setPrefWidth(100);
         }
         classTable.getColumns().forEach(e -> {
@@ -86,6 +89,28 @@ public class ClassesController {
             e.setResizable(false);
         });
         search("");
+        classTable.setRowFactory(tv -> new TableRow<>() {
+            @Override
+            protected void updateItem(Class item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null || empty) {
+                    setStyle("");
+                } else {
+                    if (item.getStatus().equals("Not started")) {
+                        getStyleClass().clear();
+                        getStyleClass().add("table-row-cell");
+                        getStyleClass().add("notStartedTableRow");
+                    } else if (item.getStatus().equals("Finished")) {
+                        getStyleClass().clear();
+                        getStyleClass().add("table-row-cell");
+                        getStyleClass().add("finishedTableRow");
+                    } else {
+                        getStyleClass().clear();
+                        getStyleClass().add("table-row-cell");
+                    }
+                }
+            }
+        });
     }
 
     public void search(String keyWord) throws IOException, SQLException {
@@ -287,6 +312,8 @@ public class ClassesController {
         }
         document.save(path);
         document.close();
+        File file = new File(path);
+        Desktop.getDesktop().open(file);
         SuccessfulController.show();
     }
 

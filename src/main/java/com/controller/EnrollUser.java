@@ -5,6 +5,7 @@ import com.models.Class;
 import com.models.User;
 import com.service.AccountService;
 import com.service.ClassService;
+import com.service.StudentService;
 import com.utilities.Constants;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ public class EnrollUser {
     public Label displayName;
 
     public void initialize() throws SQLException, IOException {
-        ObservableList<Class> classes = ClassService.search("");
+        ObservableList<Class> classes = ClassService.getAllClassesNotFinished();
         this.classes.setItems(classes);
     }
 
@@ -45,7 +46,7 @@ public class EnrollUser {
                     ErrorController.show("Please fill all the fields");
                     return;
                 }
-                AccountService.enrollToClass(controller.id.getText(), user.getId(),
+                StudentService.enrollToClass(controller.id.getText(), user.getId(),
                         controller.classes.getValue().getId());
                 controller.close();
                 SuccessfulController.show();

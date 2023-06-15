@@ -109,6 +109,7 @@ public class UserController {
         try {
             EnrollUser.show(UserTable.getSelectionModel().getSelectedItem());
         } catch (IOException | SQLException e) {
+            e.printStackTrace();
             ErrorController.show(e.getMessage());
         }
     }

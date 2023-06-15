@@ -27,4 +27,9 @@ public class DateFormat extends StringConverter<LocalDate> {
             return null;
         }
     }
+
+    public LocalDate now() {
+        // return date now in dd-LLL-yy format
+        return LocalDate.now();
+    }
 }

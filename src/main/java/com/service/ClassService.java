@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class ClassService {
@@ -28,7 +29,8 @@ public class ClassService {
         keyWord = keyWord.toUpperCase();
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
-                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name " +
+                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name "
+                        +
                         "from classes cl " +
                         "join account ac on cl.teacher_id = ac.id " +
                         "join course co on cl.course_id = co.id " +
@@ -43,6 +45,13 @@ public class ClassService {
                 keyWord, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord));
         ObservableList<Class> classes = javafx.collections.FXCollections.observableArrayList();
         while (result.next()) {
+            String status = result.getDate("date_start").toLocalDate().isBefore(dateFormat.now())
+                    || result.getDate("date_start").toLocalDate().isEqual(dateFormat.now())
+                    ? (result.getDate("date_end").toLocalDate().isAfter(dateFormat.now())
+                    || result.getDate("date_end").toLocalDate().isEqual(dateFormat.now())
+                    ? "In progress"
+                    : "Finished")
+                    : "Not started";
             classes.add(new Class(result.getString("id"),
                     result.getString("name"),
                     new Course(result.getString("course_id"),
@@ -54,7 +63,37 @@ public class ClassService {
                     result.getString("session_day"),
                     result.getString("session_time"),
                     dateFormat.toString(result.getDate("date_start").toLocalDate()),
-                    dateFormat.toString(result.getDate("date_end").toLocalDate())));
+                    dateFormat.toString(result.getDate("date_end").toLocalDate()),
+                    status));
+        }
+        return classes;
+    }
+
+    public static ObservableList<Class> getAllClassesNotFinished() throws SQLException, IOException {
+        DateFormat dateFormat = new DateFormat();
+        DBConnection db = new DBConnection();
+        ObservableList<Class> classes = FXCollections.observableArrayList();
+        ResultSet result = db.select(
+                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name "
+                        +
+                        "from classes cl " +
+                        "join account ac on cl.teacher_id = ac.id " +
+                        "join course co on cl.course_id = co.id " +
+                        "join room ro on cl.room_id = ro.id " +
+                        "where cl.date_end >= '" + dateFormat.toString(dateFormat.now()) + "'");
+        while (result.next()) {
+            classes.add(new Class(result.getString("id"),
+                    result.getString("name"),
+                    new Course(result.getString("course_id"),
+                            result.getString("course_name")),
+                    new Teacher(result.getString("teacher_id"),
+                            result.getString("teacher_name")),
+                    new Room(result.getString("room_id"),
+                            result.getString("room_name")),
+                    result.getString("session_day"),
+                    result.getString("session_time"),
+                    dateFormat.toString(result.getDate("date_start").toLocalDate()),
+                    dateFormat.toString(result.getDate("date_end").toLocalDate()), "In progress"));
         }
         return classes;
     }
@@ -65,7 +104,8 @@ public class ClassService {
         keyWord = keyWord.toUpperCase();
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
-                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name " +
+                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name "
+                        +
                         "from classes cl " +
                         "join account ac on cl.teacher_id = ac.id " +
                         "join course co on cl.course_id = co.id " +
@@ -81,6 +121,13 @@ public class ClassService {
                 teacherID, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord));
         ObservableList<Class> classes = javafx.collections.FXCollections.observableArrayList();
         while (result.next()) {
+            String status = result.getDate("date_start").toLocalDate().isBefore(dateFormat.now())
+                    || result.getDate("date_start").toLocalDate().isEqual(dateFormat.now())
+                    ? (result.getDate("date_end").toLocalDate().isAfter(dateFormat.now())
+                    || result.getDate("date_end").toLocalDate().isEqual(dateFormat.now())
+                    ? "In progress"
+                    : "Finished")
+                    : "Not started";
             classes.add(new Class(result.getString("id"),
                     result.getString("name"),
                     new Course(result.getString("course_id"),
@@ -92,7 +139,7 @@ public class ClassService {
                     result.getString("session_day"),
                     result.getString("session_time"),
                     dateFormat.toString(result.getDate("date_start").toLocalDate()),
-                    dateFormat.toString(result.getDate("date_end").toLocalDate())));
+                    dateFormat.toString(result.getDate("date_end").toLocalDate()), status));
         }
         return classes;
     }
@@ -103,7 +150,8 @@ public class ClassService {
         keyWord = keyWord.toUpperCase();
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
-                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name " +
+                "select cl.*, co.name as course_name, ac.display_name as teacher_name, ro.name as room_name "
+                        +
                         "from classes cl " +
                         "join student st on st.class_id = cl.id " +
                         "join account ac on cl.teacher_id = ac.id " +
@@ -120,6 +168,13 @@ public class ClassService {
                 studentID, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord, keyWord));
         ObservableList<Class> classes = javafx.collections.FXCollections.observableArrayList();
         while (result.next()) {
+            String status = result.getDate("date_start").toLocalDate().isBefore(dateFormat.now())
+                    || result.getDate("date_start").toLocalDate().isEqual(dateFormat.now())
+                    ? (result.getDate("date_end").toLocalDate().isAfter(dateFormat.now())
+                    || result.getDate("date_end").toLocalDate().isEqual(dateFormat.now())
+                    ? "In progress"
+                    : "Finished")
+                    : "Not started";
             classes.add(new Class(result.getString("id"),
                     result.getString("name"),
                     new Course(result.getString("course_id"),
@@ -131,33 +186,47 @@ public class ClassService {
                     result.getString("session_day"),
                     result.getString("session_time"),
                     dateFormat.toString(result.getDate("date_start").toLocalDate()),
-                    dateFormat.toString(result.getDate("date_end").toLocalDate())));
+                    dateFormat.toString(result.getDate("date_end").toLocalDate()), status));
         }
         return classes;
     }
 
-    public static void Insert(String id, String name, String course, String teacher, String room, String session_day,
+    public static void Insert(String id, String name, String course, String teacher, String room,
+                              String session_day,
                               String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
-                "select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s'",
-                session_day, session_time, room));
+                "select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s' and id != '%s' and date_start <= '%s' and date_end >='%s'",
+                session_day, session_time, room, id, end, start));
         if (result.next()) {
-            throw new SQLException("This room is not available");
+            throw new SQLException("This room is not available for this time");
+        }
+        ResultSet result2 = db.select(String.format(
+                "select * from classes where session_day = '%s' and session_time = '%s' and teacher_id = '%s' and id != '%s' and date_start <= '%s' and date_end >='%s'",
+                session_day, session_time, teacher, id, end, start));
+        if (result2.next()) {
+            throw new SQLException("This teacher is not available for this time");
         }
         db.insert(String.format(
                 "INSERT INTO classes(id,teacher_id,name,course_id,date_start,date_end,session_time,session_day,room_id) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s','%s')",
                 id, teacher, name, course, start, end, session_time, session_day, room));
     }
 
-    public static void Update(String id, String name, String course, String teacher, String room, String session_day,
+    public static void Update(String id, String name, String course, String teacher, String room,
+                              String session_day,
                               String session_time, String start, String end) throws SQLException {
         DBConnection db = new DBConnection();
         ResultSet result = db.select(String.format(
                 "select * from classes where session_day = '%s' and session_time = '%s' and room_id = '%s' and id != '%s'",
                 session_day, session_time, room, id));
         if (result.next()) {
-            throw new SQLException("This room is not available");
+            throw new SQLException("This room is not available for this time");
+        }
+        ResultSet result2 = db.select(String.format(
+                "select * from classes where session_day = '%s' and session_time = '%s' and teacher_id = '%s' and id != '%s' and date_start <= '%s' and date_end >= '%s'",
+                session_day, session_time, teacher, id, end, start));
+        if (result2.next()) {
+            throw new SQLException("This teacher is not available for this time");
         }
         db.update(String.format(
                 "update classes set teacher_id = '%s', name = '%s', course_id = '%s', date_start = '%s', date_end = '%s', session_time = '%s', session_day = '%s', room_id = '%s' where id = '%s'",
@@ -215,13 +284,17 @@ public class ClassService {
         DateFormat dateFormat = new DateFormat();
         DBConnection db = new DBConnection();
         ResultSet resultSet = db
-                .select(String.format("select name, learn_date, count(student_id) as number_of_present_student\n" +
-                        "from lesson le\n" +
-                        "join chapter ch on chapter_id = ch.id\n" +
-                        "left join class_attendance ca on ca.lesson_id = le.id\n" +
-                        "where class_id = '%s'\n" +
-                        "group by name, learn_date\n" +
-                        "order by learn_date", classID));
+                .select(String.format(
+                        "select name, learn_date, count(student_id) as number_of_present_student\n"
+                                +
+                                "from lesson le\n" +
+                                "join chapter ch on chapter_id = ch.id\n" +
+                                "left join class_attendance ca on ca.lesson_id = le.id\n"
+                                +
+                                "where class_id = '%s'\n" +
+                                "group by name, learn_date\n" +
+                                "order by learn_date",
+                        classID));
         ArrayList<String[]> lessons = new ArrayList<>();
         while (resultSet.next()) {
             lessons.add(new String[]{

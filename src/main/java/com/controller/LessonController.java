@@ -67,6 +67,10 @@ public class LessonController {
             uploadBtn.setVisible(false);
         }
         Platform.runLater(() -> {
+            if (classes.getStatus().equals("Finished")) {
+                action.setVisible(false);
+                uploadBtn.setVisible(false);
+            }
             className.setText(classes.getName());
             courseName.setText(classes.getCourse().getCourseName());
             try {
@@ -208,6 +212,8 @@ public class LessonController {
                     .load(Objects.requireNonNull(getClass().getResource(Constants.FXML_STUDENT_ITEM)));
             ((Label) studentItem.lookup(".name")).setText(student.getName());
             ((Label) studentItem.lookup(".id")).setText(student.getId());
+            if (classes.getStatus().equals("Finished"))
+                studentItem.lookup("#rollCallBtn").setVisible(false);
             studentItem.lookup("#rollCallBtn").setOnMouseClicked(e -> {
                 try {
                     StudentService.RollCall(student.getId(), selectedLesson.getId());
@@ -229,7 +235,8 @@ public class LessonController {
             ((Label) studentItem.lookup(".name")).setText(student.getName());
             ((Label) studentItem.lookup(".id")).setText(student.getId());
             studentItem.lookup("#rollCallBtn").setVisible(false);
-            studentItem.lookup("#removeBtn").setVisible(true);
+            if (!classes.getStatus().equals("Finished"))
+                studentItem.lookup("#removeBtn").setVisible(true);
             studentItem.lookup("#removeBtn").setOnMouseClicked(e -> {
                 try {
                     StudentService.removeRollCall(student.getId(), selectedLesson.getId());

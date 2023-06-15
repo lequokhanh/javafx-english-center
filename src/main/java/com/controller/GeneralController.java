@@ -8,18 +8,20 @@ import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class GeneralController {
     public LineChart<String, Number> lineChart;
@@ -42,7 +44,8 @@ public class GeneralController {
         ObservableList<Class> classes = ClassService.search("");
         this.classes.setItems(classes);
         this.classes.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue == null) return;
+            if (newValue == null)
+                return;
             lineChart.getData().clear();
             try {
                 attendanceChart(newValue.getId());
@@ -51,7 +54,8 @@ public class GeneralController {
             }
         });
         attendanceChart.setOnAction(e -> {
-            if (menuButton.getText().equals(attendanceChart.getText())) return;
+            if (menuButton.getText().equals(attendanceChart.getText()))
+                return;
             this.classes.getSelectionModel().selectFirst();
             lineChart.getData().clear();
             classGroup.setVisible(true);
@@ -63,7 +67,8 @@ public class GeneralController {
             }
         });
         courseChart.setOnAction(e -> {
-            if (menuButton.getText().equals(courseChart.getText())) return;
+            if (menuButton.getText().equals(courseChart.getText()))
+                return;
             lineChart.getData().clear();
             classGroup.setVisible(false);
             menuButton.setText(courseChart.getText());
@@ -85,27 +90,50 @@ public class GeneralController {
     }
 
     private void attendanceChart(String classId) throws SQLException {
-        ObservableList<Point> points = LessonService.getLessonPresentStudent(classId);
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        for (Point point : points) {
-            series.getData().add(new XYChart.Data<>(point.getX(), point.getY()));
-        }
-        lineChart.getData().add(series);
+        generateChart(LessonService.getLessonPresentStudent(classId));
         CategoryAxis xAxis = (CategoryAxis) lineChart.getXAxis();
-        ObservableList<String> categories = FXCollections.observableArrayList();
-        for (Point point : points) {
-            categories.add(point.getX());
-        }
-        xAxis.getCategories().clear();
-        xAxis.setCategories(categories);
+        Tooltip tooltip = new Tooltip();
+        xAxis.setOnMouseMoved(event -> {
+            int index = (int) (event.getX() / xAxis.getWidth() * xAxis.getCategories().size());
+            tooltip.setText(xAxis.getCategories().get(index));
+            tooltip.show(xAxis, event.getScreenX() + 10, event.getScreenY() + 10);
+        });
+        xAxis.setOnMouseExited(event -> tooltip.hide());
     }
 
     private void courseChart() throws SQLException {
-        ObservableList<Point> points = CourseService.getCoursePopulation();
+        ObservableList<Point> points1 = CourseService.getCoursePopulation();
+        ObservableList<Point> points2 = points1.stream()
+                .map(point -> new Point(point.getX(), point.getY()))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+        points2.forEach(point -> {
+            String courseName = Arrays.stream(point.getX().toUpperCase().split(" "))
+                    .map(word -> word.substring(0, 1))
+                    .collect(Collectors.joining());
+            point.setX(courseName);
+        });
+        generateChart(points2);
+        CategoryAxis xAxis = (CategoryAxis) lineChart.getXAxis();
+        Tooltip tooltip = new Tooltip();
+        xAxis.setOnMouseMoved(event -> {
+            int index = (int) (event.getX() / xAxis.getWidth() * xAxis.getCategories().size());
+            tooltip.setText(points1.get(index).getX());
+            tooltip.show(xAxis, event.getScreenX() + 10, event.getScreenY() + 10);
+        });
+        xAxis.setOnMouseExited(event -> tooltip.hide());
+    }
+
+    public void generateChart(ObservableList<Point> points) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
+        int max = points.stream().map(Point::getY).max(Integer::compareTo).orElse(0);
         for (Point point : points) {
             series.getData().add(new XYChart.Data<>(point.getX(), point.getY()));
         }
+        NumberAxis yAxis = (NumberAxis) lineChart.getYAxis();
+        yAxis.setAutoRanging(false);
+        int tickUnit = max / 10;
+        yAxis.setUpperBound(Math.max(tickUnit * 12, 1));
+        yAxis.setTickUnit(tickUnit);
         lineChart.getData().add(series);
         CategoryAxis xAxis = (CategoryAxis) lineChart.getXAxis();
         ObservableList<String> categories = FXCollections.observableArrayList();
@@ -114,5 +142,13 @@ public class GeneralController {
         }
         xAxis.getCategories().clear();
         xAxis.setCategories(categories);
+        for (final XYChart.Series<String, Number> series1 : lineChart.getData()) {
+            for (final XYChart.Data<String, Number> data : series1.getData()) {
+                Node node = data.getNode();
+                Tooltip tooltip = new Tooltip(data.getYValue().toString());
+                node.setOnMouseMoved(event -> tooltip.show(node, event.getScreenX() + 10, event.getScreenY() + 10));
+                node.setOnMouseExited(event -> tooltip.hide());
+            }
+        }
     }
 }

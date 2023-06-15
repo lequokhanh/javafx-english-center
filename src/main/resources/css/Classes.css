@@ -67,6 +67,22 @@
     -fx-background-color: #B8B3D7;
 }
 
+.notStartedTableRow:hover {
+    -fx-background-color: #ffcccb;
+}
+
+.notStartedTableRow:selected {
+    -fx-background-color: #ffcccb;
+}
+
+.finishedTableRow:hover {
+    -fx-background-color: rgba(220, 220, 220, 0.8);
+}
+
+.finishedTableRow:selected {
+    -fx-background-color: rgba(220, 220, 220, 0.8);
+}
+
 .manageChapterBtn {
     -fx-alignment: center;
     -fx-spacing: 10;
