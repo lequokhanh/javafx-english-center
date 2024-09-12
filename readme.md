@@ -73,7 +73,6 @@ Due to time and resource constraints, the project focuses on:
 ## 🔎 Requirement Specification
 
 - ### Survey of the Organization
-    ![Survey](https://cdn.discordapp.com/attachments/911903170236665857/1148492582280757330/image.png)
     - Overview of the current organizational situation.
 
 - ### Survey of Business Processes and Major Activities
